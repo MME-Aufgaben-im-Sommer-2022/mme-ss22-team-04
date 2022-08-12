@@ -1,0 +1,365 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/background-image.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.mobile-nav_menu-elements-container .menu-icon:hover{
+    display: block;
+}
+
+.mobile-nav_menu-elements-container {
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: 0;
+    top: 60px;
+    padding: 5px;
+    background-color: #FFF;
+    border-radius: 25px;
+}
+
+.mobile-nav_menu-elements-container a {
+    text-decoration: none;
+    color: #000;
+}
+
+.mobile-nav_menu-elements {
+    margin: 35px;
+    text-align: center;
+}
+
+.mobile-nav_active {
+    border: 1px solid #5a5a5a;
+    border-radius: 15px;
+}
+
+.menu-elements-container {
+    display: flex;
+    width: 70%;
+    height: 50px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-end;
+	align-content: center;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.menu-elements {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    padding: 15px;
+    border-radius: 50px;
+    border: 3px solid #5a5a5a;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #FFF;
+}
+
+.menu-elements span {
+    position: relative;
+    top: 5px;
+}
+
+.menu {
+    display: block;
+    width: 80%;
+    height: 650px;
+    border: 3px solid #5a5a5a;
+    background-color: #5a5a5a;
+    border-radius: 50px;
+    margin: auto;
+}
+
+.active {
+    border-radius: 25px 25px 0 0;
+    border-top: 3px solid #A4A4A4;
+    border-left: 3px solid #A4A4A4;
+    border-right: 3px solid #A4A4A4;
+    border-bottom: none;
+    background-color: #5a5a5a;
+}
+
+.active span {
+    position: relative;
+    top: 5px;
+}
+
+.search-recipe {
+    display: flex;
+    align-items: center;
+}
+
+#recipe {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 5%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.recipe-button {
+    display:inline ;
+    background-color: #00d3b7;
+    color: #000;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin-top: 50px;
+    margin-left: 5%;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    height: 50px;
+    border-radius: 1000px;
+    border: 2px solid #000;
+}
+
+.recipe-button:hover {
+    opacity: 0.8;
+}
+
+.text-result {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 5%;
+    height: 400px;
+    border: 3px solid #A4A4A4;
+    padding: 5px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    background-color: rgb(202, 200, 200);
+    overflow-y: scroll;
+}
+
+.invite-friends-button {    
+    display:inline ;
+    background-color: #eb517f;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 80%;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    height: 50px;
+    border-radius: 0 0 25px 25px;
+}
+
+.invite-friends-button:hover {
+    opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(24, 173, 36); 
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:#00a03d; 
+}
+
+.popup {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    height: 380px;
+    width: 740px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.popup-description {
+    margin: 30px 0 20px 205px;
+    font-size: 1.5rem;
+}
+
+.popup-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selection-button {
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    background-color: #00d3b7;
+}
+
+.public {
+    border-radius: 20px 0 0 20px;
+}
+
+.friends {
+    border-radius: 0;
+}
+
+.one-friend {
+    border-radius: 0 20px 20px 0;
+}
+
+#name-bar {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 15%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.other-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.send-invitation-button {
+    width: 200px;
+    height: 50px;
+    border-radius: 1000px;
+    background-color: #00c27b;
+}
+
+.cancel-button {    
+    width: 200px;
+    height: 50px;
+    border-radius: 1000px;
+    background-color: #db0054;
+}
+
+.cancel-button:hover, .send-invitation-button:hover, .selection-button:hover {
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 1800px) {
+    body {
+      background-size: 100% 100%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .menu-elements {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .invite-friends-button {
+        margin-left: 60%;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .menu-elements {
+        width: 60px;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #recipe {
+        display: block;
+        width: 70%;
+        margin-left: 5%;
+    }
+    
+    .recipe-button {
+        margin-left: 0;
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .menu-elements-container {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .active {        
+        border-radius: 25px 0 0 25px;
+        border-top: 3px solid #A4A4A4;
+        border-left: 3px solid #A4A4A4;
+        border-bottom: 3px solid #A4A4A4;
+        border-right: none;
+        background-color: #5a5a5a;
+    }
+
+    .menu {
+        margin-top: 50px;
+        height: 730px;
+    }
+
+    .search-recipe {
+        flex-wrap: wrap;
+    }
+
+    #recipe {
+        width: 85%;
+        margin-left: 5%;
+    }
+    
+    .recipe-button {
+        margin-left: 5%;
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .text-result {
+        height: 400px;
+    }
+
+    .invite-friends-button {
+        margin-left: 30%;
+        width: 40%;
+    }
+}

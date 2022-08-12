@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MME: Projekte im SS 2022</title>
+    <link rel="stylesheet" href="./resources/css/menu.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+</head>
+
+<body>
+    <div class="mobile-nav">
+        <img src="./resources/images/menu-icon.png" alt="Menu icon" class="menu-icon">
+        <div class="mobile-nav_menu-elements-container">
+            <a href="#">
+                <div class="mobile-nav_menu-elements mobile-nav_active">
+                    <span>Search Recipe</span>
+                </div>
+            </a>
+            <a href="./profile.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>My Profile</span>
+                </div>
+            </a>
+            <a href="./friends.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Friends</span>
+                </div>
+            </a>
+            <a href="./invitations.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Invitations</span>
+                </div>
+            </a>
+            <a href="./settings.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Settings</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="menu-elements-container">
+        <a href="#">
+            <div class="menu-elements active">
+                <span>Search Recipe</span>
+            </div>
+        </a>
+        <a href="./profile.html">
+            <div class="menu-elements">
+                <span>My Profile</span>
+            </div>
+        </a>
+        <a href="./friends.html">
+            <div class="menu-elements">
+                <span>Friends</span>
+            </div>
+        </a>
+        <a href="./invitations.html">
+            <div class="menu-elements">
+                <span>Invitations</span>
+            </div>
+        </a>
+        <a href="./settings.html">
+            <div class="menu-elements">
+                <span>Settings</span>
+            </div>
+        </a>
+    </div>
+    <div class="menu">
+        <div class="search-recipe">
+            <input type="text" id="recipe" name="recipe" placeholder="Search recipe">
+            <button type="submit" class="recipe-button">Search</button>
+        </div>
+        <div class="text-result">
+            <h1 class="name-of-receipt">Name of receipt</h1>
+            <h2 class="ingredients">Ingredients</h2>
+            <span>Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.</span>
+            <h2 class="steps">Steps</h2>
+            <span>Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.</span>
+        </div>
+        <button type="submit" class="invite-friends-button">Invite people</button>
+    </div>
+
+    <div class="popup">
+        <div class="popup-content">
+            <div class="popup-description">Who would you like to invite?</div>
+            <!-- <img src="resources/images/signup-image.png" alt="Sign Up Image" class="signUpImage"> -->
+            <div class="popup-buttons">
+                <button class="selection-button public">Public</button>
+                <button class="selection-button friends">My Friends</button>
+                <button class="selection-button one-friend">Only one friend</button>
+            </div>
+            <input type="text" id="name-bar" name="name" placeholder="Please insert his/her name" readonly>            
+            <div class="other-buttons">
+                <button class="send-invitation-button">Send invitation</button>
+                <button class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./src/search-recipe.js"></script>
+</body>
+
+</html>
