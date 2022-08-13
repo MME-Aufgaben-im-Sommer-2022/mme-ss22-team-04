@@ -90,7 +90,7 @@ body::after {
 .menu {
     display: block;
     width: 80%;
-    height: 650px;
+    height: 620px;
     border: 3px solid #5a5a5a;
     background-color: #5a5a5a;
     border-radius: 50px;
@@ -150,8 +150,7 @@ body::after {
     width: 90%;
     margin-top: 50px;
     margin-left: 5%;
-    height: 400px;
-    border: 3px solid #A4A4A4;
+    height: 360px;
     padding: 5px;
     padding-bottom: 20px;
     border-radius: 20px;
@@ -177,7 +176,7 @@ body::after {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -279,6 +278,18 @@ body::after {
     opacity: 0.8;
 }
 
+.back-to-login-button {
+    width: 20%;
+    height: 30px;
+    background-color: #00c27b;
+    margin: 20px 40% 0 40%;
+    border-radius: 20px;
+}
+
+.back-to-login-button:hover {
+    opacity: 0.8;
+}
+
 @media screen and (min-width: 1800px) {
     body {
       background-size: 100% 100%;
@@ -314,6 +325,12 @@ body::after {
         margin-left: 0;
         width: 20%;
     }
+    
+    .back-to-login-button {
+        width: 40%;
+        margin: 20px 30% 0 30%;
+        border-radius: 20px;
+    }
 }
 
 @media screen and (max-width: 670px) {
@@ -336,7 +353,7 @@ body::after {
 
     .menu {
         margin-top: 50px;
-        height: 730px;
+        height: 700px;
     }
 
     .search-recipe {
@@ -355,11 +372,17 @@ body::after {
     }
 
     .text-result {
-        height: 400px;
+        height: 360px;
     }
 
     .invite-friends-button {
         margin-left: 30%;
         width: 40%;
+    }
+    
+    .back-to-login-button {
+        width: 70%;
+        margin: 20px 15% 0 15%;
+        border-radius: 20px;
     }
 }

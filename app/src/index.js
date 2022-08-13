@@ -6,13 +6,12 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAFDNuBXFMcPLeI_rKmCMlcVWgVtAnJRfo",
-  authDomain: "eatwithme-646c4.firebaseapp.com",
-  databaseURL: "https://eatwithme-646c4-default-rtdb.firebaseio.com",
-  projectId: "eatwithme-646c4",
-  storageBucket: "eatwithme-646c4.appspot.com",
-  messagingSenderId: "1092918709670",
-  appId: "1:1092918709670:web:ecbb9be08ce583550c1367"
+  apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
+  authDomain: "eatwithme-e7e95.firebaseapp.com",
+  projectId: "eatwithme-e7e95",
+  storageBucket: "eatwithme-e7e95.appspot.com",
+  messagingSenderId: "922257626910",
+  appId: "1:922257626910:web:7e9e3848e124e64e21db0f"
 };
 
 // Initialize Firebase
@@ -51,30 +50,30 @@ function signUp() {
 }
 
  //signIN function
- function  signIn(){
+ function signIn(){
     let email = document.getElementById("email");
     let password  = document.getElementById("password");
-    const promise = auth.signInWithEmailAndPassword(email.value,password.value)
-                        .catch(alert("First try"));
+    const promise = auth.signInWithEmailAndPassword(email.value,password.value);
     promise.catch(e=>alert(e.message));
+    alert("Signed in as " + email.value);
     email.value = "";
     password.value = "";
   }
 
-
   //signOut
   function signOut(){
-    auth.signOut();
-    alert("SignOut Successfully from System");
+      auth.signOut();
+      alert("SignOut Successfully from System");
+      window.location.href = './index.html';
   }
 
   //active user to homepage
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
-      let email = user.email;
-      alert("Active user "+email);
-
-    }else{
+      // window.location.href = './search-recipe.html'
+    } else {
       alert("No Active user Found")
     }
   })
+
+  export { firebaseConfig };
