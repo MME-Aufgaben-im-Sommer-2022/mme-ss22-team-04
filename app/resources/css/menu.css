@@ -140,6 +140,7 @@ body::after {
     height: 50px;
     border-radius: 1000px;
     border: 2px solid #000;
+    border: none;
 }
 
 .recipe-button:hover {
@@ -163,7 +164,7 @@ body::after {
     background-color: #eb517f;
     color: white;
     padding: 14px 20px;
-    margin-left: 80%;
+    margin-left: 75%;
     border: none;
     cursor: pointer;
     width: 15%;
@@ -284,6 +285,7 @@ body::after {
     background-color: #00c27b;
     margin: 20px 40% 0 40%;
     border-radius: 20px;
+    border: none;
 }
 
 .back-to-login-button:hover {
@@ -430,6 +432,86 @@ body::after {
     background-color: #db0054;
 }
 
+.settings {
+    width: 90%;
+    padding: 50px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-partI {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-name_div, #settings-name, .settings-email_div, #settings-email, .settings-phone-number_div, #settings-phone-number {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#settings-name, #settings-email, #settings-phone-number, #settings-change-password {
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 50px;
+    border: none;
+    margin-top: 5px;
+}
+
+.settings-name_div, .settings-email_div, .settings-phone-number_div, .settings-change-password_div, .settings-about-me_div {
+    margin-bottom: 0;
+    color: #FFF;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.settings-partII {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-change-password_div, #settings-change-password, .settings-about-me_div, #settings-about-me {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#settings-about-me {    
+    height: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+    margin-top: 5px;
+}
+
+.save-changes, .discard-changes {
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+}
+
+.save-changes:hover, .discard-changes:hover {
+    opacity: 0.8;
+}
+
+.save-changes {
+    background-color: #00a03d;
+}
+
+.discard-changes {
+    background-color: #db0054;
+}
+
+
 @media screen and (min-width: 1800px) {
     body {
       background-size: 100% 100%;
@@ -552,8 +634,8 @@ body::after {
     }
 
     .invite-friends-button {
-        margin-left: 30%;
-        width: 40%;
+        margin-left: 20%;
+        width: 60%;
     }
     
     .back-to-login-button {
@@ -580,6 +662,10 @@ body::after {
     .filter-button {
         width: 45%;
         margin-top: 10px;
+    }
+    
+    .invitations-container {
+        height: 400px;
     }
 
     .invitations-container_elements {
@@ -618,5 +704,22 @@ body::after {
         width: 45%;
         margin-left: -2%;
         border-radius: 0 50px 50px 0;
+    }
+
+    .settings {
+        height: 730px;
+    }
+
+    .settings-partI, .settings-partII {
+        width: 90%;
+    }
+    
+    #settings-about-me {    
+        height: 130px;
+        margin-top: 0;
+    }
+
+    .save-changes, .discard-changes {
+        width: 80%;
     }
 }
