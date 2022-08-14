@@ -511,6 +511,19 @@ body::after {
     background-color: #db0054;
 }
 
+.go-to-settings {    
+    width: 40%;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    background-color: #00a03d;
+    margin-top: 0;
+}
+
+.go-to-settings:hover {
+    opacity: 0.8;
+}
+
 
 @media screen and (min-width: 1800px) {
     body {
@@ -720,6 +733,10 @@ body::after {
     }
 
     .save-changes, .discard-changes {
+        width: 80%;
+    }
+
+    .go-to-settings {    
         width: 80%;
     }
 }
