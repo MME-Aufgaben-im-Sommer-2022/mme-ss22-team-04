@@ -349,6 +349,87 @@ body::after {
     display: inline-block;
 }
 
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.filter-button {
+    width: 10%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background-color: #00d3b7;
+}
+
+.filter-button:hover {
+    opacity: 0.8;
+}
+
+.invitations-container {
+    width: 90%;
+    margin: 40px 5% 0 5%;
+    height: 450px;
+    border-radius: 50px;
+    padding: 10px;  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.invitations-container_elements {
+    width: 100%;
+    height: 150px;
+    margin: 10px 0;
+    background-color: #A4A4A4;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.invitations-container_elements span {
+    text-align: center;
+    margin-top: 55px;
+}
+
+.invitation_name {
+    width: 25%;
+    height: 100px;
+}
+
+.food_name {
+    width: 25%;
+    height: 100px;
+}
+
+.accept, .decline {
+    width: 15%;
+    height: 75px;
+    border: none;
+}
+
+.accept {
+    margin-right: -6%;
+    border-radius: 50px 0 0 50px;
+    background-color: #00a03d;
+}
+
+.decline {
+    margin-left: -1%;
+    border-radius: 0 50px 50px 0;
+    background-color: #db0054;
+}
+
 @media screen and (min-width: 1800px) {
     body {
       background-size: 100% 100%;
@@ -422,6 +503,10 @@ body::after {
         margin: 20px 30% 0 30%;
         border-radius: 20px;
     }
+
+    .filter-button {
+        width: 100px;
+    }
 }
 
 @media screen and (max-width: 670px) {
@@ -490,5 +575,48 @@ body::after {
         width: 90%;
         text-align: center;
         margin-top: 20px;
+    }    
+
+    .filter-button {
+        width: 45%;
+        margin-top: 10px;
+    }
+
+    .invitations-container_elements {
+        height: 350px;
+    }
+
+    .invitations-container_elements span {
+        height: 30px;
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+    .invitation_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .food_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .accept, .decline {
+        width: 15%;
+        height: 75px;
+        border: none;
+    }
+    
+    .accept {
+        width: 45%;
+        margin-right: -8%;
+        border-radius: 50px 0 0 50px;
+    }
+    
+    .decline {
+        width: 45%;
+        margin-left: -2%;
+        border-radius: 0 50px 50px 0;
     }
 }

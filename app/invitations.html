@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MME: Projekte im SS 2022</title>
+    <link rel="stylesheet" href="./resources/css/menu.css">
+</head>
+
+<body>
+    <div class="mobile-nav">
+        <img src="./resources/images/menu-icon.png" alt="Menu icon" class="menu-icon">
+        <div class="mobile-nav_menu-elements-container">
+            <a href="./search-recipe.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Search Recipe</span>
+                </div>
+            </a>
+            <a href="./profile.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>My Profile</span>
+                </div>
+            </a>
+            <a href="./friends.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Friends</span>
+                </div>
+            </a>
+            <a href="#">
+                <div class="mobile-nav_menu-elements mobile-nav_active">
+                    <span>Invitations</span>
+                </div>
+            </a>
+            <a href="./settings.html">
+                <div class="mobile-nav_menu-elements">
+                    <span>Settings</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="menu-elements-container">
+        <a href="./search-recipe.html">
+            <div class="menu-elements">
+                <span>Search Recipe</span>
+            </div>
+        </a>
+        <a href="./profile.html">
+            <div class="menu-elements">
+                <span>My Profile</span>
+            </div>
+        </a>
+        <a href="./friends.html">
+            <div class="menu-elements">
+                <span>Friends</span>
+            </div>
+        </a>
+        <a href="#">
+            <div class="menu-elements active">
+                <span>Invitations</span>
+            </div>
+        </a>
+        <a href="./settings.html">
+            <div class="menu-elements">
+                <span>Settings</span>
+            </div>
+        </a>
+    </div>
+    <div class="menu">
+        <div class="filters">
+            <button class="filter-button vegetarian">Vegetarian</button>
+            <button class="filter-button pork">Pork</button>
+            <button class="filter-button chicken">Chicken</button>
+            <button class="filter-button salad">Salad</button>
+            <button class="filter-button dessert">Dessert</button>
+        </div>
+        <!-- TODO: add click listener on the buttons "yes" and "no" -->
+        <div class="invitations-container">
+            <div class="invitations-container_elements">
+                <span class="invitation_name">Name Vorname</span>
+                <span class="food_name">Name des Essens</span>
+                <button class="accept">Ja</button>
+                <button class="decline">Nein</button>
+            </div>
+            <div class="invitations-container_elements">
+                <span class="invitation_name"></span>
+                <span class="food_name"></span>
+                <button class="accept">Ja</button>
+                <button class="decline">Nein</button>
+            </div>
+            <div class="invitations-container_elements">
+                <span class="invitation_name"></span>
+                <span class="food_name"></span>
+                <button class="accept">Ja</button>
+                <button class="decline">Nein</button>
+            </div>
+            <div class="invitations-container_elements">
+                <span class="invitation_name"></span>
+                <span class="food_name"></span>
+                <button class="accept">Ja</button>
+                <button class="decline">Nein</button>
+            </div>
+            <div class="invitations-container_elements">
+                <span class="invitation_name"></span>
+                <span class="food_name"></span>
+                <button class="accept">Ja</button>
+                <button class="decline">Nein</button>
+            </div>
+        </div>
+    </div>
+    <a href="./index.html">
+        <button class="back-to-login-button">Back to the Login</button>
+    </a>
+    <script type="module" src="./src/invitations.js"></script>
+</body>
+
+</html>
