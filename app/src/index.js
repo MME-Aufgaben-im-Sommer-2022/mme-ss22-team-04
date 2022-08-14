@@ -38,6 +38,32 @@ cancelBtn.addEventListener('click', function() {
 let registerUser = document.querySelector("#signup-button");
 registerUser.addEventListener('click', signUp);
 
+let changePasswordBtn = document.querySelector('#changePassword');
+changePasswordBtn.addEventListener('click', function() {
+  document.querySelector('.popup-password').style.display = 'flex';
+})
+
+let cancelBtnPassword = document.querySelector('.popup-cancelbtn-password');
+cancelBtnPassword.addEventListener('click', function() {
+  document.querySelector('.popup-password').style.display = 'none';
+})
+
+const resetPasswordFunction = () => {
+  const email = document.querySelector('.email-for-new-password').value;
+  auth.sendPasswordResetEmail(email)
+  .then(() => {
+    console.log('Password reset email sent successfully!');
+    document.querySelector('.popup-password').style.display = 'none';
+  })
+  .catch(error => {
+    console.error(error);
+  })
+}
+
+let sendNewPasswordBtn = document.querySelector('.send-password');
+sendNewPasswordBtn.addEventListener('click', resetPasswordFunction);
+
+
 
 // sign up function
 function signUp() {
@@ -75,5 +101,3 @@ function signUp() {
       alert("No Active user Found")
     }
   })
-
-  export { firebaseConfig };

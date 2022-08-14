@@ -124,6 +124,7 @@ body::after {
     margin-left: 5%;
     padding: 10px;
     border-radius: 25px;
+    border: none;
 }
 
 .recipe-button {
@@ -157,6 +158,23 @@ body::after {
     border-radius: 20px;
     background-color: rgb(202, 200, 200);
     overflow-y: scroll;
+}
+
+.name-of-receipt {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+}
+
+.ingredients {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.steps {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px solid #000;
 }
 
 .invite-friends-button {    
