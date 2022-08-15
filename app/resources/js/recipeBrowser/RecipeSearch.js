@@ -6,7 +6,7 @@ const   RECIPE_SEARCH_BUTTON = document.getElementById("recipeSearchButton"),
 
 function initRecipeSearch(){
     RECIPE_SEARCH_BUTTON.addEventListener("click", async function () {
-        console.log("conga lads");
+        console.log("started search");
         let recipeSearch = RECIPE_SEARCH_INPUT.value;
         console.log(recipeSearch);
         let recipeReturn = await searchRecipe(recipeSearch);
@@ -15,4 +15,6 @@ function initRecipeSearch(){
     });
 }
 
-export {initRecipeSearch};
+initRecipeSearch();
+
+//export {initRecipeSearch};

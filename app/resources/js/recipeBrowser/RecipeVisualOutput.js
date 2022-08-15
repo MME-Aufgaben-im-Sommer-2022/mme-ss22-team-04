@@ -1,15 +1,17 @@
-const   RECIPE_OUTPUT = document.getElementById("recipeOutput");
+const   RECIPE_OUTPUT_NAME = document.getElementById("recipeOutputName"),
+        RECIPE_OUTPUT_INGREDIENTS = document.getElementById("recipeOutputIngredients"),
+        RECIPE_OUTPUT_STEPS = document.getElementById("recipeOutputSteps");
 
 function outputRecipes(jsonInput){
     let string = "";
 
-    string = string + jsonInput.hits[0].recipe.label + "\n";
-    string = string + jsonInput.hits[0].recipe.url;
+    jsonInput.hits[0].recipe.ingredientLines.forEach(element => {
+        string = string + element + "\n";
+    });
 
-    //jsonInput.hits.forEach(element => {
-    //    string = string + element.recipe.label + "\n";
-    //});
-    RECIPE_OUTPUT.innerHTML = string;
+    RECIPE_OUTPUT_NAME.innerHTML = jsonInput.hits[0].recipe.label;
+    RECIPE_OUTPUT_INGREDIENTS.innerHTML = string;
+    RECIPE_OUTPUT_STEPS.innerHTML = jsonInput.hits[0].recipe.url;
 }
 
 export { outputRecipes }
