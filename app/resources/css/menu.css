@@ -134,17 +134,74 @@ body::after {
     font-weight: bold;
     padding: 14px 20px;
     margin-top: 50px;
-    margin-left: 5%;
-    border: none;
+    margin-left: 2%;
     cursor: pointer;
     width: 15%;
     height: 50px;
     border-radius: 1000px;
-    border: 2px solid #000;
     border: none;
 }
 
+.recipe-button:disabled {
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+    border: 5px solid #00d3b7;
+}
+
+.recipe-prevRecipe {
+    display:inline;
+    background-color: #00c27b;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px 16px;
+    margin-top: 50px;
+    margin-left: 2%;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 1000px 0 0 1000px;
+    border: 5px solid #00c27b;
+    border-right: none;
+}
+
+.recipe-nextRecipe {
+    display:inline;
+    background-color: #00c27b;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px 16px;
+    margin-top: 50px;
+    margin-right: 5%;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 0 1000px 1000px 0;
+    border: 5px solid #00c27b;
+    border-left: none;
+}
+
 .recipe-button:hover {
+    opacity: 0.8;
+}
+
+.recipe-prevRecipe:hover {
+    opacity: 0.8;
+}
+
+.recipe-prevRecipe:disabled{
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+}
+
+.recipe-nextRecipe:disabled{
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+}
+
+.recipe-nextRecipe:hover {
     opacity: 0.8;
 }
 
@@ -193,6 +250,12 @@ body::after {
 
 .invite-friends-button:hover {
     opacity: 0.8;
+}
+
+.invite-friends-button:disabled {
+    background-color: transparent;
+    border: 5px solid #eb517f;
+    border-top: none;
 }
 
 ::-webkit-scrollbar {

@@ -1,5 +1,5 @@
-// TODO I: API-request for the recipes
-// TODO II: add functionality to "Send invitation"
+// TODO I: API-request for the recipes - Solved in RecipeSearch.js
+// TODO II: add functionality to "Send invitation" - Probably will be made by sending out a JSON object as an event or something
 
 // mobile-nav
 let menuIcon = document.querySelector('.menu-icon');
