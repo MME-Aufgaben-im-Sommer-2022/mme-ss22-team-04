@@ -4,16 +4,74 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MME: Projekte im SS 2022</title>
+    <title>EatWithMe</title>
     <link rel="stylesheet" href="./resources/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 </head>
 
 <body>
+    <div class="video-container"></div>
+    <video autoplay muted loop id="myVideo">
+        <source src="resources/videos/background-login-video.mp4" type="video/mp4">
+    </video>
     <div class="ui">
-        <h1>MME: Projekte im SS 2022</h1>
+        <h1>Welcome to EatWithMe!</h1>
+        <div class="login-form">
+            <div class="imgcontainer">
+              <span>Login Data</span>
+            </div>
+          
+            <div class="container">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" id="email" required>
+          
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" id="password" required>
+                    <button type="submit" id="signIn">
+                        <img src="resources/images/output-onlinegiftools.gif" alt="" class="login-image">
+                        <span class="btn-text">Sign in</span>
+                    </button>
+                    <button type="submit" id="signUp">
+                        <img src="resources/images/signup-image.png" alt="" class="login-image"> 
+                        <span class="btn-text">Sign up</span>
+                    </button>
+                    <a href="./search-recipe.html">
+                        <button>Go to menu</button>
+                    </a>
+                    <button id="signOut">Sign Out</button>
+                    <button id="changePassword">Change password</button>
+            </div>
+        </div>
     </div>
 
-   <script type="module" src="./src/index.js"></script>
+    <div class="popup">
+        <div class="popup-content">
+            <div class="signUp-text">Sign Up</div>
+            <input type="text" placeholder="Email" class="signup-email">
+            <input type="password" placeholder="Password" class="signup-password">
+            <a href="#" class="button">
+                <button id="signup-button">Sign Up</button>
+            </a>
+            <a href="#">
+                <button class="cancelbtn popup-cancelbtn">Cancel</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="popup-password">
+        <div class="popup-content-password">
+            <div class="signUp-text password-change">Change password</div>
+            <input type="text" placeholder="Email" class="signup-email email-for-new-password">
+            <a href="#" class="button">
+                <button id="confirm-button" class="send-password">Confirm</button>
+            </a>
+            <a href="#">
+                <button class="cancelbtn popup-cancelbtn-password">Cancel</button>
+            </a>
+        </div>
+    </div>
+    <script type="module" src="src/index.js"></script>
 </body>
 
 </html>
