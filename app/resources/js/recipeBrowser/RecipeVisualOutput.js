@@ -3,6 +3,8 @@ var RECIPE_OUTPUT_NAME = document.getElementById("recipeOutputName"),
     RECIPE_OUTPUT_INGREDIENTS = document.getElementById("recipeOutputIngredients"),
     RECIPE_OUTPUT_STEPS = document.getElementById("recipeOutputSteps");
 
+//can and should still be modified depending on needs
+
 function outputRecipes(jsonInput, page){
     getNewElements();
 

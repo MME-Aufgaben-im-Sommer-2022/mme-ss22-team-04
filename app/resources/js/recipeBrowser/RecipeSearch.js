@@ -80,6 +80,10 @@ function testForPageChange(){
     else RECIPE_SEARCH_NEXT.removeAttribute("disabled");
 }
 
+function returnCurrentRecipe (){
+    return activeRecipe.hits[currentPage];
+} //how does this actually work
+
 initRecipeSearch();
 
-//export {initRecipeSearch};
+export {returnCurrentRecipe};
