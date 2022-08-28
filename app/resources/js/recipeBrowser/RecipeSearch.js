@@ -66,7 +66,7 @@ function startSERPPage(){
 }
 
 function createSERPErrorNoRecipe(){
-    RECIPE_OUTPUT.innerHTML = '<h1 class="name-of-receipt">Error: No recicpes found.</h1>'
+    RECIPE_OUTPUT.innerHTML = '<h1 class="name-of-receipt">Error: No recipes found.</h1>'
     RECIPE_SEARCH_BUTTON.removeAttribute("disabled");
 }
 
