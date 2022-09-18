@@ -8,16 +8,25 @@ var RECIPE_OUTPUT_NAME = document.getElementById("recipeOutputName"),
 function outputRecipes(jsonInput, page){
     getNewElements();
 
-    let string = "";
-    let activeRecipe = jsonInput.hits[page].recipe;
+    let ingredientString = "";
+    let recipeString = "";
+    let activeRecipe = jsonInput.results[page];
 
-    activeRecipe.ingredientLines.forEach(element => {
-        string = string + element + "\n";
+    activeRecipe.extendedIngredients.forEach(element => {
+        ingredientString = ingredientString + element.original + "\n";
+    }); //if this returns strange words blame the api
+
+    activeRecipe.analyzedInstructions.forEach(partOfRecipe => {
+        recipeString = recipeString + partOfRecipe.name + "\n";
+        partOfRecipe.steps.forEach(instructionStep => {
+            recipeString = recipeString + instructionStep.number + ": "+ instructionStep.step + "\n";
+        })
+        recipeString = recipeString + "\n";
     });
 
-    RECIPE_OUTPUT_NAME.innerHTML = activeRecipe.label;
-    RECIPE_OUTPUT_INGREDIENTS.innerHTML = string;
-    RECIPE_OUTPUT_STEPS.innerHTML = activeRecipe.url;
+    RECIPE_OUTPUT_NAME.innerHTML = activeRecipe.title;
+    RECIPE_OUTPUT_INGREDIENTS.innerHTML = ingredientString;
+    RECIPE_OUTPUT_STEPS.innerHTML = recipeString;
 }
 
 function getNewElements(){

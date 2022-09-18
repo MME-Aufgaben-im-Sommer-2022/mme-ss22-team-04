@@ -24,7 +24,7 @@ function initRecipeSearch(){
         
         //tried making it catch error codes but I guess I'm too stupid for that as of right now
 
-        if(recipeReturn.hits.length === 0){
+        if(recipeReturn.number === 0){
             console.log("no content");
             createSERPErrorNoRecipe();
             return;
@@ -75,13 +75,13 @@ function testForPageChange(){
         RECIPE_SEARCH_PREV.setAttribute("disabled","");
     else RECIPE_SEARCH_PREV.removeAttribute("disabled");
 
-    if(currentPage >= activeRecipe.hits.length-1)
+    if(currentPage >= activeRecipe.number-1)
         RECIPE_SEARCH_NEXT.setAttribute("disabled","");
     else RECIPE_SEARCH_NEXT.removeAttribute("disabled");
 }
 
 function returnCurrentRecipe (){
-    return activeRecipe.hits[currentPage];
+    return activeRecipe.results[currentPage];
 } //how does this actually work
 
 initRecipeSearch();
