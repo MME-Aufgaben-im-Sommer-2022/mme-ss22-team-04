@@ -1,4 +1,5 @@
 import Invitation from "./invitation.js";
+import * from "./invitationView";
 
 
 var currentID = 0;
