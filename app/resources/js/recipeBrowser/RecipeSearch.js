@@ -24,7 +24,7 @@ function initRecipeSearch(){
         
         //tried making it catch error codes but I guess I'm too stupid for that as of right now
 
-        if(recipeReturn.number === 0){
+        if(recipeReturn.totalResults === 0){
             console.log("no content");
             createSERPErrorNoRecipe();
             return;
