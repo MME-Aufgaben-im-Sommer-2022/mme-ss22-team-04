@@ -1,8 +1,13 @@
-//function init() {
-//     console.log("### Starting MME Project ###"); // eslint-disable-line no-console
-//}
+import InvitationManager from "./invitations/invitationManager.js";
 
-// init();
+init();
+
+function init() {
+  console.log("### Starting MME Project ###"); // eslint-disable-line no-console
+  
+  let manager = new InvitationManager();
+
+}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -101,3 +106,4 @@ function signUp() {
       alert("No Active user Found")
     }
   })
+
