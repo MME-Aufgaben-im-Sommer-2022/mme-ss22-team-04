@@ -1,33 +1,59 @@
 
 
 
-var id, food, location;
-var keywords = [];
-var state = {
+let id, host, food, location, date, keywords;
+let invitationType = {
     open: 1,
-    accept: 2,
-    reject:3
-};
+    friends: 2,
+    private: 3
+}
+
+//Map for managing the guests
+let guests = new Map();
 
 class Invitation {
 
-    constructor(id, food, location, date, keywords){
+    constructor(host, food, location, date, keywords, invitationType){
+        this.id = Date.now()
+        this.host = host
         this.food = food;
         this.location = location;
         this.date = date;
         this.keywords = keywords;
-        this.id = id;
-        this.state = state.open;
+        this.invitationType = invitationType;
     }
 
-    // sets the invitation state to accept
-    accept(){
-        this.state = state.accept;
+    acceptGuest(name){
+
     }
 
-    //sets the invitation state to reject
-    reject(){
-        this.state = state.reject;
+    cancelGuest(name){
+
+    }
+
+
+    getID(){
+        return this.id;
+    }
+
+    getHostName(){
+        return this.host;
+    }
+
+    getFoodName(){
+        return this.food;
+    }
+
+    getDate(){
+        return this.date;
+    }
+
+    getKeywords(){
+        return this.keywords;
+    }
+
+    getInvitationType(){
+        return this.invitationType;
     }
 
 }
