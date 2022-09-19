@@ -1,14 +1,3 @@
-import InvitationManager from "./invitations/invitationManager.js";
-
-init();
-
-function init() {
-  console.log("### Starting MME Project ###"); // eslint-disable-line no-console
-  
-  let manager = new InvitationManager();
-
-}
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
