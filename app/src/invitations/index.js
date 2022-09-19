@@ -10,12 +10,17 @@ function init() {
     invitationView = new InvitationView();
     invitationManager = new InvitationManager();
 
-    invitationView.createDummyInvitation();
+    invitationManager.createInvitation("a", "b", "c", "d");
 
     invitationView.addEventListener("onVegetarianBtnClicked", () => {
         // Do stuff when button is clicked;
         invitationManager.filterByVegetarian();
         
+    });
+
+    invitationManager.addEventListener("onInvitationCreated", () => {
+        //hier vmtl nochmal ändern
+        console.log("listener");
     });
 }
 

@@ -439,20 +439,20 @@ body::after {
 
 .accept, .decline {
     width: 15%;
-    height: 75px;
+    height: 50px;
     border: none;
 }
 
 .accept {
-    margin-right: -6%;
+    margin-right: -4%;
     border-radius: 50px 0 0 50px;
     background-color: #00a03d;
 }
 
 .decline {
-    margin-left: -1%;
+    margin-left: -3%;
     border-radius: 0 50px 50px 0;
-    background-color: #db0054;
+    background-color: #db0000;
 }
 
 .settings {

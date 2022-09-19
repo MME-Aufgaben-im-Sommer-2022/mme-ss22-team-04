@@ -20,30 +20,29 @@ class InvitationView extends Observable{
         this.buttons = document.querySelector(".filters");
         this.vegetarianBtn = this.buttons.querySelector(".vegetarian");
         initListeners(this);
+
+        this.createDummyInvitation();
     }
 
 
     createDummyInvitation(){
-        let i = new Invitation("Lucas", "richtig gutes Essen", "bei mir", "heute", "vegan");
-        console.log(i);
-
+        let i = new Invitation("Lucas", "richtig gutes Essen", "bei mir", "heute", "vegan", 0);
         this.showInvitation(i);
     }
 
 
-    buildInvitation(invitation){
-        let template = INVITATION_ELEMENT;
-        template.querySelector(".invitation_name").innerHTML = invitation.getHostName();
-        template.querySelector(".food_name").innerHTML = invitation.getFoodName();
-        template.querySelector(".invitation_date").innerHTML = invitation.getDate();
-        return template;
+    buildInvitationCard(invitation){
+        const invitationEl = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
+        invitationEl.setAttribute("id", invitation.getID());
+        invitationEl.querySelector(".invitation_name").innerHTML = invitation.getHostName();
+        invitationEl.querySelector(".food_name").innerHTML = invitation.getFoodName();
+        invitationEl.querySelector(".invitation_date").innerHTML = invitation.getDate();
+        return invitationEl;
     }
 
     showInvitation(invitation){
-
-        let card = this.buildInvitation(invitation);
+        let card = this.buildInvitationCard(invitation);
         LIST_ELEMENT.appendChild(card);
-
     }
 
 }
