@@ -427,6 +427,11 @@ body::after {
     height: 100px;
 }
 
+.invitation_date {
+    width: 25%;
+    height: 100px;
+}
+
 .food_name {
     width: 25%;
     height: 100px;

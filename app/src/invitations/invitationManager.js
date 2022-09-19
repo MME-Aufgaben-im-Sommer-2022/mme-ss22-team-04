@@ -1,16 +1,16 @@
+import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
-import * from "./invitationView";
+import InvitationView from "./invitationView.js";
 
 
-var currentID = 0;
-var invitations = [];
-var view;
-
-class InvitationManager{
+class InvitationManager extends Observable{
 
     constructor(){
-        
+        super();  
+        console.log("starting InvitationManager");
     }
+
+
 
     //creates a new invitation.
     //keywordString is just 1 String with all the keywords (comma-separated). It will be converted to an Array here.

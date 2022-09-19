@@ -11,12 +11,13 @@ var state = {
 
 class Invitation {
 
-    constructor(id, food, location, date, keywords){
+    constructor(host, food, location, date, keywords){
+        this.id = Date.now()
+        this.host = host
         this.food = food;
         this.location = location;
         this.date = date;
         this.keywords = keywords;
-        this.id = id;
         this.state = state.open;
     }
 
@@ -28,6 +29,18 @@ class Invitation {
     //sets the invitation state to reject
     reject(){
         this.state = state.reject;
+    }
+
+    getHostName(){
+        return this.host;
+    }
+
+    getFoodName(){
+        return this.food;
+    }
+
+    getDate(){
+        return this.date;
     }
 
 }
