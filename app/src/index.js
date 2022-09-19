@@ -2,21 +2,12 @@ import InvitationManager from "./invitations/invitationManager.js";
 
 init();
 
-
-
-
-
 function init() {
   console.log("### Starting MME Project ###"); // eslint-disable-line no-console
   
   let manager = new InvitationManager();
 
 }
-
-
-
-
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,11 +18,6 @@ const firebaseConfig = {
   messagingSenderId: "922257626910",
   appId: "1:922257626910:web:7e9e3848e124e64e21db0f"
 };
-
-
-
-
-
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

@@ -70,17 +70,16 @@
     </div>
     <div class="menu">
         <div class="search-recipe">
-            <input type="text" id="recipe" name="recipe" placeholder="Search recipe">
-            <button type="submit" class="recipe-button">Search</button>
+            <input type="text" id="recipeSearchInput" class="recipe-input" name="recipe" placeholder="Search recipe">
+            <button type="submit" id="recipeSearchButton" class="recipe-button">Search</button>
+            <button type="submit" id="recipeSearchPrev" class="recipe-prevRecipe" disabled>&lt;</button>
+            <button type="submit" id="recipeSearchNext" class="recipe-nextRecipe" disabled>&gt;</button>
         </div>
-        <div class="text-result">
-            <h1 class="name-of-receipt">Name of receipt</h1>
-            <h2 class="ingredients">Ingredients</h2>
-            <span>Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.</span>
-            <h2 class="steps">Steps</h2>
-            <span>Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.Integer porttitor malesuada urna sit amet ultrices. Aliquam erat volutpat. Sed ut condimentum neque. Praesent finibus luctus eros eget facilisis. In bibendum ante sed nulla fermentum porta. Nam quis nunc ut turpis pretium porta quis vel orci. Donec et dignissim lorem, a scelerisque magna. Nulla ultricies nibh urna, eu scelerisque risus consectetur eleifend. Phasellus id dolor sit amet tellus aliquam commodo id non mauris. Phasellus sollicitudin purus metus, at condimentum nibh luctus sagittis. Praesent in luctus arcu.</span>
+        <div class="text-result" id="recipeOutput">
+            <h1 class="name-of-receipt">Use the Search bar to search for a recipe, and the arrow buttons to look through recipes.</h1>
+            <h1 class="name-of-receipt">Click the "Invite People" button below to invite people using the currently selected recipe.</h1>
         </div>
-        <button type="submit" class="invite-friends-button">Invite people</button>
+        <button type="submit" class="invite-friends-button" id="recipeInvite" disabled>Invite people</button>
     </div>
 
     <div class="popup">
@@ -92,7 +91,7 @@
                 <button class="selection-button friends">My Friends</button>
                 <button class="selection-button one-friend">Only one friend</button>
             </div>
-            <input type="text" id="name-bar" name="name" placeholder="Please insert his/her name" readonly>            
+            <input type="text" id="name-bar" name="name" placeholder="Please insert his/her name">            
             <div class="other-buttons">
                 <button class="send-invitation-button">Send invitation</button>
                 <button class="cancel-button">Cancel</button>
@@ -103,6 +102,7 @@
         <button class="back-to-login-button">Back to the Login</button>
     </a>
     <script type="module" src="./src/search-recipe.js"></script>
+    <script type="module" src="resources/js/recipeBrowser/RecipeSearch.js"></script>
 </body>
 
 </html>
