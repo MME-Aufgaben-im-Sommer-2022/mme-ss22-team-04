@@ -17,13 +17,25 @@ class InvitationManager extends Observable{
 
     //creates a new invitation.
     //keywords is just 1 String, separated by commas, with all the keywords
-    createInvitation(host, food, location, date, keywords, invitationType){
+    createInvitation(id, host, food, location, date, keywords, invitationType){
+        /*
         let i = new Invitation(host, food, location, date, keywords, invitationType);
         let e = new Event("onInvitationCreated");
         this.notifyAll(e);
         console.log(i);
         this.uploadInvitation(i);
+        */
+    }
 
+    //creating new invitation -> ID will be generated
+    createNewInvitation(){
+
+        let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType, guests);
+        let e = new Event("onInvitationCreated");
+        this.notifyAll(e);
+        console.log(i);
+        this.uploadInvitation(i);
+        //@todo
     }
 
     getInvitations(){
@@ -35,7 +47,9 @@ class InvitationManager extends Observable{
         //@todo download invitations
 
         let invitations = [];
-        invitations.push(new Invitation("Lucas", "Pizza", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
+
+        invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
+        invitations.push(new Invitation(2, "Lucas", "Pizza", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
         //invitations.push(new Invitation("Lucas", "Nudeln", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
         //invitations.push(new Invitation("Lucas", "Burger", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
     

@@ -1,6 +1,3 @@
-
-
-
 let id, host, food, location, date, keywords;
 const invitationType = {
     open: 1,
@@ -13,8 +10,8 @@ let guests = new Map();
 
 class Invitation {
 
-    constructor(host, food, location, date, keywords, invitationType, guests){
-        this.id = Date.now()
+    constructor(id , host, food, location, date, keywords, invitationType, guests){
+        this.id = id;
         this.host = host
         this.food = food;
         this.location = location;

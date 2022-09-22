@@ -11,6 +11,8 @@ let dessertBtn = document.querySelector('.dessert');
 
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
+//const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
+const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
 
 
 
@@ -31,17 +33,32 @@ class InvitationView extends Observable{
 
 
     buildInvitationCard(invitation){
-        const invitationEl = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
+        //const invitationEl = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
+
+        //console.log("abc");
+        //console.log(INVITAION_TEMPLATE);
+
+        let invitationEl = INVITAION_TEMPLATE; 
+
+        console.log(invitationEl);
+
         invitationEl.setAttribute("id", invitation.getID());
         invitationEl.querySelector(".invitation_name").innerHTML = invitation.getHostName();
         invitationEl.querySelector(".food_name").innerHTML = invitation.getFoodName();
         invitationEl.querySelector(".invitation_date").innerHTML = invitation.getDate();
+
         return invitationEl;
+        
+
+
+
+
     }
 
     showInvitation(invitation){
-        let card = this.buildInvitationCard(invitation);
-        LIST_ELEMENT.appendChild(card);
+
+        //console.log(invitation);
+        LIST_ELEMENT.appendChild(this.buildInvitationCard(invitation));
     }
 
     renderInvitations(invitations){
