@@ -13,7 +13,7 @@ let guests = new Map();
 
 class Invitation {
 
-    constructor(host, food, location, date, keywords, invitationType){
+    constructor(host, food, location, date, keywords, invitationType, guests){
         this.id = Date.now()
         this.host = host
         this.food = food;
@@ -21,6 +21,7 @@ class Invitation {
         this.date = date;
         this.keywords = keywords;
         this.invitationType = invitationType;
+        this.guests = guests;
     }
 
     acceptGuest(name){
