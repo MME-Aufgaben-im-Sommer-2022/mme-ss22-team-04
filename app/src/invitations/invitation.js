@@ -2,10 +2,10 @@
 
 
 let id, host, food, location, date, keywords;
-let invitationType = {
+const invitationType = {
     open: 1,
     friends: 2,
-    private: 3
+    specific: 3,
 }
 
 //Map for managing the guests

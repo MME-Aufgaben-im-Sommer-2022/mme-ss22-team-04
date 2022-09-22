@@ -17,13 +17,10 @@ const INVITATION_ELEMENT = document.getElementById('invitation-element').content
 class InvitationView extends Observable{
     constructor() {
         super();
-        console.log("starting InvitationView");
 
-        this.buttons = document.querySelector(".filters");
-        this.vegetarianBtn = this.buttons.querySelector(".vegetarian");
+        this.filter = document.querySelector(".filters");
         initListeners(this);
 
-        this.createDummyInvitation();
     }
 
 
@@ -47,15 +44,32 @@ class InvitationView extends Observable{
         LIST_ELEMENT.appendChild(card);
     }
 
+    renderInvitations(invitations){
+        console.log("rendering invitations:");
+        console.log(invitations);
+
+        for(var i = 0; i < invitations.length; i++){
+            console.log(invitations[i]);
+            this.showInvitation(invitations[i]);
+        }
+
+
+        //this.createDummyInvitation();
+
+
+    }
+
 }
 
 
 // Private Methods
 function initListeners(view) {
+    /*
     view.vegetarianBtn.addEventListener("click", () => {
         const event = new Event("onVegetarianBtnClicked");
         event.notifyAll();
     });
+    */
 }
 
 
