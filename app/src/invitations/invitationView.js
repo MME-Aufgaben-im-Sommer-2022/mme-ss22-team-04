@@ -1,11 +1,13 @@
 import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
 
+/*
 let vegetarianBtn = document.querySelector('.vegetarian');
 let porkBtn = document.querySelector('.pork');
 let chickenBtn = document.querySelector('.chicken');
 let saladBtn = document.querySelector('.salad');
 let dessertBtn = document.querySelector('.dessert');
+*/
 
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
@@ -65,7 +67,7 @@ export default InvitationView;
 
 
 
-
+/*
 
 
 vegetarianBtn.addEventListener('click', function() {
@@ -107,3 +109,5 @@ dessertBtn.addEventListener('click', function() {
     saladBtn.style.backgroundColor = '#00d3b7';
     dessertBtn.style.backgroundColor = '#018371';
 });
+
+*/
