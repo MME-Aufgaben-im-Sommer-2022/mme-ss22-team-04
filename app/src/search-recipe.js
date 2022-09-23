@@ -2,6 +2,7 @@
 // TODO II: add functionality to "Send invitation" - Probably will be made by sending out a JSON object as an event or something
 
 import {returnCurrentRecipe} from "../resources/js/recipeBrowser/RecipeSearch.js"
+import { signOut } from "./FirebaseLogin.js";
 
 // peopleGroup works as follows: 0 = public, 1 = friends, 2 = one person
 var selectedRecipe, peopleGroup, personName;
@@ -61,3 +62,6 @@ sendBtn.addEventListener('click', function() {
 
     document.querySelector('.popup').style.display = 'none';
 })
+
+let signOutButton = document.querySelector("#signOut");
+signOutButton.addEventListener('click', signOut);
