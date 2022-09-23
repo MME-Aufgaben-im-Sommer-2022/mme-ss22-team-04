@@ -23,7 +23,7 @@ function initRecipeSearch(){
         let recipeReturn = await searchRecipe(recipeSearch);
         console.log(recipeReturn);
 
-        if(recipeReturn.number === 0){
+        if(recipeReturn.totalResults === 0){
             console.log("no content");
             createSERPErrorNoRecipe();
             return;
