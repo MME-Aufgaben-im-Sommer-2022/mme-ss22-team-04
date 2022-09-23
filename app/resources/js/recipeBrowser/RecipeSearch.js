@@ -1,4 +1,3 @@
-import { getBackupJSON } from "./RecipeBackupList.js";
 import { searchRecipe } from "./RecipeSearchAPI.js";
 import { outputRecipes } from "./RecipeVisualOutput.js";
 
