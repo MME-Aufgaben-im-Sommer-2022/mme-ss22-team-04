@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MME: Projekte im SS 2022</title>
     <link rel="stylesheet" href="./resources/css/menu.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 </head>
 
 <body>
@@ -71,7 +73,7 @@
         
         <div class="filters">
             <p>Filter:</p>
-            <input type="text">
+            <input type="text" id = "filter-text">
 
             <!---
             <button class="filter-button vegetarian">Vegetarian</button>
@@ -85,15 +87,15 @@
 
         <!-- TODO: add click listener on the buttons "yes" and "no" -->
         <div class="invitations-container" id="invitation-list">
+
         </div>
     </div>
-    <a href="./index.html">
-        <button class="back-to-login-button">Back to the Login</button>
-    </a>
+    <button id="signOut" class="back-to-login-button">Back to the Login</button>
+
     <script type="module" src="./src/invitations/index.js"></script>
     <!-- <script type="module" src="src/index.js"></script> -->
     <template id="invitation-element">
-        <div class="invitations-container_elements">
+        <div class="invitations-container_elements" id = "template">
             <span class="invitation_name">Name Vorname</span>
             <span class="food_name">Name des Essens</span>
             <span class="invitation_date">Date</span>
@@ -101,6 +103,7 @@
             <button class="decline">Nein</button>
         </div>
     </template>
+    <script type="module" src="./src/general-logout.js"></script>
 </body>
 
 </html>
