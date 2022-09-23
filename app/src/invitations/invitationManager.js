@@ -50,8 +50,7 @@ class InvitationManager extends Observable{
 
         invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
         invitations.push(new Invitation(2, "Lucas", "Pizza", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
-        //invitations.push(new Invitation("Lucas", "Nudeln", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
-        //invitations.push(new Invitation("Lucas", "Burger", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
+        invitations.push(new Invitation(3, "Lucas", "Burger", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
     
         return invitations;
 
