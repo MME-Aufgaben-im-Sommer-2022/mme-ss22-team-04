@@ -1,9 +1,3 @@
-//function init() {
-//     console.log("### Starting MME Project ###"); // eslint-disable-line no-console
-//}
-
-// init();
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",

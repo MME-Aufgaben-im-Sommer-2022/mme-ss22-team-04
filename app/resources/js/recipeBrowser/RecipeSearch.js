@@ -1,3 +1,4 @@
+import { getBackupJSON } from "./RecipeBackupList.js";
 import { searchRecipe } from "./RecipeSearchAPI.js";
 import { outputRecipes } from "./RecipeVisualOutput.js";
 
@@ -21,8 +22,6 @@ function initRecipeSearch(){
 
         let recipeReturn = await searchRecipe(recipeSearch);
         console.log(recipeReturn);
-        
-        //tried making it catch error codes but I guess I'm too stupid for that as of right now
 
         if(recipeReturn.number === 0){
             console.log("no content");
@@ -75,7 +74,7 @@ function testForPageChange(){
         RECIPE_SEARCH_PREV.setAttribute("disabled","");
     else RECIPE_SEARCH_PREV.removeAttribute("disabled");
 
-    if(currentPage >= activeRecipe.number-1)
+    if(currentPage >= Math.min(activeRecipe.totalResults-1, activeRecipe.number-1))
         RECIPE_SEARCH_NEXT.setAttribute("disabled","");
     else RECIPE_SEARCH_NEXT.removeAttribute("disabled");
 }
