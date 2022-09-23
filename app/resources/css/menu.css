@@ -530,6 +530,7 @@ body::after {
     width: 10%;
     height: 50px;
     border: none;
+    
 }
 
 .accept {
@@ -538,10 +539,18 @@ body::after {
     background-color: #00a03d;
 }
 
+.accept:hover{
+    background-color: #00a03d91;
+}
+
 .decline {
     margin-left: -3%;
     border-radius: 0 40px 40px 0;
     background-color: #db0000;
+}
+
+.decline:hover{
+    background-color: #db00008a;
 }
 
 .settings {

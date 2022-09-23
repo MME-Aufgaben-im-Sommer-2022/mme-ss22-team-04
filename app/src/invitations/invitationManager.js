@@ -28,7 +28,17 @@ class InvitationManager extends Observable{
     }
 
     //creating new invitation -> ID will be generated
-    createNewInvitation(){
+    /*
+        This function let's you create new invitations from other windows. Simply call this function with the following parameter:
+        - host: mail adress of the user, which is hosting the invitation
+        - food: name of the food (headline of the receipt probably)
+        - location: adress, where the invitation is held
+        - invitationType: simply insert a number between 1 and 3. 
+            1: open: every user is invited
+            2: friends
+            3: only invited users
+    */
+    createNewInvitation(host, food, location, date, keywords, invitationType, guests){
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType, guests);
         let e = new Event("onInvitationCreated");
@@ -38,9 +48,22 @@ class InvitationManager extends Observable{
         //@todo
     }
 
-    getInvitations(){
+    getInvitations(username){
         let invitations = this.downloadInvitations();
-        return invitations;
+        return this.filterInvitations(invitations, username);
+    }
+
+
+    filterInvitations(i, u){
+        let filteredInvitations = [];
+
+        for (var x = 0; x < i.length; x ++){
+            if(i[x].isInvited(u)){
+                filteredInvitations.push(i[x]);
+            }
+        }
+
+        return filteredInvitations;
     }
 
     downloadInvitations(){
@@ -48,10 +71,13 @@ class InvitationManager extends Observable{
 
         let invitations = [];
 
-        invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
-        invitations.push(new Invitation(2, "Lucas", "Pizza", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
-        invitations.push(new Invitation(3, "Lucas", "Burger", "Regensbur", "heute", "vegan, vegetarisch, Nudeln", invitationType.open));
+        invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensburg", "heute", "vegan, vegetarisch, Nudeln", 1));
+        invitations.push(new Invitation(2, "Tom", "Pizza", "Regensburg", "morgen", "vegetarisch, itatlienisch, Gemüse, Käse", 1));
+        invitations.push(new Invitation(3, "Christina", "Burger", "Regensburg", "übermorgen", "Fleisch, Pommes", 1));
+        invitations.push(new Invitation(4, "Tom", "Pfannkuchen", "Regensburg", "gestern", "vegetarisch, süß", 1));
+        invitations.push(new Invitation(5, "Christina", "Spätzle mit Rahmschwammerl", "Regensburg", "heute abend", "vegetarisch, Pilze", 2, "Tom, Fabi, Lucas"));
     
+        console.log(invitations);
         return invitations;
 
     }

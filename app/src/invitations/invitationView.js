@@ -53,6 +53,7 @@ class InvitationView extends Observable{
 
         const invitationDiv = document.createElement("div");
         invitationDiv.classList.add('invitations-container_elements');
+        invitationDiv.setAttribute("id", invitation.getID());
 
         const hostSpan = document.createElement("span");
         hostSpan.innerHTML = invitation.getHostName();
@@ -92,11 +93,8 @@ class InvitationView extends Observable{
     }
 
     renderInvitations(invitations){
-        console.log("rendering invitations:");
-        console.log(invitations);
 
         for(var i = 0; i < invitations.length; i++){
-            console.log(invitations[i]);
             this.showInvitation(invitations[i]);
         }
 

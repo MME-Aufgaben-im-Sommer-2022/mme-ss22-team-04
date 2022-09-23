@@ -30,7 +30,7 @@ function init() {
 
 function renderInvitations(manager, view){
 
-        view.renderInvitations(manager.getInvitations());
+        view.renderInvitations(manager.getInvitations("Lucas"));    //@todo username
 
 }
 
