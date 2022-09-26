@@ -7,6 +7,9 @@ import { signOut } from "./FirebaseLogin.js";
 // peopleGroup works as follows: 0 = public, 1 = friends, 2 = one person
 var selectedRecipe, peopleGroup, personName;
 
+let inviteTextbox = document.getElementById("name-bar");
+let sendBtn = document.querySelector('.send-invitation-button');
+
 // mobile-nav
 let menuIcon = document.querySelector('.menu-icon');
 menuIcon.addEventListener('click', function() {
@@ -31,6 +34,7 @@ publicBtn.addEventListener('click', function() {
     friendsBtn.style.backgroundColor = '#00d3b7';
     oneFriendBtn.style.backgroundColor = '#00d3b7';
     peopleGroup = 0;
+    sendBtn.removeAttribute("disabled");
 });
 
 let friendsBtn = document.querySelector('.friends');
@@ -39,6 +43,7 @@ friendsBtn.addEventListener('click', function() {
     publicBtn.style.backgroundColor = '#00d3b7';
     oneFriendBtn.style.backgroundColor = '#00d3b7';
     peopleGroup = 1;
+    sendBtn.removeAttribute("disabled");
 });
 
 let oneFriendBtn = document.querySelector('.one-friend');
@@ -47,12 +52,15 @@ oneFriendBtn.addEventListener('click', function() {
     publicBtn.style.backgroundColor = '#00d3b7';
     friendsBtn.style.backgroundColor = '#00d3b7';
     peopleGroup = 2;
+    sendBtn.removeAttribute("disabled");
 });
 
-let inviteTextbox = document.getElementById("name-bar");
-let sendBtn = document.querySelector('.send-invitation-button');
 sendBtn.addEventListener('click', function() {
     personName = inviteTextbox.value;
+    if(personName === "" && peopleGroup === 2) {
+        alert("Please insert his/her name");
+        return;
+    }
     let returnText =    '{ "peopleGroup" : '+ peopleGroup +', '+ 
                         '"selectedRecipe" : '+ JSON.stringify(selectedRecipe) +', '+
                         '"personName" : "'+ personName +'"}';
