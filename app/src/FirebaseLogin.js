@@ -1,3 +1,4 @@
+
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
@@ -17,22 +18,30 @@ const firebaseConfig = {
 export function signUp() {
     let email = document.querySelector('.signup-email');
     let password = document.querySelector('.signup-password');
-    const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
-    promise.catch(e => alert(e.message));
+    const promise = auth.createUserWithEmailAndPassword(email.value, password.value)
+                      .then(() => {
+                        alert("Sign up successfully");
+                      }).catch((error) => {
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                      });
     document.querySelector(".popup").style.display = "none";
-    alert("Sign up successfully");
 }
 
  //signIN function
  export function signIn(){
     let email = document.getElementById("email");
     let password  = document.getElementById("password");
-    const promise = auth.signInWithEmailAndPassword(email.value,password.value);
-    promise.catch(e=>alert(e.message));
-    alert("Signed in as " + email.value);
+    const promise = auth.signInWithEmailAndPassword(email.value,password.value)
+                      .then((userCredential) => {
+                        alert("Signed in as " + userCredential.user.email);
+                        window.location.href = './search-recipe.html';
+                      }).catch((error) => {
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                      });
     email.value = "";
     password.value = "";
-    window.location.href = './search-recipe.html'
   }
 
   //signOut
@@ -42,8 +51,9 @@ export function signUp() {
   }
 
   //active user to homepage
-  firebase.auth().onAuthStateChanged((user)=>{
+firebase.auth().onAuthStateChanged((user)=>{
     if(user){
+      console.log(user.email);
     } else {
     }
   })
