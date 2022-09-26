@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MME: Projekte im SS 2022</title>
     <link rel="stylesheet" href="./resources/css/menu.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -32,11 +35,6 @@
                     <span>Invitations</span>
                 </div>
             </a>
-            <a href="./settings.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Settings</span>
-                </div>
-            </a>
         </div>
     </div>
     <div class="menu-elements-container">
@@ -60,11 +58,6 @@
                 <span>Invitations</span>
             </div>
         </a>
-        <a href="./settings.html">
-            <div class="menu-elements">
-                <span>Settings</span>
-            </div>
-        </a>
     </div>
     <div class="menu settings">
         <div class="settings-partI">
@@ -79,11 +72,12 @@
             <div class="settings-about-me_div" readonly>About me</div>
             <textarea type="text" id="settings-about-me" name="about-me" placeholder="About me" readonly></textarea>
         </div>
-        <button class="go-to-settings" onclick="window.location.href='./settings.html';">Do you want to change your settings? Click here</button>
+        <button id="save-button" class="go-to-settings">Save Profile</button>
     </div>
     <a href="./index.html">
         <button class="back-to-login-button">Back to the Login</button>
     </a>
+    <script type="module" src="src/myProfile.js"></script>
 </body>
 
 </html>

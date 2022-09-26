@@ -826,4 +826,9 @@ body::after {
     .go-to-settings {    
         width: 80%;
     }
+
+}
+
+.go-to-settings.disabled {
+    background-color: #596957 !important;
 }
