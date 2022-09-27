@@ -2,6 +2,7 @@ import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
 import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
+import { uploadInvitationToDatabase } from "../FirebaseLogin.js";
 
 let invitations = [];
 
@@ -72,11 +73,13 @@ class InvitationManager extends Observable{
 
         let invitations = [];
 
+        this.uploadInvitation(new Invitation(1, "Lucas", "Nudeln", "Regensburg", "heute", "vegan, vegetarisch, Nudeln", 1));
+
         invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensburg", "heute", "vegan, vegetarisch, Nudeln", 1));
         invitations.push(new Invitation(2, "Tom", "Pizza", "Regensburg", "morgen", "vegetarisch, itatlienisch, Gemüse, Käse", 1));
         invitations.push(new Invitation(3, "Christina", "Burger", "Regensburg", "übermorgen", "Fleisch, Pommes", 1));
         invitations.push(new Invitation(4, "Tom", "Pfannkuchen", "Regensburg", "gestern", "vegetarisch, süß", 1));
-        invitations.push(new Invitation(5, "Christina", "Spätzle mit Rahmschwammerl", "Regensburg", "heute abend", "vegetarisch, Pilze", 3, "Tom, Fabi"));
+        invitations.push(new Invitation(5, "Christina", "Spätzle mit Rahmschwammerl", "Regensburg", "heute abend", "vegetarisch, Pilze", 3, "Tom, Fabi, Lucas"));
     
         console.log(invitations);
         return invitations;
@@ -86,6 +89,8 @@ class InvitationManager extends Observable{
     //uploads the invitation to the database
     uploadInvitation(invitation){
         //@todo upload invitation
+        uploadInvitationToDatabase(invitation);
+
     }
     
 

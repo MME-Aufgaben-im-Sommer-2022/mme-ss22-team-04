@@ -74,6 +74,10 @@ class Invitation {
         return this.food;
     }
 
+    getLocationName(){
+        return this.location;
+    }
+
     getDate(){
         return this.date;
     }
@@ -84,6 +88,13 @@ class Invitation {
 
     getInvitationType(){
         return this.invitationType;
+    }
+
+    getGuestString(){
+
+        //let guestString = this.guests.toString();
+
+        return "bla";
     }
 
 }
