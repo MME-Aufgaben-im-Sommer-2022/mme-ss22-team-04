@@ -1,9 +1,4 @@
-/*const   API_ID = "76767d88",
-        API_KEYS = "fe841675e107c4239d0f79d82227fede",
-        API_TYPE = "public",
-        API_CALL = "https://api.edamam.com/api/recipes/v2?type=$TYPE&q=$QUERY&app_id=$ID&app_key=$KEY";
-        */
-//That is the old one, just in case. Delete it, or don't
+import { getBackupJSON } from "./RecipeBackupList.js";
 
 const   API_KEY = "95247c6eee7e47eeb006804e2da7f79d",
         API_CALL = "https://api.spoonacular.com/recipes/complexSearch?query=$QUERY&number=10&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&apiKey=$API_KEY"
@@ -16,15 +11,30 @@ function getSearchString(searchInput){
     return searchString
 }
 
+function errorHandle(response){
+    if(!response.ok){
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
 async function searchRecipe(searchInput){
     let returnData;
     let searchString = getSearchString(searchInput);
-    await fetch(searchString).then(response => {
+    await fetch(searchString)
+    .then(errorHandle)
+    .then(response => {
         return response.json();
-    }).then(data => {
+    })
+    .then(data => {
         returnData = data;
+    })
+    .catch(error => {
+        console.error("something went wrong")
+        console.log(error)
+        alert("Something went wrong with the API, so here's a backup list instead (check the console for more details)") 
+        returnData = getBackupJSON();
     })
     return returnData;
 }
-
 export { searchRecipe };

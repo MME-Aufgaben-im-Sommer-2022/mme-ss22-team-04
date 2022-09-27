@@ -1,5 +1,7 @@
 import InvitationView from "./invitationView.js";
 import InvitationManager from "./invitationManager.js";
+import invitationType from "./invitation.js";
+
 
 let invitationView, invitationManager;
 
@@ -7,21 +9,29 @@ let invitationView, invitationManager;
 
 function init() {
 
-    invitationView = new InvitationView();
     invitationManager = new InvitationManager();
+    invitationView = new InvitationView();
 
-    invitationManager.createInvitation("a", "b", "c", "d");
 
-    invitationView.addEventListener("onVegetarianBtnClicked", () => {
-        // Do stuff when button is clicked;
-        invitationManager.filterByVegetarian();
-        
+    invitationView.addEventListener("onInvitationCreated", () => {
+        // Do stuff when a new invitation is created;
+        console.log("new invitation was created");
     });
 
     invitationManager.addEventListener("onInvitationCreated", () => {
-        //hier vmtl nochmal ändern
-        console.log("listener");
-    });
+        console.log("new invitation created");
+    })
+
+    renderInvitations(invitationManager, invitationView);
+
+
+
+}
+
+function renderInvitations(manager, view){
+
+        view.renderInvitations(manager.getInvitations("Lucas"));    //@todo username
+
 }
 
 init();

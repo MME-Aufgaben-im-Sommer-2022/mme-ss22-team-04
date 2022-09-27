@@ -74,7 +74,7 @@
         
         <div class="filters">
             <p>Filter:</p>
-            <input type="text">
+            <input type="text" id = "filter-text">
 
             <!---
             <button class="filter-button vegetarian">Vegetarian</button>
@@ -84,10 +84,17 @@
             <button class="filter-button dessert">Dessert</button>
             -->
         </div>
+
+        <div class="headlinebar">
+            <p class="headlinebar-host" >Host</p>
+            <p class="headlinebar-food">Food</p>
+            <p class="headlinebar-date">Date</p>
+        </div>
         
 
         <!-- TODO: add click listener on the buttons "yes" and "no" -->
         <div class="invitations-container" id="invitation-list">
+
         </div>
     </div>
     <button id="signOut" class="back-to-login-button">Back to the Login</button>
@@ -95,7 +102,7 @@
     <script type="module" src="./src/invitations/index.js"></script>
     <!-- <script type="module" src="src/index.js"></script> -->
     <template id="invitation-element">
-        <div class="invitations-container_elements">
+        <div class="invitations-container_elements" id = "template">
             <span class="invitation_name">Name Vorname</span>
             <span class="food_name">Name des Essens</span>
             <span class="invitation_date">Date</span>
