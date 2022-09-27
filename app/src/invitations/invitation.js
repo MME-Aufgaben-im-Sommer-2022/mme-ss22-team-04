@@ -6,7 +6,7 @@ const invitationType = {
 }
 
 //Map for managing the guests
-let guests = new Map();
+let guests = [];
 
 class Invitation {
 
@@ -39,9 +39,9 @@ class Invitation {
         if(this.invitationType == 1){
             return true;
         } else {
-            for(let i = 0; i < guests.length; i++){
-                console.log(guests[i]);
-                if(guests[i] == u){
+            for(let i = 0; i < this.guests.length; i++){
+                
+                if(this.guests[i] === u){
                     return true;
                 }
             }
