@@ -13,6 +13,7 @@ const firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
+  const db = firebase.firestore();
   const auth = firebase.auth();
 
   //const database = firebase.database();
@@ -28,7 +29,13 @@ export function signUp() {
     let email = document.querySelector('.signup-email');
     let password = document.querySelector('.signup-password');
     const promise = auth.createUserWithEmailAndPassword(email.value, password.value)
-                      .then(() => {
+                      .then((cred) => {
+                        db.collection("profiles").doc(cred.user.uid).set({
+                          name: cred.user.displayName || cred.user.email,
+                          phoneNumber: cred.user.phoneNumber || "",
+                          email: cred.user.email,
+                          aboutMe: "",
+                        })
                         alert("Sign up successfully");
                       }).catch((error) => {
                         const errorMessage = error.message;

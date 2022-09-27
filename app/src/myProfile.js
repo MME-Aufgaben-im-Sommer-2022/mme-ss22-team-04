@@ -1,16 +1,4 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
-    authDomain: "eatwithme-e7e95.firebaseapp.com",
-    projectId: "eatwithme-e7e95",
-    storageBucket: "eatwithme-e7e95.appspot.com",
-    messagingSenderId: "922257626910",
-    appId: "1:922257626910:web:7e9e3848e124e64e21db0f"
-};
-
 let saving = false;
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const auth = firebase.auth();
