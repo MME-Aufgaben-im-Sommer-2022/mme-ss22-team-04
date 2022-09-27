@@ -8,7 +8,7 @@ import { getExample, signOut } from "./FirebaseLogin.js";
 var selectedRecipe, peopleGroup, personName;
 
 document.querySelector('#userEmailAddress').innerHTML = "Signed in as " + getExample();
-=======
+
 let inviteTextbox = document.getElementById("name-bar");
 let sendBtn = document.querySelector('.send-invitation-button');
 
