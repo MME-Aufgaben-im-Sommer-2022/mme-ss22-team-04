@@ -13,6 +13,10 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   
   const auth = firebase.auth();
+  
+  export function getExample() {
+    return localStorage.getItem("email");
+  }
 
 // sign up function
 export function signUp() {
@@ -34,6 +38,7 @@ export function signUp() {
     let password  = document.getElementById("password");
     const promise = auth.signInWithEmailAndPassword(email.value,password.value)
                       .then((userCredential) => {
+                        localStorage.setItem("email", userCredential.user.email);
                         alert("Signed in as " + userCredential.user.email);
                         window.location.href = './search-recipe.html';
                       }).catch((error) => {
@@ -46,14 +51,18 @@ export function signUp() {
 
   //signOut
   export function signOut(){
-      auth.signOut();
+      auth.signOut().then(() => {
+        localStorage.removeItem("email");
+      }).catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
       window.location.href = './index.html';
   }
 
   //active user to homepage
-firebase.auth().onAuthStateChanged((user)=>{
+await firebase.auth().onAuthStateChanged((user)=>{
     if(user){
-      console.log(user.email);
     } else {
     }
   })

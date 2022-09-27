@@ -38,6 +38,7 @@ class InvitationView extends Observable{
         //console.log("abc");
         //console.log(INVITAION_TEMPLATE);
 
+        /*
         let invitationEl = INVITAION_TEMPLATE; 
 
         console.log(invitationEl);
@@ -48,10 +49,40 @@ class InvitationView extends Observable{
         invitationEl.querySelector(".invitation_date").innerHTML = invitation.getDate();
 
         return invitationEl;
+        */
+
+        const invitationDiv = document.createElement("div");
+        invitationDiv.classList.add('invitations-container_elements');
+        invitationDiv.setAttribute("id", invitation.getID());
+
+        const hostSpan = document.createElement("span");
+        hostSpan.innerHTML = invitation.getHostName();
+        hostSpan.classList.add('invitation_name');
+        invitationDiv.appendChild(hostSpan);
+
+        const foodSpan = document.createElement("span");
+        foodSpan.innerHTML = invitation.getFoodName();
+        foodSpan.classList.add('food_name');
+        invitationDiv.appendChild(foodSpan);
+
+        const dateSpan = document.createElement("span");
+        dateSpan.innerHTML = invitation.getDate();
+        dateSpan.classList.add('invitation_date');
+        invitationDiv.appendChild(dateSpan);
         
+        const yesBtn = document.createElement("button");
+        yesBtn.innerHTML = "yes";
+        yesBtn.classList.add('accept');
+        invitationDiv.appendChild(yesBtn);
+
+        const noBtn = document.createElement("button");
+        noBtn.innerHTML = "no";
+        noBtn.classList.add('decline');
+        invitationDiv.appendChild(noBtn);
 
 
 
+        return invitationDiv;
 
     }
 
@@ -62,11 +93,8 @@ class InvitationView extends Observable{
     }
 
     renderInvitations(invitations){
-        console.log("rendering invitations:");
-        console.log(invitations);
 
         for(var i = 0; i < invitations.length; i++){
-            console.log(invitations[i]);
             this.showInvitation(invitations[i]);
         }
 
