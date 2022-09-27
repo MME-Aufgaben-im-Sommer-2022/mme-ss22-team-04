@@ -6,17 +6,22 @@ const firebaseConfig = {
     projectId: "eatwithme-e7e95",
     storageBucket: "eatwithme-e7e95.appspot.com",
     messagingSenderId: "922257626910",
-    appId: "1:922257626910:web:7e9e3848e124e64e21db0f"
+    appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
+    databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/"
   };
   
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
   const auth = firebase.auth();
+
+  const database = firebase.database();
+  
   
   export function getExample() {
     return localStorage.getItem("email");
   }
+
 
 // sign up function
 export function signUp() {
@@ -59,6 +64,32 @@ export function signUp() {
       });
       window.location.href = './index.html';
   }
+
+
+  //uploading an invitation to the realtime database
+  export function uploadInvitationToDatabase(i){
+
+    console.log("uploading stopped for saving reads & writes");
+/*
+      database.ref('/invitations/' + i.getID()).set({
+        id: i.getID(),
+        host: i.getHostName(),
+        food: i.getFoodName(),
+        location: i.getLocationName(),
+        date: i.getDate(),
+        keywords: i.getKeywords(),
+        invitationType: i.getInvitationType(),
+        guests: i.getGuestString()
+      });
+      */
+  } 
+
+
+  export function downloadInvitationFromDatabase(id){
+
+
+  }
+
 
   //active user to homepage
 await firebase.auth().onAuthStateChanged((user)=>{

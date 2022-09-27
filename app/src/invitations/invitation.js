@@ -6,7 +6,8 @@ const invitationType = {
 }
 
 //Map for managing the guests
-let guests = new Map();
+let guestList = new Map();
+const guests = [];
 
 class Invitation {
 
@@ -19,6 +20,14 @@ class Invitation {
         this.keywords = keywords;
         this.invitationType = invitationType;
         this.guests = this.resolveGuests(guests);
+        //this.guestList = this.guestListToMap(this.guests);
+    }
+
+
+    guestListToMap(g){
+        console.log(g);
+        //@todo
+        return null;
     }
 
     //turning a string with the guests (comma separated) into an array
@@ -39,13 +48,13 @@ class Invitation {
         if(this.invitationType == 1){
             return true;
         } else {
-            for(let i = 0; i < guests.length; i++){
-                console.log(guests[i]);
-                if(guests[i] == u){
+            for(let i = 0; i < this.guests.length; i++){
+
+                if(this.guests[i] === u){
                     return true;
                 }
             }
-        } 
+        }
 
         return false;
 
@@ -74,6 +83,10 @@ class Invitation {
         return this.food;
     }
 
+    getLocationName(){
+        return this.location;
+    }
+
     getDate(){
         return this.date;
     }
@@ -84,6 +97,13 @@ class Invitation {
 
     getInvitationType(){
         return this.invitationType;
+    }
+
+    getGuestString(){
+
+        //let guestString = this.guests.toString();
+
+        return "bla";
     }
 
 }
