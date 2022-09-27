@@ -18,6 +18,13 @@ body::after {
     z-index: -1;
 }
 
+#userEmailAddress {
+    color: rgb(168, 168, 168);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
 .mobile-nav {
     display: none;
     position: absolute;
@@ -728,6 +735,21 @@ body::after {
     .filter-button {
         width: 100px;
     }
+
+    .popup-content {
+        height: 380px;
+        width: 75%;
+        background: #fff;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .popup-description {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 670px) {
@@ -757,19 +779,31 @@ body::after {
         flex-wrap: wrap;
     }
 
+    .recipe-input {
+        width: 80%;
+        margin-left: 10%;        
+        margin-right: 10%;
+    }
+
     #recipe {
         width: 85%;
         margin-left: 5%;
     }
     
     .recipe-button {
-        margin-left: 5%;
-        width: 90%;
+        margin-left: 10%;
+        width: 50%;
         margin-top: 10px;
     }
 
+    .recipe-prevRecipe, .recipe-nextRecipe {        
+        margin-top: 10px;
+        width: 15%;
+    }
+
     .text-result {
-        height: 360px;
+        height: 420px;
+        margin-top: 20px;
     }
 
     .invite-friends-button {
@@ -864,5 +898,36 @@ body::after {
 
     .go-to-settings {    
         width: 80%;
+    }
+
+    #userEmailAddress {
+        left: 20px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    .popup-content {
+        height: 450px;
+        width: 90%;
+    }
+
+    .popup-description {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .other-buttons {
+        flex-wrap: wrap;
+    }
+
+    .send-invitation-button, .cancel-button {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .cancel-button {
+        margin-top: 10px;
     }
 }
