@@ -56,6 +56,8 @@ export function signUp() {
   //uploading an invitation to the realtime database
   export function uploadInvitationToDatabase(i){
 
+    console.log("uploading stopped for saving reads & writes");
+/*
       database.ref('/invitations/' + i.getID()).set({
         id: i.getID(),
         host: i.getHostName(),
@@ -66,8 +68,14 @@ export function signUp() {
         invitationType: i.getInvitationType(),
         guests: i.getGuestString()
       });
-
+      */
   } 
+
+
+  export function downloadInvitationFromDatabase(id){
+
+
+  }
 
 
   //active user to homepage

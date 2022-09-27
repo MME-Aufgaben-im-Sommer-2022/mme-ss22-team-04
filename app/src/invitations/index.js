@@ -13,14 +13,12 @@ function init() {
     invitationView = new InvitationView();
 
 
-    invitationView.addEventListener("onInvitationCreated", () => {
-        // Do stuff when a new invitation is created;
-        console.log("new invitation was created");
-    });
-
     invitationManager.addEventListener("onInvitationCreated", () => {
-        console.log("new invitation created");
+        //console.log("new invitation created");
     })
+
+
+    invitationManager.createNewInvitation("Lucas", "Tacos", "München", "gestern", "Tacos, mexikanisch", 3, "Tom, Christina")
 
     renderInvitations(invitationManager, invitationView);
 
