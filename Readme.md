@@ -14,4 +14,23 @@ _Beschreiben Sie die zentralen Funktionen Ihrer Anwendung und deren Verwendung. 
 
 ## Team
 
+1. Catalin Sauchea  
+catalin.sauchea@stud.uni-regensburg.de  
+- Erstellung der Front-End-Ansicht (HTML und CSS)  
+- Firebase-Verbindung und Login-Bereich
+
+2. Manuel Groß  
+manuel.gross@stud.uni-regensburg.de
+- Verbindung zur API für Rezept-Suche
+- Beginn des Versands von Invitations
+
+3. Lucas Plank  
+lucas.plank@stud.uni-regensburg.de
+- Erstellung von Invitations 
+- Verschicken von Invitations
+
+4. Sofiana Kristo  
+sofiana.kristo@stud.uni-regensburg.de
+- Anzeige und Änderung von Benutzerdaten in My Profile
+
 _Listen Sie tabelarisch alle Teammitglieder mit Name, E-Mail-Adresse und Foto auf. Halten Sie für jedes Mitglied kurz fest, welchen Teilbereich der Anwendung die jeweilige Person maßgeblich bearbeitet hat._
