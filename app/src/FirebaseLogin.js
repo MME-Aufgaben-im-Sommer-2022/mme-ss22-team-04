@@ -12,11 +12,16 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }else {
+        firebase.app(); // if already initialized, use that one
+    }
   
   const db = firebase.firestore();
   const auth = firebase.auth();
   const database = firebase.database();
+
   
   
   export function getExample() {
@@ -72,78 +77,6 @@ export function signUp() {
       window.location.href = './index.html';
   }
 
-
-  //uploading an invitation to the realtime database
-  export function uploadInvitationToDatabase(i){
-/*
-      database.ref('/invitations/' + i.getID()).set({
-        id: i.getID(),
-        host: i.getHostName(),
-        food: i.getFoodName(),
-        location: i.getLocationName(),
-        date: i.getDate(),
-        keywords: i.getKeywords(),
-        invitationType: i.getInvitationType(),
-        guests: i.getGuestString()
-      });
-      */
-  } 
-
-
-  export function downloadInvitationsFromDatabase(){
-
-    const dbRef = firebase.database().ref();
-    let data;
-
-/*
-
-    dbRef.child("invitations").get().then((snapshot) => {
-      if (snapshot.exists()) {
-        //handleDownloadedInvitations(snapshot.val());
-        return snapshot.val();
-      } else {
-        console.log("No data available");
-        return null;
-      }
-    }).catch((error) => {
-      console.error(error);
-      return null;
-    });
-*/
-
-    let invitationList = [];
-
-    firebase.database().ref("/invitations/").on('value', function(snap){
-
-      snap.forEach(function(childNodes){
-
-        let id = childNodes.val().id;
-        let host = childNodes.val().host;
-        let food = childNodes.val().food;
-        let location = childNodes.val().location;
-        let date = childNodes.val().date;
-        let keywords = childNodes.val().keywords;
-        let type = childNodes.val().type;
-        let guests = childNodes.val().guests;
-        let i = new Invitation(id, host, food, location, date, keywords, type, guests);
-
-        invitationList.push(i);
-
-      });
-    });
-
-    console.log(invitationList);
-    renderInvitations(invitationList);
-
-  }
-
-  function renderInvitations (i){
-
-    let e = new Event("onInvitationListDownloaded");
-    //@todo
-
-
-  }
 
 
   //active user to homepage

@@ -2,9 +2,11 @@ import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
 import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
-import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
+//import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
+import dbManger from "./dbManager.js";
 
-let invitations = [];
+let currentInvitationList;
+let database;
 
 
 class InvitationManager extends Observable{
@@ -12,7 +14,26 @@ class InvitationManager extends Observable{
     constructor(){
         super();  
         console.log("starting InvitationManager");
+        database = new dbManger();
+        this.initListener();
+        database.downloadInvitationsFromDatabase();
+        
     }
+
+    initListener(){
+        database.addEventListener("onInvitationListDownloaded", () => {
+            currentInvitationList = database.getCurrentInvitationList();
+            this.readyToRender();
+        });
+    }
+
+    readyToRender(){
+        console.log(this);
+        let e = new Event("invitationsReadyToRender");
+        this.notifyAll(e);
+    }
+
+
 
 
 
@@ -48,9 +69,8 @@ class InvitationManager extends Observable{
     }
 
     getInvitations(username){
-        let invitations = this.downloadInvitations();
-        let filteredInvitations = this.filterInvitations(invitations, username);
-        return filteredInvitations;
+        let filteredInvitations = this.filterInvitations(currentInvitationList, username);
+        return currentInvitationList;
     }
 
 
@@ -66,12 +86,13 @@ class InvitationManager extends Observable{
         return filteredInvitations;
     }
 
+    /*
     downloadInvitations(){
         //@todo download invitations
 
         //console.log("blaa");
         //console.log(downloadInvitationsFromDatabase());
-        downloadInvitationsFromDatabase();
+        database.downloadInvitationsFromDatabase();
         
 
 
@@ -86,11 +107,12 @@ class InvitationManager extends Observable{
         return invitations;
 
     }
+    */
 
     //uploads the invitation to the database
     uploadInvitation(invitation){
         //@todo upload invitation
-        uploadInvitationToDatabase(invitation);
+        database.uploadInvitationToDatabase(invitation);
 
     }
     

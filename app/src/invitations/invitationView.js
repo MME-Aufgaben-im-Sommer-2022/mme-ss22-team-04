@@ -94,7 +94,11 @@ class InvitationView extends Observable{
 
     renderInvitations(invitations){
 
-        for(var i = 0; i < invitations.length; i++){
+        console.log(invitations);
+        console.log(invitations.length);
+        console.log(invitations);
+
+        for(var i = 0; i < invitations.length; i++){ 
             this.showInvitation(invitations[i]);
         }
 
