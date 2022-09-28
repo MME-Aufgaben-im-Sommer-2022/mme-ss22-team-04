@@ -118,6 +118,7 @@ function initListeners(view) {
 }
 
 
+
 export default InvitationView;
 
 

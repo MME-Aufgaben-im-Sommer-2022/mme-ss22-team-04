@@ -1,3 +1,4 @@
+import Invitation from "./invitations/invitation.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,8 +16,7 @@ const firebaseConfig = {
   
   const db = firebase.firestore();
   const auth = firebase.auth();
-
-  //const database = firebase.database();
+  const database = firebase.database();
   
   
   export function getExample() {
@@ -75,8 +75,6 @@ export function signUp() {
 
   //uploading an invitation to the realtime database
   export function uploadInvitationToDatabase(i){
-
-    console.log("uploading stopped for saving reads & writes");
 /*
       database.ref('/invitations/' + i.getID()).set({
         id: i.getID(),
@@ -92,7 +90,57 @@ export function signUp() {
   } 
 
 
-  export function downloadInvitationFromDatabase(id){
+  export function downloadInvitationsFromDatabase(){
+
+    const dbRef = firebase.database().ref();
+    let data;
+
+/*
+
+    dbRef.child("invitations").get().then((snapshot) => {
+      if (snapshot.exists()) {
+        //handleDownloadedInvitations(snapshot.val());
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+        return null;
+      }
+    }).catch((error) => {
+      console.error(error);
+      return null;
+    });
+*/
+
+    let invitationList = [];
+
+    firebase.database().ref("/invitations/").on('value', function(snap){
+
+      snap.forEach(function(childNodes){
+
+        let id = childNodes.val().id;
+        let host = childNodes.val().host;
+        let food = childNodes.val().food;
+        let location = childNodes.val().location;
+        let date = childNodes.val().date;
+        let keywords = childNodes.val().keywords;
+        let type = childNodes.val().type;
+        let guests = childNodes.val().guests;
+        let i = new Invitation(id, host, food, location, date, keywords, type, guests);
+
+        invitationList.push(i);
+
+      });
+    });
+
+    console.log(invitationList);
+    renderInvitations(invitationList);
+
+  }
+
+  function renderInvitations (i){
+
+    let e = new Event("onInvitationListDownloaded");
+    //@todo
 
 
   }

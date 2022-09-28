@@ -2,7 +2,7 @@ import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
 import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
-import { uploadInvitationToDatabase, downloadInvitationFromDatabase } from "../FirebaseLogin.js";
+import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
 
 let invitations = [];
 
@@ -69,7 +69,9 @@ class InvitationManager extends Observable{
     downloadInvitations(){
         //@todo download invitations
 
-        console.log(downloadInvitationFromDatabase(1));
+        //console.log("blaa");
+        //console.log(downloadInvitationsFromDatabase());
+        downloadInvitationsFromDatabase();
         
 
 

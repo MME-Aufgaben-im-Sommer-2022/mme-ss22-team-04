@@ -15,10 +15,10 @@ function init() {
 
     invitationManager.addEventListener("onInvitationCreated", () => {
         //console.log("new invitation created");
-    })
+    });
 
 
-    invitationManager.createNewInvitation("Lucas", "Tacos", "München", "gestern", "Tacos, mexikanisch", 3, "Tom, Christina")
+    invitationManager.createNewInvitation("Christina", "Noodles", "Rudelzhausen", "Wochenende", "Nudeln, vegan", 3, "Tom, Christina");
 
     renderInvitations(invitationManager, invitationView);
 
