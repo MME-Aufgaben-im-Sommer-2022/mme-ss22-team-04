@@ -21,7 +21,7 @@ function errorHandle(response){
 async function searchRecipe(searchInput){
     let returnData;
     let searchString = getSearchString(searchInput);
-    await fetch(searchString)
+    await fetch("eae") //TODO: Debug test mode on
     .then(errorHandle)
     .then(response => {
         return response.json();
