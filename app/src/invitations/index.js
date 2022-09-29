@@ -12,19 +12,11 @@ async function init() {
     let invitationManager = new InvitationManager();
     let invitationView = new InvitationView();
 
-    invitationManager.addEventListener("onInvitationCreated", () => {
-        console.log("new invitation created");
-    });
-
 
     const invitations = await invitationManager.getInvitations();
     invitationView.renderInvitations(invitations);
 
     
-    
-
-
-
     //invitationManager.createNewInvitation("Christina", "Noodles", "Rudelzhausen", "Wochenende", "Nudeln, vegan", 3, "Tom, Christina");
 
     //renderInvitations(invitationManager, invitationView);

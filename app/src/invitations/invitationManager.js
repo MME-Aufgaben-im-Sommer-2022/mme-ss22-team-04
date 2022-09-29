@@ -46,8 +46,9 @@ class InvitationManager extends Observable{
     createNewInvitation(host, food, location, date, keywords, invitationType, guests){
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType, guests);
-        let e = new Event("onInvitationCreated");
-        this.notifyAll(e);
+
+        console.log(i.getGuestList);
+
         this.uploadInvitation(i);
     }
 
@@ -58,21 +59,11 @@ class InvitationManager extends Observable{
 
 
     filterInvitations(invitations, user){
-        /*
-        console.log("filtering invitations");
-        console.log(invitations);
-        console.log(user);
-        console.log(invitations.length);
-        */
 
         let filteredInvitations = [];
 
         for (var x = 0; x < invitations.length; x ++){
-            console.log("filtering: ");
-            //console.log(invitations[x]);
             if(invitations[x].isInvited(user)){
-                console.log("filter accepted: ");
-                //console.log(invitations[x]);
                 filteredInvitations.push(invitations[x]);
             }
         }

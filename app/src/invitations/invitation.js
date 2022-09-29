@@ -20,21 +20,30 @@ class Invitation {
         this.keywords = keywords;
         this.invitationType = invitationType;
         this.guests = this.resolveGuests(guests);
-        //this.guestList = this.guestListToMap(this.guests);
+
+        if(this.invitationType !== 1){
+            this.guestList = this.createGuestList(this.guests);
+            console.log(this.guestList);
+        }
     }
 
 
-    guestListToMap(g){
-        console.log(g);
-        //@todo
-        return null;
+    createGuestList(guests){
+ 
+        let map = new Map();
+
+        for(let i = 0; i < guests.length; i++){
+            map.set(guests[i], 'wait');
+        }
+
+        return map;
     }
 
     //turning a string with the guests (comma separated) into an array
-    resolveGuests(g){
+    resolveGuests(guests){
 
-        if(g != null){
-            let guestString = g.replace(/\s/g, '');
+        if(guests != null){
+            let guestString = guests.replace(/\s/g, '');
             let guestArray = guestString.split(",");
             return guestArray;
         } else {
@@ -44,8 +53,6 @@ class Invitation {
 
     //checks, if a specific user u is invited (--> in the guests array)
     isInvited(u){
-
-        console.log(this);
 
         if(this.invitationType == 1){
             return true;
@@ -105,11 +112,12 @@ class Invitation {
         return this.invitationType;
     }
 
-    getGuestString(){
+    getGuestList(){
+        return Object.fromEntries(this.guestList);
+    }
 
-        //let guestString = this.guests.toString();
-
-        return "bla";
+    mapToObject(map) {
+       
     }
 
 }
