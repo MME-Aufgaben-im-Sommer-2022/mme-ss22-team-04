@@ -45,7 +45,7 @@ class InvitationManager extends Observable{
     */
     createNewInvitation(host, food, location, date, keywords, invitationType, guests){
 
-        let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType, guests);
+        let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
         if(invitationType !== 1){
             i.inviteGuests(guests);
         }

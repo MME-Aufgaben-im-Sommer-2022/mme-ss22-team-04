@@ -23,7 +23,7 @@ class Invitation {
     }
 
     inviteGuests(guestString){
-        this.guests = this.resolveGuests(guests);
+        this.guests = this.resolveGuests(guestString);
 
         if(this.invitationType !== 1){
             this.guestList = this.createGuestList(this.guests);
