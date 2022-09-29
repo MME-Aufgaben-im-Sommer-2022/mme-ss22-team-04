@@ -11,7 +11,7 @@ const guests = [];
 
 class Invitation {
 
-    constructor(id , host, food, location, date, keywords, invitationType, guests){
+    constructor(id , host, food, location, date, keywords, invitationType){
         this.id = id;
         this.host = host
         this.food = food;
@@ -19,22 +19,41 @@ class Invitation {
         this.date = date;
         this.keywords = keywords;
         this.invitationType = invitationType;
-        this.guests = this.resolveGuests(guests);
-        //this.guestList = this.guestListToMap(this.guests);
+ 
     }
 
+    inviteGuests(guestString){
+        this.guests = this.resolveGuests(guests);
 
-    guestListToMap(g){
-        console.log(g);
-        //@todo
-        return null;
+        if(this.invitationType !== 1){
+            this.guestList = this.createGuestList(this.guests);
+            console.log(this.guestList);
+        }
+    }
+
+    setGuestList(guestMap){
+        this.guestList = guestMap;
+        //const guestObj = Object.fromEntries(guestMap);
+        //const names = Object.keys(guestObj);
+
+    }
+
+    createGuestList(guests){
+ 
+        let map = new Map();
+
+        for(let i = 0; i < guests.length; i++){
+            map.set(guests[i], 'wait');
+        }
+
+        return map;
     }
 
     //turning a string with the guests (comma separated) into an array
-    resolveGuests(g){
+    resolveGuests(guests){
 
-        if(g != null){
-            let guestString = g.replace(/\s/g, '');
+        if(guests != null){
+            let guestString = guests.replace(/\s/g, '');
             let guestArray = guestString.split(",");
             return guestArray;
         } else {
@@ -45,12 +64,17 @@ class Invitation {
     //checks, if a specific user u is invited (--> in the guests array)
     isInvited(u){
 
-        if(this.invitationType === 1){
+        if(this.invitationType == 1){
             return true;
         } else {
-            for(let i = 0; i < this.guests.length; i++){
-                if(this.guests[i] === u){
-                    return true;
+
+            if(this.host == u){
+                return true;
+            } else {
+                for(let i = 0; i < this.guestList.length; i++){
+                    if(this.guestList.get(i) === u){
+                        return true;
+                    }
                 }
             }
         }
@@ -98,11 +122,16 @@ class Invitation {
         return this.invitationType;
     }
 
-    getGuestString(){
+    getGuestList(){
+        if(this.invitationType !== 1){
+            return Object.fromEntries(this.guestList);
+        } else {
+            return null;
+        }
+    }
 
-        //let guestString = this.guests.toString();
-
-        return "bla";
+    mapToObject(map) {
+       
     }
 
 }

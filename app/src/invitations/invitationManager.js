@@ -28,21 +28,9 @@ class InvitationManager extends Observable{
         let userMail = localStorage.getItem("email");
         const invitations = await database.getInvitations();
         const filteredInvitations = this.filterInvitations(invitations, userMail);
-        return invitations;
+        return filteredInvitations;
     }
 
-
-    //creates a new invitation.
-    //keywords is just 1 String, separated by commas, with all the keywords
-    createInvitation(id, host, food, location, date, keywords, invitationType){
-        /*
-        let i = new Invitation(host, food, location, date, keywords, invitationType);
-        let e = new Event("onInvitationCreated");
-        this.notifyAll(e);
-        console.log(i);
-        this.uploadInvitation(i);
-        */
-    }
 
     //creating new invitation -> ID will be generated
     /*
@@ -58,8 +46,12 @@ class InvitationManager extends Observable{
     createNewInvitation(host, food, location, date, keywords, invitationType, guests){
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType, guests);
-        let e = new Event("onInvitationCreated");
-        this.notifyAll(e);
+        if(invitationType !== 1){
+            i.inviteGuests(guests);
+        }
+
+        console.log(i.getGuestList);
+
         this.uploadInvitation(i);
     }
 
@@ -70,9 +62,6 @@ class InvitationManager extends Observable{
 
 
     filterInvitations(invitations, user){
-
-        console.log(invitations);
-        console.log(user);
 
         let filteredInvitations = [];
 
@@ -85,38 +74,12 @@ class InvitationManager extends Observable{
         return filteredInvitations;
     }
 
-    /*
-    downloadInvitations(){
-        //@todo download invitations
-
-        //console.log("blaa");
-        //console.log(downloadInvitationsFromDatabase());
-        database.downloadInvitationsFromDatabase();
-        
-
-
-        let invitations = [];
-
-        invitations.push(new Invitation(1, "Lucas", "Nudeln", "Regensburg", "heute", "vegan, vegetarisch, Nudeln", 1));
-        invitations.push(new Invitation(2, "Tom", "Pizza", "Regensburg", "morgen", "vegetarisch, itatlienisch, Gemüse, Käse", 1));
-        invitations.push(new Invitation(3, "Christina", "Burger", "Regensburg", "übermorgen", "Fleisch, Pommes", 1));
-        invitations.push(new Invitation(4, "Tom", "Pfannkuchen", "Regensburg", "gestern", "vegetarisch, süß", 1));
-        invitations.push(new Invitation(5, "Christina", "Spätzle mit Rahmschwammerl", "Regensburg", "heute abend", "vegetarisch, Pilze", 3, "Tom, Fabi"));
-    
-        return invitations;
-
-    }
-    */
-
     //uploads the invitation to the database
     uploadInvitation(invitation){
         //@todo upload invitation
         database.uploadInvitationToDatabase(invitation);
 
     }
-    
-
-
 
 }
 
