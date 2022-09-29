@@ -1,6 +1,5 @@
 import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
-import InvitationView from "./invitationView.js";
 
 // Firebase configuration
 const firebaseConfig = {

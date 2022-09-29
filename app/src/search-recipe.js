@@ -4,7 +4,7 @@
 import {returnCurrentRecipe} from "../resources/js/recipeBrowser/RecipeSearch.js"
 import { getExample, signOut } from "./FirebaseLogin.js";
 import { generateTags } from "./TagGenerator.js";
-//import InvitationManager from "./invitations/invitationManager.js";
+import InvitationManager from "./invitations/invitationManager.js";
 
 // peopleGroup works as follows: 0 = public, 1 = friends, 2 = one person
 var selectedRecipe, peopleGroup, personName, location, datetime, hostName, tags;
@@ -81,7 +81,9 @@ sendBtn.addEventListener('click', function() {
     let returnJSON = JSON.parse(returnText);*/
 
     //TODO: AAAAAAAAAAAAAAAAAAAAAAA
-    //InvitationManager.createNewInvitation(hostName, selectedRecipe.title, location, datetime, tags, peopleGroup, personName)
+
+    let manager = new InvitationManager;
+    manager.createNewInvitation(hostName, selectedRecipe.title, location, datetime, tags, peopleGroup, personName);
 
     console.log(hostName)
     console.log(selectedRecipe.title)
@@ -90,6 +92,7 @@ sendBtn.addEventListener('click', function() {
     console.log(tags)
     console.log(peopleGroup)
     console.log(personName)
+    
 
     document.querySelector('.popup').style.display = 'none';
 })

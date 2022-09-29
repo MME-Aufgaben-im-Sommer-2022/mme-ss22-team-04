@@ -1,7 +1,5 @@
 import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
-import { renderInvitations } from "./index.js";
-import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
 //import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
 import dbManger from "./dbManager.js";
@@ -30,7 +28,7 @@ class InvitationManager extends Observable{
         let userMail = localStorage.getItem("email");
         const invitations = await database.getInvitations();
         const filteredInvitations = this.filterInvitations(invitations, userMail);
-        return filteredInvitations;
+        return invitations;
     }
 
 
