@@ -33,23 +33,6 @@ class InvitationView extends Observable{
 
 
     buildInvitationCard(invitation){
-        //const invitationEl = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
-
-        //console.log("abc");
-        //console.log(INVITAION_TEMPLATE);
-
-        /*
-        let invitationEl = INVITAION_TEMPLATE; 
-
-        console.log(invitationEl);
-
-        invitationEl.setAttribute("id", invitation.getID());
-        invitationEl.querySelector(".invitation_name").innerHTML = invitation.getHostName();
-        invitationEl.querySelector(".food_name").innerHTML = invitation.getFoodName();
-        invitationEl.querySelector(".invitation_date").innerHTML = invitation.getDate();
-
-        return invitationEl;
-        */
 
         const invitationDiv = document.createElement("div");
         invitationDiv.classList.add('invitations-container_elements');
@@ -80,30 +63,24 @@ class InvitationView extends Observable{
         noBtn.classList.add('decline');
         invitationDiv.appendChild(noBtn);
 
-
-
         return invitationDiv;
 
     }
 
-    showInvitation(invitation){
 
-        //console.log(invitation);
+    showInvitation(invitation){
         LIST_ELEMENT.appendChild(this.buildInvitationCard(invitation));
     }
 
+    
     renderInvitations(invitations){
-
         console.log(invitations);
-        console.log(invitations.length);
-        console.log(invitations);
-
+    	console.log(invitations.length);
+        /*
         for(var i = 0; i < invitations.length; i++){ 
             this.showInvitation(invitations[i]);
         }
-
-
-        //this.createDummyInvitation();
+    */
 
 
     }

@@ -1,5 +1,6 @@
 import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
+import { renderInvitations } from "./index.js";
 import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
 //import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
@@ -28,11 +29,11 @@ class InvitationManager extends Observable{
     }
 
     readyToRender(){
-        console.log(this);
         let e = new Event("invitationsReadyToRender");
-        this.notifyAll(e);
+        console.log(e);
+        //this.notify(e);
+        renderInvitations(currentInvitationList);
     }
-
 
 
 

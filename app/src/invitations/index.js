@@ -1,10 +1,10 @@
 import InvitationView from "./invitationView.js";
 import InvitationManager from "./invitationManager.js";
 import invitationType from "./invitation.js";
+import {Event, Observable} from "../Observable.js";
 
 
 //let invitationView, invitationManager;
-
 
 
 function init() {
@@ -13,8 +13,11 @@ function init() {
     let invitationView = new InvitationView();
 
 
+
+
+
     invitationManager.addEventListener("onInvitationCreated", () => {
-        //console.log("new invitation created");
+        console.log("new invitation created");
     });
 
     invitationManager.addEventListener("invitationsReadyToRender", () => {
@@ -24,7 +27,7 @@ function init() {
 
 
     let invitationList =invitationManager.getInvitations("Lucas");
-    invitationView.renderInvitations(invitationList);
+    
     
 
 
@@ -37,9 +40,12 @@ function init() {
 
 }
 
-function renderInvitations(manager, view){
+export function renderInvitations(invitationList){
 
-        //view.renderInvitations(manager.getInvitations("Lucas"));    //@todo username
+        console.log(invitationList);
+        //renderInvitations(invitationList);    //@todo username
+        let view = new InvitationView();
+        view.renderInvitations(invitationList);
 
 }
 
