@@ -18,7 +18,6 @@ async function init() {
 
 
     const invitations = await invitationManager.getInvitations();
-
     invitationView.renderInvitations(invitations);
 
     

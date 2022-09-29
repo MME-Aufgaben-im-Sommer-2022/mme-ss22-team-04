@@ -64,7 +64,7 @@ class dbManger extends Observable{
           let location = childNode.location;
           let date = childNode.date;
           let keywords = childNode.keywords;
-          let type = childNode.type;
+          let type = childNode.invitationType;
           let guests = childNode.guests;
           let i = new Invitation(id, host, food, location, date, keywords, type, guests);
 

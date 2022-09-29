@@ -45,12 +45,19 @@ class Invitation {
     //checks, if a specific user u is invited (--> in the guests array)
     isInvited(u){
 
-        if(this.invitationType === 1){
+        console.log(this);
+
+        if(this.invitationType == 1){
             return true;
         } else {
-            for(let i = 0; i < this.guests.length; i++){
-                if(this.guests[i] === u){
-                    return true;
+
+            if(this.host == u){
+                return true;
+            } else {
+                for(let i = 0; i < this.guests.length; i++){
+                    if(this.guests[i] === u){
+                        return true;
+                    }
                 }
             }
         }
