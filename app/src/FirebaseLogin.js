@@ -1,3 +1,4 @@
+import Invitation from "./invitations/invitation.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -11,12 +12,16 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }else {
+        firebase.app(); // if already initialized, use that one
+    }
   
   const db = firebase.firestore();
   const auth = firebase.auth();
-
   //const database = firebase.database();
+
   
   
   export function getExample() {
@@ -72,30 +77,6 @@ export function signUp() {
       window.location.href = './index.html';
   }
 
-
-  //uploading an invitation to the realtime database
-  export function uploadInvitationToDatabase(i){
-
-    console.log("uploading stopped for saving reads & writes");
-/*
-      database.ref('/invitations/' + i.getID()).set({
-        id: i.getID(),
-        host: i.getHostName(),
-        food: i.getFoodName(),
-        location: i.getLocationName(),
-        date: i.getDate(),
-        keywords: i.getKeywords(),
-        invitationType: i.getInvitationType(),
-        guests: i.getGuestString()
-      });
-      */
-  } 
-
-
-  export function downloadInvitationFromDatabase(id){
-
-
-  }
 
 
   //active user to homepage

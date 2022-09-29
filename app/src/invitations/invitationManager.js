@@ -1,19 +1,37 @@
 import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
+import { renderInvitations } from "./index.js";
 import InvitationView from "./invitationView.js";
 import invitationType from "./invitation.js";
-import { uploadInvitationToDatabase, downloadInvitationFromDatabase } from "../FirebaseLogin.js";
+//import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
+import dbManger from "./dbManager.js";
 
-let invitations = [];
+let currentInvitationList;
+let database;
 
 
 class InvitationManager extends Observable{
 
     constructor(){
         super();  
-        console.log("starting InvitationManager");
+        database = new dbManger();
+        this.initListener();
     }
 
+    initListener(){
+        database.addEventListener("onInvitationListDownloaded", () => {
+            currentInvitationList = database.getCurrentInvitationList();
+            this.readyToRender();
+        });
+    }
+
+    async getInvitations() {
+        
+        let userMail = localStorage.getItem("email");
+        const invitations = await database.getInvitations();
+        const filteredInvitations = this.filterInvitations(invitations, userMail);
+        return filteredInvitations;
+    }
 
 
     //creates a new invitation.
@@ -47,29 +65,35 @@ class InvitationManager extends Observable{
         this.uploadInvitation(i);
     }
 
-    getInvitations(username){
-        let invitations = this.downloadInvitations();
-        let filteredInvitations = this.filterInvitations(invitations, username);
-        return filteredInvitations;
-    }
+    // getInvitations(username){
+    //     let filteredInvitations = this.filterInvitations(currentInvitationList, username);
+    //     return currentInvitationList;
+    // }
 
 
-    filterInvitations(i, u){
+    filterInvitations(invitations, user){
+
+        console.log(invitations);
+        console.log(user);
+
         let filteredInvitations = [];
 
-        for (var x = 0; x < i.length; x ++){
-            if(i[x].isInvited(u)){
-                filteredInvitations.push(i[x]);
+        for (var x = 0; x < invitations.length; x ++){
+            if(invitations[x].isInvited(user)){
+                filteredInvitations.push(invitations[x]);
             }
         }
 
         return filteredInvitations;
     }
 
+    /*
     downloadInvitations(){
         //@todo download invitations
 
-        console.log(downloadInvitationFromDatabase(1));
+        //console.log("blaa");
+        //console.log(downloadInvitationsFromDatabase());
+        database.downloadInvitationsFromDatabase();
         
 
 
@@ -84,11 +108,12 @@ class InvitationManager extends Observable{
         return invitations;
 
     }
+    */
 
     //uploads the invitation to the database
     uploadInvitation(invitation){
         //@todo upload invitation
-        uploadInvitationToDatabase(invitation);
+        database.uploadInvitationToDatabase(invitation);
 
     }
     
