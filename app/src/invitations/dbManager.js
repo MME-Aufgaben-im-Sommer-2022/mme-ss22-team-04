@@ -65,12 +65,14 @@ class dbManger extends Observable{
           let date = childNode.date;
           let keywords = childNode.keywords;
           let type = childNode.invitationType;
-          let guests = childNode.guests;
 
-          
+          let i = new Invitation(id, host, food, location, date, keywords, type);
 
-          let i = new Invitation(id, host, food, location, date, keywords, type, guests);
-
+          if(type !== 1){
+            let guests = childNode.guests;
+            const guestMap = new Map(Object.entries(guests));
+            i.setGuestList(guestMap);
+          }
           invitationList.push(i);
         });
       } else {

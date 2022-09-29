@@ -11,7 +11,7 @@ const guests = [];
 
 class Invitation {
 
-    constructor(id , host, food, location, date, keywords, invitationType, guests){
+    constructor(id , host, food, location, date, keywords, invitationType){
         this.id = id;
         this.host = host
         this.food = food;
@@ -19,6 +19,10 @@ class Invitation {
         this.date = date;
         this.keywords = keywords;
         this.invitationType = invitationType;
+ 
+    }
+
+    inviteGuests(guestString){
         this.guests = this.resolveGuests(guests);
 
         if(this.invitationType !== 1){
@@ -27,6 +31,12 @@ class Invitation {
         }
     }
 
+    setGuestList(guestMap){
+        this.guestList = guestMap;
+        //const guestObj = Object.fromEntries(guestMap);
+        //const names = Object.keys(guestObj);
+
+    }
 
     createGuestList(guests){
  
@@ -61,8 +71,8 @@ class Invitation {
             if(this.host == u){
                 return true;
             } else {
-                for(let i = 0; i < this.guests.length; i++){
-                    if(this.guests[i] === u){
+                for(let i = 0; i < this.guestList.length; i++){
+                    if(this.guestList.get(i) === u){
                         return true;
                     }
                 }
@@ -113,7 +123,11 @@ class Invitation {
     }
 
     getGuestList(){
-        return Object.fromEntries(this.guestList);
+        if(this.invitationType !== 1){
+            return Object.fromEntries(this.guestList);
+        } else {
+            return null;
+        }
     }
 
     mapToObject(map) {
