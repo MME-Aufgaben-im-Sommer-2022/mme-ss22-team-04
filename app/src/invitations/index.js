@@ -7,26 +7,20 @@ import {Event, Observable} from "../Observable.js";
 //let invitationView, invitationManager;
 
 
-function init() {
+async function init() {
 
     let invitationManager = new InvitationManager();
     let invitationView = new InvitationView();
-
-
-
-
 
     invitationManager.addEventListener("onInvitationCreated", () => {
         console.log("new invitation created");
     });
 
-    invitationManager.addEventListener("invitationsReadyToRender", () => {
-        console.log("jop");
-        //let i = invitationManager.getInvitation();
-    });
 
+    const invitations = await invitationManager.getInvitations();
 
-    let invitationList =invitationManager.getInvitations("Lucas");
+    invitationView.renderInvitations(invitations);
+
     
     
 

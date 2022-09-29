@@ -14,11 +14,8 @@ class InvitationManager extends Observable{
 
     constructor(){
         super();  
-        console.log("starting InvitationManager");
         database = new dbManger();
         this.initListener();
-        database.downloadInvitationsFromDatabase();
-        
     }
 
     initListener(){
@@ -28,14 +25,13 @@ class InvitationManager extends Observable{
         });
     }
 
-    readyToRender(){
-        let e = new Event("invitationsReadyToRender");
-        console.log(e);
-        //this.notify(e);
-        renderInvitations(currentInvitationList);
+    async getInvitations() {
+        
+        let userMail = localStorage.getItem("email");
+        const invitations = await database.getInvitations();
+        const filteredInvitations = this.filterInvitations(invitations, userMail);
+        return filteredInvitations;
     }
-
-
 
 
     //creates a new invitation.
@@ -69,18 +65,22 @@ class InvitationManager extends Observable{
         this.uploadInvitation(i);
     }
 
-    getInvitations(username){
-        let filteredInvitations = this.filterInvitations(currentInvitationList, username);
-        return currentInvitationList;
-    }
+    // getInvitations(username){
+    //     let filteredInvitations = this.filterInvitations(currentInvitationList, username);
+    //     return currentInvitationList;
+    // }
 
 
-    filterInvitations(i, u){
+    filterInvitations(invitations, user){
+
+        console.log(invitations);
+        console.log(user);
+
         let filteredInvitations = [];
 
-        for (var x = 0; x < i.length; x ++){
-            if(i[x].isInvited(u)){
-                filteredInvitations.push(i[x]);
+        for (var x = 0; x < invitations.length; x ++){
+            if(invitations[x].isInvited(user)){
+                filteredInvitations.push(invitations[x]);
             }
         }
 
