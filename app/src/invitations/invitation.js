@@ -134,6 +134,15 @@ class Invitation {
        
     }
 
+    getAcceptedGuests(){
+        let acceptedCount;
+
+        //@todo
+
+
+        return 2;
+    }
+
 }
 
 export default Invitation;

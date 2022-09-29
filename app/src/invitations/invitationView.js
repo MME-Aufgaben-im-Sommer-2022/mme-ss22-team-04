@@ -53,15 +53,23 @@ class InvitationView extends Observable{
         dateSpan.classList.add('invitation_date');
         invitationDiv.appendChild(dateSpan);
         
-        const yesBtn = document.createElement("button");
-        yesBtn.innerHTML = "yes";
-        yesBtn.classList.add('accept');
-        invitationDiv.appendChild(yesBtn);
 
-        const noBtn = document.createElement("button");
-        noBtn.innerHTML = "no";
-        noBtn.classList.add('decline');
-        invitationDiv.appendChild(noBtn);
+        if(invitation.getHostName() !== localStorage.getItem("email")){
+            const yesBtn = document.createElement("button");
+            yesBtn.innerHTML = "yes";
+            yesBtn.classList.add('accept');
+            invitationDiv.appendChild(yesBtn);
+
+            const noBtn = document.createElement("button");
+            noBtn.innerHTML = "no";
+            noBtn.classList.add('decline');
+            invitationDiv.appendChild(noBtn);
+        } else {
+            const participantsField = document.createElement("span");
+            participantsField.innerHTML = "guests: " + invitation.getAcceptedGuests();
+            participantsField.classList.add('participants');
+            invitationDiv.appendChild(participantsField);
+        }
 
         return invitationDiv;
 

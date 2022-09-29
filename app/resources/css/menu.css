@@ -585,6 +585,11 @@ body::after {
     background-color: #db00008a;
 }
 
+.participants {
+    width: 25%;
+    height: 100px;
+}
+
 .settings {
     width: 90%;
     padding: 50px auto;
