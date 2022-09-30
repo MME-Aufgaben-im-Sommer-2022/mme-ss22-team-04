@@ -1,4 +1,5 @@
 let id, host, food, location, date, keywords;
+let acceptedCount;
 const invitationType = {
     open: 1,
     friends: 2,
@@ -23,6 +24,10 @@ class Invitation {
     }
 
     inviteGuests(guestString){
+
+        console.log("asd");
+        console.log(guestString);
+
         this.guests = this.resolveGuests(guestString);
 
         if(this.invitationType !== 1){
@@ -62,8 +67,31 @@ class Invitation {
     }
 
     //checks, if a specific user u is invited (--> in the guests array)
-    isInvited(u){
+    isInvited(userMail){
 
+        let userMailShort = userMail.replace('.','x');
+        console.log(this.guestList.size);
+
+        if(this.invitationType == 1){
+            return true;
+        } else {
+        
+            if(this.host == userMail){
+                return true;
+            } else {
+                if(this.guestList.has(userMailShort)){
+                    return true;
+                }
+            }
+        
+        }
+
+
+
+        //console.log(this.guestList.get("lucas@lucasplankxde"));
+
+
+        /*<
         if(this.invitationType == 1){
             return true;
         } else {
@@ -71,7 +99,8 @@ class Invitation {
             if(this.host == u){
                 return true;
             } else {
-                for(let i = 0; i < this.guestList.length; i++){
+                for(let i = 0; i < this.guestList.size; i++){
+                    console.log(this.guestList);
                     if(this.guestList.get(i) === u){
                         return true;
                     }
@@ -80,18 +109,14 @@ class Invitation {
         }
 
         return false;
+        */
+
+
 
     }
 
 
 
-    acceptGuest(name){
-
-    }
-
-    cancelGuest(name){
-
-    }
 
 
     getID(){
@@ -130,17 +155,18 @@ class Invitation {
         }
     }
 
-    mapToObject(map) {
-       
+    getAcceptedGuests(){
+
+
+        return acceptedCount;
     }
 
-    getAcceptedGuests(){
-        let acceptedCount;
+    acceptInvite(email){
+        guestList.set(email, 'accepted')
+    }
 
-        //@todo
-
-
-        return 2;
+    declineInvite(email){
+        guestList.set(email, 'declined')
     }
 
 }

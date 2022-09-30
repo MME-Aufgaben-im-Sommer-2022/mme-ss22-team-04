@@ -33,7 +33,6 @@ class dbManger extends Observable{
 
     //uploading an invitation to the realtime database
     uploadInvitationToDatabase(i){
-              console.log("saving");
               database.ref('/invitations/' + i.getID()).set({
                 id: i.getID(),
                 host: i.getHostName(),
@@ -68,11 +67,21 @@ class dbManger extends Observable{
 
           let i = new Invitation(id, host, food, location, date, keywords, type);
 
-          if(type !== 1){
+          if(childNode.guests !== undefined){
             let guests = childNode.guests;
-            const guestMap = new Map(Object.entries(guests));
+            const guestMap = new Map();
+
+            Object.keys(guests).forEach((email) => {
+              guestMap.set(email, guests[email]);
+            });
+            //console.log(guestMap);
+
             i.setGuestList(guestMap);
+          } else {
+            let emptyMap = new Map();
+            i.setGuestList(emptyMap);
           }
+
           invitationList.push(i);
         });
       } else {
