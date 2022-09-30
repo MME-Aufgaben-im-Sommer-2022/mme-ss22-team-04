@@ -93,6 +93,11 @@ class InvitationView extends Observable{
         dateSpan.innerHTML = invitation.getDate();
         dateSpan.classList.add('invitation_date');
         invitationDiv.appendChild(dateSpan);
+
+        const locationSpan = document.createElement("span");
+        locationSpan.innerHTML = invitation.getLocationName();
+        locationSpan.classList.add('location');
+        invitationDiv.appendChild(locationSpan);        
         
 
         if(invitation.getHostName() !== localStorage.getItem("email")){

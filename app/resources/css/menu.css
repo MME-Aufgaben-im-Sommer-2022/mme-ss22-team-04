@@ -18,6 +18,48 @@ body::after {
     z-index: -1;
 }
 
+#invitations_body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/invitations_background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#invitations_body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+
+#my-profile_body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/my-profile_background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#my-profile_body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+
 #userEmailAddress {
     color: rgb(168, 168, 168);
     position: absolute;
@@ -40,7 +82,7 @@ body::after {
     display: none;
     position: absolute;
     width: 300px;
-    height: 300px;
+    height: 200px;
     right: 0;
     top: 60px;
     padding: 5px;
@@ -491,22 +533,14 @@ body::after {
     align-self: center;
     align-items: center;
     align-content: center;
-    margin-top: 1em;
+    margin-top: 50px;
     margin-bottom: 0em;
     margin-left: 150px;
     display: flex;
 }
 
-.headlinebar-host{
-    width: 25%;
-}
-
-.headlinebar-food{
-    width: 25%;
-}
-
-.headlinebar-date{
-    width: 25%;
+.headlinebar-host, .headlinebar-food, .headlinebar-date, .headlinebar-location{
+    width: 20%;
 }
 
 .invitations-container {
@@ -544,30 +578,35 @@ body::after {
 }
 
 .invitation_name {
-    width: 25%;
+    width: 150px;
     height: 100px;
     cursor: pointer;
 }
 
 .invitation_date {
-    width: 25%;
+    width: 100px;
     height: 100px;
 }
 
 .food_name {
-    width: 25%;
+    width: 100px;
     height: 100px;
 }
 
+.location {
+    height: 100px;
+    width: 100px;
+}
+
 .accept, .decline {
-    width: 10%;
+    width: 100px;
     height: 50px;
-    border: none;
-    
+    border: none;    
 }
 
 .accept {
-    margin-right: -4%;
+    margin-right: -50px;
+    margin-top: -25px;
     border-radius: 40px 0 0 40px;
     background-color: #00a03d;
 }
@@ -577,7 +616,8 @@ body::after {
 }
 
 .decline {
-    margin-left: -3%;
+    margin-left: -15px;
+    margin-top: -25px;
     border-radius: 0 40px 40px 0;
     background-color: #db0000;
 }
@@ -603,15 +643,16 @@ body::after {
 }
 
 .popup-userinfo-content {
-    height: 470px;
+    height: 400px;
     width: 740px;
     background: #fff;
     border-radius: 20px;
     position: relative;
+    text-align: center;
 }
 
 .popup-userinfo-header {
-    margin: 30px 0 20px 205px;
+    margin-top: 40px;
     font-size: 1.5rem;
 }
 
@@ -633,11 +674,13 @@ body::after {
     align-items: center;
     justify-content: space-evenly;
     margin-top: 30px;
-    margin-left: 200px;
+    margin-left: auto;
+    margin-right: auto;
     width: 200px;
     height: 50px;
     border-radius: 1000px;
     background-color: #00c27b;
+    border: none;
 }
 
 .popup-userinfo-close:hover {
@@ -747,6 +790,16 @@ body::after {
     body {
       background-size: 100% 100%;
     }
+
+    .accept, .decline {
+        border-radius: 40px;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    .accept, .decline {
+        border-radius: 40px;
+    }
 }
 
 @media screen and (max-width: 1630px) {
@@ -791,6 +844,44 @@ body::after {
         width: 225px;
         text-align: center;
     }
+    
+    .accept {
+        margin-left: -25px;
+    }
+
+    .decline {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 1000px) {   
+    .accept {
+        margin-left: -25px;
+    }
+
+    .accept, .decline {
+        width: 80px;
+    }
+
+    .decline {
+        margin-left: 10px;
+    }
+
+    .invitation-name {
+        width: 50px;
+    }
+
+    .food_name {
+        width: 80px;
+    }
+
+    .invitation_date {
+        width: 80px;
+    }
+
+    .location {
+        width: 80px;
+    }
 }
 
 @media screen and (max-width: 850px) {
@@ -822,7 +913,7 @@ body::after {
     }
 
     .popup-content {
-        height: 380px;
+        height: 500px;
         width: 75%;
         background: #fff;
         border-radius: 20px;
@@ -834,6 +925,63 @@ body::after {
         margin-left: 10%;
         margin-right: 10%;
         text-align: center;
+    }
+    
+    .invitations-container {
+        height: 550px;
+        margin-top: 20px;
+    }
+
+    .invitations-container_elements {
+        height: 450px;
+        margin-top: 10px;
+    }
+
+    .invitations-container_elements span {
+        height: 30px;
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+    .invitation_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .food_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .accept, .decline {
+        width: 45%;
+        height: 75px;
+        border: none;
+    }
+
+    .location, .invitation_date {
+        width: 45%;
+    }
+    
+    .accept {
+        width: 45%;
+        margin-left: 20px;
+        border-radius: 50px 0 0 50px;
+    }
+    
+    .decline {
+        width: 45%;
+        margin-left: 0;
+        border-radius: 0 50px 50px 0;
+    }
+
+    .headlinebar {
+        display: none;
+    }
+
+    .popup-userinfo-content {
+        height: 420px;
+        width: 80%;
     }
 }
 
@@ -923,45 +1071,8 @@ body::after {
     }
     
     .invitations-container {
-        height: 400px;
-    }
-
-    .invitations-container_elements {
-        height: 350px;
-    }
-
-    .invitations-container_elements span {
-        height: 30px;
-        margin-top: 0;
-        padding-top: 20px;
-    }
-
-    .invitation_name {
-        width: 90%;
-        height: 100px;
-    }
-    
-    .food_name {
-        width: 90%;
-        height: 100px;
-    }
-    
-    .accept, .decline {
-        width: 15%;
-        height: 75px;
-        border: none;
-    }
-    
-    .accept {
-        width: 45%;
-        margin-right: -8%;
-        border-radius: 50px 0 0 50px;
-    }
-    
-    .decline {
-        width: 45%;
-        margin-left: -2%;
-        border-radius: 0 50px 50px 0;
+        height: 640px;
+        margin-top: 10px;
     }
 
     .settings {
@@ -988,12 +1099,17 @@ body::after {
     #userEmailAddress {
         left: 20px;
     }
+
+    .popup-userinfo-content {
+        height: 450px;
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 560px) {
 
     .popup-content {
-        height: 450px;
+        height: 530px;
         width: 90%;
     }
 
@@ -1014,6 +1130,18 @@ body::after {
     }
     .cancel-button {
         margin-top: 10px;
+    }
+
+    .location, .invitation_date {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {   
+
+    .popup-userinfo-content {
+        height: 550px;
+        width: 90%;
     }
 }
 
