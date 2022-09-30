@@ -1,9 +1,7 @@
-//i know those are technically meant to be constants but hush I have my reasons
+//these are vars because running these as constants will cause issues with the system
 var RECIPE_OUTPUT_NAME = document.getElementById("recipeOutputName"),
     RECIPE_OUTPUT_INGREDIENTS = document.getElementById("recipeOutputIngredients"),
     RECIPE_OUTPUT_STEPS = document.getElementById("recipeOutputSteps");
-
-//can and should still be modified depending on needs
 
 function outputRecipes(jsonInput, page){
     getNewElements();
@@ -12,10 +10,12 @@ function outputRecipes(jsonInput, page){
     let recipeString = "";
     let activeRecipe = jsonInput.results[page];
 
+    // generates the ingredients for the return page
     activeRecipe.extendedIngredients.forEach(element => {
         ingredientString = ingredientString + element.original + "\n";
-    }); //if this returns strange words blame the api
+    }); 
 
+    // generates the recipe steps for the return page
     activeRecipe.analyzedInstructions.forEach(partOfRecipe => {
         recipeString = recipeString + partOfRecipe.name + "\n";
         partOfRecipe.steps.forEach(instructionStep => {
@@ -24,6 +24,7 @@ function outputRecipes(jsonInput, page){
         recipeString = recipeString + "\n";
     });
 
+    // writes the return values into the return page
     RECIPE_OUTPUT_NAME.innerHTML = activeRecipe.title;
     RECIPE_OUTPUT_INGREDIENTS.innerHTML = ingredientString;
     RECIPE_OUTPUT_STEPS.innerHTML = recipeString;
