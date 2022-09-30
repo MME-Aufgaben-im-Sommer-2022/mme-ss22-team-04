@@ -1,4 +1,5 @@
 let id, host, food, location, date, keywords;
+let acceptedCount;
 const invitationType = {
     open: 1,
     friends: 2,
@@ -116,13 +117,6 @@ class Invitation {
 
 
 
-    acceptGuest(name){
-
-    }
-
-    cancelGuest(name){
-
-    }
 
 
     getID(){
@@ -161,17 +155,18 @@ class Invitation {
         }
     }
 
-    mapToObject(map) {
-       
+    getAcceptedGuests(){
+
+
+        return acceptedCount;
     }
 
-    getAcceptedGuests(){
-        let acceptedCount;
+    acceptInvite(email){
+        guestList.set(email, 'accepted')
+    }
 
-        //@todo
-
-
-        return 2;
+    declineInvite(email){
+        guestList.set(email, 'declined')
     }
 
 }

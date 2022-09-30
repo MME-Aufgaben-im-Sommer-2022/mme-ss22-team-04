@@ -1,5 +1,6 @@
 import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
+import { acceptInvite, declineInvite } from "./invitationManager.js";
 
 /*
 let vegetarianBtn = document.querySelector('.vegetarian');
@@ -11,8 +12,10 @@ let dessertBtn = document.querySelector('.dessert');
 
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
-//const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
 const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
+
+
+let currentInvitationList = [];
 
 
 
@@ -21,7 +24,7 @@ class InvitationView extends Observable{
         super();
 
         this.filter = document.querySelector(".filters");
-        initListeners(this);
+        //initListeners(this);
 
     }
 
@@ -58,12 +61,19 @@ class InvitationView extends Observable{
             const yesBtn = document.createElement("button");
             yesBtn.innerHTML = "yes";
             yesBtn.classList.add('accept');
+            yesBtn.setAttribute("id", "by"+invitation.getID())
             invitationDiv.appendChild(yesBtn);
+
+            //yesBtns.push(yesBtn);
 
             const noBtn = document.createElement("button");
             noBtn.innerHTML = "no";
             noBtn.classList.add('decline');
+            noBtn.setAttribute("id", "bn"+invitation.getID())
             invitationDiv.appendChild(noBtn);
+
+
+
         } else {
             const participantsField = document.createElement("span");
             participantsField.innerHTML = "guests: " + invitation.getAcceptedGuests();
@@ -83,25 +93,58 @@ class InvitationView extends Observable{
     
     renderInvitations(invitations){
 
+        currentInvitationList = invitations;
+        
         invitations.forEach((invitation) => {
             this.showInvitation(invitation);
         });
 
+        this.initListeners();
+
     }
 
+
+
+
+    initListeners() {
+
+        for(let i = 0; i < currentInvitationList.length; i++){
+            if(currentInvitationList[i].getHostName() !== localStorage.getItem("email")){
+                let btnYesID = "by"+currentInvitationList[i].getID();
+                let btnNoID = "bn"+currentInvitationList[i].getID();
+                
+                let btnYes = document.getElementById(btnYesID);
+                let btnNo = document.getElementById(btnNoID);
+                //console.log(btnYes);
+                //console.log(btnNo);
+                
+                //ClickListener
+                btnYes.addEventListener("click", () => {
+                    this.onYesButtonClicked(btnYesID);
+                });
+
+                btnNo.addEventListener("click", () => {
+                    this.onNoButtonClicked(btnNoID);
+                });
+            }
+        }
+    }
+
+    
+    onYesButtonClicked(btnID){
+        acceptInvite(btnID.substring(2), localStorage.getItem("email"));
+        let e = new Event("invitationChanged");
+        this.notifyAll(e);
+    }
+
+    onNoButtonClicked(btnID){
+        declineInvite(btnID.substring(2), localStorage.getItem("email"));
+        let e = new Event("invitationChanged");
+        this.notifyAll(e);
+    }
+
+
 }
-
-
-// Private Methods
-function initListeners(view) {
-    /*
-    view.vegetarianBtn.addEventListener("click", () => {
-        const event = new Event("onVegetarianBtnClicked");
-        event.notifyAll();
-    });
-    */
-}
-
 
 
 export default InvitationView;
