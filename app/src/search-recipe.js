@@ -6,6 +6,8 @@ import InvitationManager from "./invitations/invitationManager.js";
 // peopleGroup works as follows: 1 = public, 3 = specific people
 var selectedRecipe, peopleGroup, personName, location, datetime, hostName, tags;
 
+// it shows the email address of the actual user
+
 document.querySelector('#userEmailAddress').innerHTML = "Signed in as " + getExample();
 
 let personTextbox = document.getElementById("name-bar");
@@ -13,7 +15,7 @@ let locationTextbox = document.getElementById("location-bar");
 let dateTextbox = document.getElementById("date-bar");
 let sendBtn = document.querySelector('.send-invitation-button');
 
-// mobile-nav
+// mobile-nav div, on click listener so that the div is shown or not
 let menuIcon = document.querySelector('.menu-icon');
 menuIcon.addEventListener('click', function() {
     let mobileNav = document.querySelector('.mobile-nav_menu-elements-container');
@@ -81,5 +83,6 @@ sendBtn.addEventListener('click', function() {
     document.querySelector('.popup').style.display = 'none';
 })
 
+// signOut function
 let signOutButton = document.querySelector("#signOut");
 signOutButton.addEventListener('click', signOut);

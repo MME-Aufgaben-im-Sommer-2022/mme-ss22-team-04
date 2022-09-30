@@ -1,5 +1,7 @@
 import Invitation from "./invitations/invitation.js";
 
+// General data and functions of the Firebase
+
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
@@ -23,7 +25,7 @@ const firebaseConfig = {
   //const database = firebase.database();
 
   
-  
+  // this functios stores in signIn the current user and returns it through this function
   export function getExample() {
     return localStorage.getItem("email");
   }
