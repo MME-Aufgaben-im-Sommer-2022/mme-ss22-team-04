@@ -79,6 +79,10 @@ class InvitationManager extends Observable{
         console.log("updating db");
         console.log(currentInvitationList);
 
+        currentInvitationList.forEach((invitation) => {
+            this.uploadInvitation(invitation);
+        });
+
     }
 }
 
