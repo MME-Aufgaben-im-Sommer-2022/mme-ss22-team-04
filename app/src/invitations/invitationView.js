@@ -9,6 +9,26 @@ let saladBtn = document.querySelector('.salad');
 let dessertBtn = document.querySelector('.dessert');
 */
 
+// Firebase configuration
+/*const firebaseConfig = {
+    apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
+    authDomain: "eatwithme-e7e95.firebaseapp.com",
+    projectId: "eatwithme-e7e95",
+    storageBucket: "eatwithme-e7e95.appspot.com",
+    messagingSenderId: "922257626910",
+    appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
+    databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/"
+  };
+  
+  // Initialize Firebase
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }else {
+        firebase.app(); // if already initialized, use that one
+    }
+  
+  const db = firebase.firestore();*/
+
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
 //const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
@@ -42,6 +62,16 @@ class InvitationView extends Observable{
         hostSpan.innerHTML = invitation.getHostName();
         hostSpan.classList.add('invitation_name');
         invitationDiv.appendChild(hostSpan);
+
+        /*hostSpan.addEventListener("click", async e => {
+            let baseSnapshot = await db.collection("profiles")
+            let query = await baseSnapshot.where("email", "==", "gaming@gaming.gaming") //TODO: Let's just use that for now
+            await baseSnapshot.where("email", "==", "gaming@gaming.gaming").get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    console.log(doc)
+                })
+            })
+        });*/
 
         const foodSpan = document.createElement("span");
         foodSpan.innerHTML = invitation.getFoodName();

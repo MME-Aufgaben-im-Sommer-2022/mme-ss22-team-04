@@ -546,6 +546,7 @@ body::after {
 .invitation_name {
     width: 25%;
     height: 100px;
+    cursor: pointer;
 }
 
 .invitation_date {
@@ -620,6 +621,12 @@ body::after {
     border-radius: 50px;
     border: none;
     margin-top: 5px;
+}
+
+#settings-email:disabled {
+    opacity: 1.0;
+    background: #ddd;
+    color: #222;
 }
 
 .settings-name_div, .settings-email_div, .settings-phone-number_div, .settings-change-password_div, .settings-about-me_div {
