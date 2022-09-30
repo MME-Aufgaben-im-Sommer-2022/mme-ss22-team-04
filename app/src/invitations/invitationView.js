@@ -1,5 +1,6 @@
 import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
+import { acceptInvite, declineInvite } from "./invitationManager.js";
 
 /*
 let vegetarianBtn = document.querySelector('.vegetarian');
@@ -11,11 +12,8 @@ let dessertBtn = document.querySelector('.dessert');
 
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
-//const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
 const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
 
-//let yesBtns = [];
-//let noBtns = [];
 
 let currentInvitationList = [];
 
@@ -128,33 +126,25 @@ class InvitationView extends Observable{
                 btnNo.addEventListener("click", () => {
                     this.onNoButtonClicked(btnNoID);
                 });
-
-
             }
-
-
         }
-
-
-
-    
     }
 
     
     onYesButtonClicked(btnID){
-        console.log(btnID);
+        acceptInvite(btnID.substring(2), localStorage.getItem("email"));
+        let e = new Event("invitationChanged");
+        this.notifyAll(e);
     }
 
     onNoButtonClicked(btnID){
-        console.log(btnID);
+        declineInvite(btnID.substring(2), localStorage.getItem("email"));
+        let e = new Event("invitationChanged");
+        this.notifyAll(e);
     }
 
 
 }
-
-
-// Private Methods
-
 
 
 export default InvitationView;

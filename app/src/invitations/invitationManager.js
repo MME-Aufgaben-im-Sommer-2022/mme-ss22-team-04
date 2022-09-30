@@ -1,7 +1,6 @@
 import { Event, Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
 import invitationType from "./invitation.js";
-//import { uploadInvitationToDatabase, downloadInvitationsFromDatabase } from "../FirebaseLogin.js";
 import dbManger from "./dbManager.js";
 
 let currentInvitationList;
@@ -28,11 +27,11 @@ class InvitationManager extends Observable{
         let userMail = localStorage.getItem("email");
         const invitations = await database.getInvitations();
         const filteredInvitations = this.filterInvitations(invitations, userMail);
+        //this.currentInvitationList = filteredInvitations;
         return filteredInvitations;
     }
 
 
-    //creating new invitation -> ID will be generated
     /*
         This function let's you create new invitations from other windows. Simply call this function with the following parameter:
         - host: mail adress of the user, which is hosting the invitation
@@ -55,11 +54,6 @@ class InvitationManager extends Observable{
         this.uploadInvitation(i);
     }
 
-    // getInvitations(username){
-    //     let filteredInvitations = this.filterInvitations(currentInvitationList, username);
-    //     return currentInvitationList;
-    // }
-
 
     filterInvitations(invitations, user){
 
@@ -71,16 +65,43 @@ class InvitationManager extends Observable{
             }
         }
 
+        currentInvitationList = filteredInvitations;
         return filteredInvitations;
     }
 
     //uploads the invitation to the database
     uploadInvitation(invitation){
-        //@todo upload invitation
         database.uploadInvitationToDatabase(invitation);
 
     }
 
+    updateDatabase(){
+        console.log("updating database");
+        currentInvitationList.forEach((invitation) => {
+            this.uploadInvitation(invitation);
+            console.log(invitation);
+        });   
+    }
+}
+
+
+export function acceptInvite(inviteID, user){
+
+    currentInvitationList.forEach((invitation) => {
+        if(invitation.getID() == inviteID){
+            invitation.acceptInvite(user);
+        }
+    })
+
+    
+}
+
+export function declineInvite(inviteID, user){
+    currentInvitationList.forEach((invitation) => {
+        if(invitation.getID() == inviteID){
+            invitation.declineInvite(user);
+        }
+    })
 }
 
 

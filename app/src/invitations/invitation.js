@@ -1,4 +1,5 @@
 let id, host, food, location, date, keywords;
+let acceptedCount;
 const invitationType = {
     open: 1,
     friends: 2,
@@ -63,6 +64,11 @@ class Invitation {
 
     //checks, if a specific user u is invited (--> in the guests array)
     isInvited(u){
+        
+        if(guestList.get(u) == "declined"){
+            console.log("found declined");
+        }
+
 
         if(this.invitationType == 1){
             return true;
@@ -85,13 +91,6 @@ class Invitation {
 
 
 
-    acceptGuest(name){
-
-    }
-
-    cancelGuest(name){
-
-    }
 
 
     getID(){
@@ -130,16 +129,20 @@ class Invitation {
         }
     }
 
-    mapToObject(map) {
-       
+    getAcceptedGuests(){
+
+
+        return acceptedCount;
     }
 
-    getAcceptedGuests(){
-        let acceptedCount;
+    acceptInvite(email){
+        guestList.set(email, 'accepted')
+        console.log(guestList);
+    }
 
-        
-
-        return 2;
+    declineInvite(email){
+        guestList.set(email, 'declined')
+        console.log(guestList);
     }
 
 }

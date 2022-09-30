@@ -15,6 +15,9 @@ async function init() {
 
     const invitations = await invitationManager.getInvitations();
     invitationView.renderInvitations(invitations);
+    invitationView.addEventListener("invitationChanged", () => {
+        invitationManager.updateDatabase();
+    });
 
     
     //invitationManager.createNewInvitation("Christina", "Noodles", "Rudelzhausen", "Wochenende", "Nudeln, vegan", 3, "Tom, Christina");
