@@ -46,10 +46,10 @@ class InvitationManager extends Observable{
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
 
-        i.inviteGuests(guests.replace('.','x'));
+        i.inviteGuests(guests.replaceAll('.','x'));
 
 
-        console.log(i.getGuestList);
+        console.log(i.getGuestList());
 
         this.uploadInvitation(i);
     }

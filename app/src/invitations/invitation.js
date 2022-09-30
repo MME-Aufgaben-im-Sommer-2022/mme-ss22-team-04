@@ -59,6 +59,7 @@ class Invitation {
         if(guests != null){
             let guestString = guests.replace(/\s/g, '');
             let guestArray = guestString.split(",");
+            console.log(guestArray);
             return guestArray;
         } else {
             return null;
