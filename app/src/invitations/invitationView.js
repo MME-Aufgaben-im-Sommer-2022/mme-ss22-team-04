@@ -175,13 +175,13 @@ class InvitationView extends Observable{
 
     
     onYesButtonClicked(btnID){
-        acceptInvite(btnID.substring(2), localStorage.getItem("email"));
+        acceptInvite(btnID.substring(2), localStorage.getItem("email").replace('.','x'));
         let e = new Event("invitationChanged");
         this.notifyAll(e);
     }
 
     onNoButtonClicked(btnID){
-        declineInvite(btnID.substring(2), localStorage.getItem("email"));
+        declineInvite(btnID.substring(2), localStorage.getItem("email").replace('.','x'));
         let e = new Event("invitationChanged");
         this.notifyAll(e);
     }

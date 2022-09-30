@@ -6,7 +6,7 @@ Dieses Repository bildet die Grundlage für Ihre Projektarbeit und wurde über d
 
 ## Projekt
 
-_Fassen Sie kurz die wichtigsten Features, die intendierte Zielgruppe und die grundlegende Motivation des Projekts zusammen. Nennen Sie die aktuell bereits implementierten Funktionen und verlinken Sie den aktuellsten Release._
+Unsere Website heißt "EatWithMe". Die Zielgruppe sind vor allem Studenten, die immer Essensreste haben, weil sie allein leben und nicht alles aufessen können. Es wurden aber auch andere Nutzer in Betracht gezogen, z. B. Menschen, die gerne kochen und neue Rezepte ausprobieren und mit anderen teilen möchten. Unser Ziel ist es, Menschen miteinander zu verbinden, aber vor allem auch einen Beitrag zur Nachhaltigkeit zu leisten, indem wir den Überkonsum und die Verschwendung von Lebensmitteln verringern. Um dies zu erreichen, haben wir den Nutzern die Möglichkeit gegeben, sich zunächst auf unserer Website anzumelden, einen Rezept auszuwählen und andere Nutzer einzuladen. Außerdem kann der/die Nutzer/in sein/ihr Profil einsehen und seine/ihre Nutzerinformationen ändern sowie eine kurze Beschreibung über sich selbst verfassen.
 
 ## Beschreibung & Anleitung
 
