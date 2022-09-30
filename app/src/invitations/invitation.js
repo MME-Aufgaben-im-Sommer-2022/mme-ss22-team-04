@@ -1,11 +1,13 @@
 let id, host, food, location, date, keywords;
+
+//freinds ist not used yet
 const invitationType = {
     open: 1,
     friends: 2,
     specific: 3,
 }
 
-//Map for managing the guests
+//Map and Array for managing the guests
 let guestList = new Map();
 const guests = [];
 
@@ -22,10 +24,8 @@ class Invitation {
  
     }
 
+    //invite new guests
     inviteGuests(guestString){
-
-        console.log("asd");
-        console.log(guestString);
 
         this.guests = this.resolveGuests(guestString);
 
@@ -35,11 +35,9 @@ class Invitation {
         }
     }
 
+    //or set an existing Map
     setGuestList(guestMap){
         this.guestList = guestMap;
-        //const guestObj = Object.fromEntries(guestMap);
-        //const names = Object.keys(guestObj);
-
     }
 
     createGuestList(guests){
@@ -66,7 +64,7 @@ class Invitation {
         }
     }
 
-    //checks, if a specific user u is invited (--> in the guests array)
+    //checks, if a specific user is invited.)
     isInvited(userMail){
 
         let userMailShort = userMail.replace('.','x');
@@ -87,7 +85,7 @@ class Invitation {
     }
 
 
-
+    //======Getter======
 
 
     getID(){
@@ -126,7 +124,6 @@ class Invitation {
             return null;
         }
         
-        //return Object.fromEntries(this.guestList);
     }
 
     getAcceptedGuests(){

@@ -2,13 +2,6 @@ import Observable from "../Observable.js";
 import Invitation from "./invitation.js";
 import { acceptInvite, declineInvite } from "./invitationManager.js";
 
-/*
-let vegetarianBtn = document.querySelector('.vegetarian');
-let porkBtn = document.querySelector('.pork');
-let chickenBtn = document.querySelector('.chicken');
-let saladBtn = document.querySelector('.salad');
-let dessertBtn = document.querySelector('.dessert');
-*/
 
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
@@ -28,13 +21,15 @@ class InvitationView extends Observable{
 
     }
 
-
+    //for support reasons only
     createDummyInvitation(){
         let i = new Invitation("Lucas", "richtig gutes Essen", "bei mir", "heute", "vegan", 0);
         this.showInvitation(i);
     }
 
 
+
+    //building an HTML Element representing one invitation
     buildInvitationCard(invitation){
 
         const invitationDiv = document.createElement("div");
@@ -64,8 +59,6 @@ class InvitationView extends Observable{
             yesBtn.setAttribute("id", "by"+invitation.getID())
             invitationDiv.appendChild(yesBtn);
 
-            //yesBtns.push(yesBtn);
-
             const noBtn = document.createElement("button");
             noBtn.innerHTML = "no";
             noBtn.classList.add('decline');
@@ -85,7 +78,7 @@ class InvitationView extends Observable{
 
     }
 
-
+    //show single invitation
     showInvitation(invitation){
         LIST_ELEMENT.appendChild(this.buildInvitationCard(invitation));
     }
@@ -115,8 +108,6 @@ class InvitationView extends Observable{
                 
                 let btnYes = document.getElementById(btnYesID);
                 let btnNo = document.getElementById(btnNoID);
-                //console.log(btnYes);
-                //console.log(btnNo);
                 
                 //ClickListener
                 btnYes.addEventListener("click", () => {
@@ -148,54 +139,3 @@ class InvitationView extends Observable{
 
 
 export default InvitationView;
-
-
-
-
-
-
-
-/*
-
-
-vegetarianBtn.addEventListener('click', function() {
-    vegetarianBtn.style.backgroundColor = '#018371';
-    porkBtn.style.backgroundColor = '#00d3b7';
-    chickenBtn.style.backgroundColor = '#00d3b7';
-    saladBtn.style.backgroundColor = '#00d3b7';
-    dessertBtn.style.backgroundColor = '#00d3b7';
-});
-
-porkBtn.addEventListener('click', function() {
-    vegetarianBtn.style.backgroundColor = '#00d3b7';
-    porkBtn.style.backgroundColor = '#018371';
-    chickenBtn.style.backgroundColor = '#00d3b7';
-    saladBtn.style.backgroundColor = '#00d3b7';
-    dessertBtn.style.backgroundColor = '#00d3b7';
-});
-
-chickenBtn.addEventListener('click', function() {
-    vegetarianBtn.style.backgroundColor = '#00d3b7';
-    porkBtn.style.backgroundColor = '#00d3b7';
-    chickenBtn.style.backgroundColor = '#018371';
-    saladBtn.style.backgroundColor = '#00d3b7';
-    dessertBtn.style.backgroundColor = '#00d3b7';
-});
-
-saladBtn.addEventListener('click', function() {
-    vegetarianBtn.style.backgroundColor = '#00d3b7';
-    porkBtn.style.backgroundColor = '#00d3b7';
-    chickenBtn.style.backgroundColor = '#00d3b7';
-    saladBtn.style.backgroundColor = '#018371';
-    dessertBtn.style.backgroundColor = '#00d3b7';
-});
-
-dessertBtn.addEventListener('click', function() {
-    vegetarianBtn.style.backgroundColor = '#00d3b7';
-    porkBtn.style.backgroundColor = '#00d3b7';
-    chickenBtn.style.backgroundColor = '#00d3b7';
-    saladBtn.style.backgroundColor = '#00d3b7';
-    dessertBtn.style.backgroundColor = '#018371';
-});
-
-*/

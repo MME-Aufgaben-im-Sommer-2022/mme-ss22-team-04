@@ -15,6 +15,7 @@ class InvitationManager extends Observable{
         this.initListener();
     }
 
+    //initing the Listener
     initListener(){
         database.addEventListener("onInvitationListDownloaded", () => {
             currentInvitationList = database.getCurrentInvitationList();
@@ -22,6 +23,8 @@ class InvitationManager extends Observable{
         });
     }
 
+
+    //getting the invitations from the database manager
     async getInvitations() {
         
         let userMail = localStorage.getItem("email");
@@ -39,8 +42,10 @@ class InvitationManager extends Observable{
         - location: adress, where the invitation is held
         - invitationType: simply insert a number between 1 and 3. 
             1: open: every user is invited
-            2: friends
+            2: friends --> not used in this state of implementation
             3: only invited users
+
+            For database-reasons we have to replace the '.' with an 'x', so it can be stored
     */
     createNewInvitation(host, food, location, date, keywords, invitationType, guests = ""){
 
@@ -55,6 +60,8 @@ class InvitationManager extends Observable{
     }
 
 
+
+    //filters user for all invited users or the host.
     filterInvitations(invitations, user){
 
         let filteredInvitations = [];
@@ -72,15 +79,12 @@ class InvitationManager extends Observable{
     //uploads the invitation to the database
     uploadInvitation(invitation){
         database.uploadInvitationToDatabase(invitation);
-
     }
 
     updateDatabase(){
-
         currentInvitationList.forEach((invitation) => {
             this.uploadInvitation(invitation);
         });
-
     }
 }
 

@@ -47,6 +47,7 @@ class dbManger extends Observable{
           } 
         
         
+    //downloading invitations from database
     async getInvitations(){
       let invitationList = [];
       const dbRef = firebase.database().ref();
@@ -65,8 +66,10 @@ class dbManger extends Observable{
           let keywords = childNode.keywords;
           let type = childNode.invitationType;
 
+          //building new invitation
           let i = new Invitation(id, host, food, location, date, keywords, type);
 
+          //if there is a guestList, set it. If not, create a empty one
           if(childNode.guests !== undefined){
             let guests = childNode.guests;
             const guestMap = new Map();
@@ -74,7 +77,6 @@ class dbManger extends Observable{
             Object.keys(guests).forEach((email) => {
               guestMap.set(email, guests[email]);
             });
-            //console.log(guestMap);
 
             i.setGuestList(guestMap);
           } else {
@@ -91,12 +93,6 @@ class dbManger extends Observable{
       return invitationList; 
     }
         
-    // renderInvitations (i){
-    //         //console.log("ledl");
-    //         let e = new Event("onInvitationListDownloaded");
-    //         this.notifyAll(e);
-        
-    // }
 
     getCurrentInvitationList(){
         return currentInvitationList;
