@@ -137,8 +137,7 @@ class Invitation {
     getAcceptedGuests(){
         let acceptedCount;
 
-        //@todo
-
+        
 
         return 2;
     }

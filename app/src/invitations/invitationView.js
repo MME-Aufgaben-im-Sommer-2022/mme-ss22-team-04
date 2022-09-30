@@ -14,7 +14,8 @@ const INVITATION_ELEMENT = document.getElementById('invitation-element').content
 //const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
 const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
 
-let yesBtns = [];
+//let yesBtns = [];
+//let noBtns = [];
 
 let currentInvitationList = [];
 
@@ -65,12 +66,16 @@ class InvitationView extends Observable{
             yesBtn.setAttribute("id", "by"+invitation.getID())
             invitationDiv.appendChild(yesBtn);
 
-            yesBtns.push(yesBtn);
+            //yesBtns.push(yesBtn);
 
             const noBtn = document.createElement("button");
             noBtn.innerHTML = "no";
             noBtn.classList.add('decline');
+            noBtn.setAttribute("id", "bn"+invitation.getID())
             invitationDiv.appendChild(noBtn);
+
+
+
         } else {
             const participantsField = document.createElement("span");
             participantsField.innerHTML = "guests: " + invitation.getAcceptedGuests();
@@ -107,19 +112,42 @@ class InvitationView extends Observable{
 
         for(let i = 0; i < currentInvitationList.length; i++){
             if(currentInvitationList[i].getHostName() !== localStorage.getItem("email")){
-                let btnID = "by"+currentInvitationList[i].getID();
+                let btnYesID = "by"+currentInvitationList[i].getID();
+                let btnNoID = "bn"+currentInvitationList[i].getID();
                 
-                let btnYes = document.getElementById(btnID);
-                console.log(btnYes);
+                let btnYes = document.getElementById(btnYesID);
+                let btnNo = document.getElementById(btnNoID);
+                //console.log(btnYes);
+                //console.log(btnNo);
                 
-                
-    
+                //ClickListener
+                btnYes.addEventListener("click", () => {
+                    this.onYesButtonClicked(btnYesID);
+                });
+
+                btnNo.addEventListener("click", () => {
+                    this.onNoButtonClicked(btnNoID);
+                });
+
+
             }
+
+
         }
+
+
+
     
     }
 
     
+    onYesButtonClicked(btnID){
+        console.log(btnID);
+    }
+
+    onNoButtonClicked(btnID){
+        console.log(btnID);
+    }
 
 
 }
