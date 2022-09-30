@@ -85,34 +85,6 @@ class Invitation {
             }
         
         }
-
-
-
-        //console.log(this.guestList.get("lucas@lucasplankxde"));
-
-
-        /*<
-        if(this.invitationType == 1){
-            return true;
-        } else {
-
-            if(this.host == u){
-                return true;
-            } else {
-                for(let i = 0; i < this.guestList.size; i++){
-                    console.log(this.guestList);
-                    if(this.guestList.get(i) === u){
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-        */
-
-
-
     }
 
 
@@ -165,11 +137,11 @@ class Invitation {
     }
 
     acceptInvite(email){
-        guestList.set(email, 'accepted')
+        this.guestList.set(email, 'accepted');
     }
 
     declineInvite(email){
-        guestList.set(email, 'declined')
+        this.guestList.set(email, 'declined');
     }
 
 }
