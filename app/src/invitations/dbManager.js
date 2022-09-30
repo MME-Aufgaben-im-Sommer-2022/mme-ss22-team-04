@@ -33,7 +33,6 @@ class dbManger extends Observable{
 
     //uploading an invitation to the realtime database
     uploadInvitationToDatabase(i){
-              console.log("saving");
               database.ref('/invitations/' + i.getID()).set({
                 id: i.getID(),
                 host: i.getHostName(),

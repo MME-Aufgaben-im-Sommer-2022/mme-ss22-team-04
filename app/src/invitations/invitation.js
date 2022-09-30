@@ -64,11 +64,6 @@ class Invitation {
 
     //checks, if a specific user u is invited (--> in the guests array)
     isInvited(u){
-        
-        if(guestList.get(u) == "declined"){
-            console.log("found declined");
-        }
-
 
         if(this.invitationType == 1){
             return true;
@@ -137,12 +132,10 @@ class Invitation {
 
     acceptInvite(email){
         guestList.set(email, 'accepted')
-        console.log(guestList);
     }
 
     declineInvite(email){
         guestList.set(email, 'declined')
-        console.log(guestList);
     }
 
 }

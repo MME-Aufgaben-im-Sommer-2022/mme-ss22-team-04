@@ -46,7 +46,7 @@ class InvitationManager extends Observable{
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
         if(invitationType !== 1){
-            i.inviteGuests(guests);
+            i.inviteGuests(guests.replace('.',''));
         }
 
         console.log(i.getGuestList);
@@ -76,11 +76,8 @@ class InvitationManager extends Observable{
     }
 
     updateDatabase(){
-        console.log("updating database");
-        currentInvitationList.forEach((invitation) => {
-            this.uploadInvitation(invitation);
-            console.log(invitation);
-        });   
+        console.log("updating db");
+        console.log(currentInvitationList);
     }
 }
 
