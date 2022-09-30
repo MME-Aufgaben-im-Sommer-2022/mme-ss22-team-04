@@ -43,12 +43,11 @@ class InvitationManager extends Observable{
             2: friends
             3: only invited users
     */
-    createNewInvitation(host, food, location, date, keywords, invitationType, guests){
+    createNewInvitation(host, food, location, date, keywords, invitationType, guests = ""){
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
-        if(invitationType !== 1){
-            i.inviteGuests(guests);
-        }
+        i.inviteGuests(guests);
+
 
         console.log(i.getGuestList);
 
