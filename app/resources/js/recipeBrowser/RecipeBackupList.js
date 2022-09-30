@@ -1,5 +1,4 @@
-//html is giving me a headache WHAT DO YOU MEAN YOU CAN'T LOAD IN 1 SIMPLE JSON FILE
-//Also whoever made json.parse() not treat single slashes as the escape-the-next-character-prompt: why
+// The purpose of this function is to generate the backup JSON in case the main API runs into an issue
 
 function getBackupJSON(){
     let file = `{

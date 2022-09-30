@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./resources/css/menu.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
 </head>
 
 <body>
@@ -25,19 +27,9 @@
                     <span>My Profile</span>
                 </div>
             </a>
-            <a href="./friends.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Friends</span>
-                </div>
-            </a>
             <a href="./invitations.html">
                 <div class="mobile-nav_menu-elements">
                     <span>Invitations</span>
-                </div>
-            </a>
-            <a href="./settings.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Settings</span>
                 </div>
             </a>
         </div>
@@ -53,19 +45,9 @@
                 <span>My Profile</span>
             </div>
         </a>
-        <a href="./friends.html">
-            <div class="menu-elements">
-                <span>Friends</span>
-            </div>
-        </a>
         <a href="./invitations.html">
             <div class="menu-elements">
                 <span>Invitations</span>
-            </div>
-        </a>
-        <a href="./settings.html">
-            <div class="menu-elements">
-                <span>Settings</span>
             </div>
         </a>
     </div>
@@ -89,10 +71,11 @@
             <!-- <img src="resources/images/signup-image.png" alt="Sign Up Image" class="signUpImage"> -->
             <div class="popup-buttons">
                 <button class="selection-button public">Public</button>
-                <button class="selection-button friends">My Friends</button>
-                <button class="selection-button one-friend">Only one friend</button>
+                <button class="selection-button one-friend">Specific People</button>
             </div>
-            <input type="text" id="name-bar" name="name" placeholder="Please insert his/her name">            
+            <input type="text" id="name-bar" name="name" placeholder="Input e-mail address and separate using comma">
+            <input type="text" id="location-bar" name="name" placeholder="Location">
+            <input type="datetime-local" id="date-bar" name="name" placeholder="Date">
             <div class="other-buttons">
                 <button class="send-invitation-button" disabled>Send invitation</button>
                 <button class="cancel-button">Cancel</button>

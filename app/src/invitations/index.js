@@ -1,36 +1,33 @@
 import InvitationView from "./invitationView.js";
 import InvitationManager from "./invitationManager.js";
 import invitationType from "./invitation.js";
+import {Event, Observable} from "../Observable.js";
 
 
-let invitationView, invitationManager;
+async function init() {
+
+    //creating new instances of view and manager
+    let invitationManager = new InvitationManager();
+    let invitationView = new InvitationView();
 
 
+    const invitations = await invitationManager.getInvitations();
+    invitationView.renderInvitations(invitations);
 
-function init() {
-
-    invitationManager = new InvitationManager();
-    invitationView = new InvitationView();
-
-
-    invitationView.addEventListener("onInvitationCreated", () => {
-        // Do stuff when a new invitation is created;
-        console.log("new invitation was created");
+    //listener for changes on a invitation
+    invitationView.addEventListener("invitationChanged", () => {
+        invitationManager.updateDatabase();
     });
-
-    invitationManager.addEventListener("onInvitationCreated", () => {
-        console.log("new invitation created");
-    })
-
-    renderInvitations(invitationManager, invitationView);
 
 
 
 }
 
-function renderInvitations(manager, view){
+export function renderInvitations(invitationList){
 
-        view.renderInvitations(manager.getInvitations("Lucas"));    //@todo username
+        console.log(invitationList);
+        let view = new InvitationView();
+        view.renderInvitations(invitationList);
 
 }
 

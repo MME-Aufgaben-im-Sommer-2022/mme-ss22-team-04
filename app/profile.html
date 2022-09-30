@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="./resources/css/menu.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
 </head>
 
-<body>
+<body id="my-profile_body">
     <div id="userEmailAddress"></div>
     <div class="mobile-nav">
         <img src="./resources/images/menu-icon.png" alt="Menu icon" class="menu-icon">
@@ -25,19 +27,9 @@
                     <span>My Profile</span>
                 </div>
             </a>
-            <a href="./friends.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Friends</span>
-                </div>
-            </a>
             <a href="./invitations.html">
                 <div class="mobile-nav_menu-elements">
                     <span>Invitations</span>
-                </div>
-            </a>
-            <a href="./settings.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Settings</span>
                 </div>
             </a>
         </div>
@@ -53,19 +45,9 @@
                 <span>My Profile</span>
             </div>
         </a>
-        <a href="./friends.html">
-            <div class="menu-elements">
-                <span>Friends</span>
-            </div>
-        </a>
         <a href="./invitations.html">
             <div class="menu-elements">
                 <span>Invitations</span>
-            </div>
-        </a>
-        <a href="./settings.html">
-            <div class="menu-elements">
-                <span>Settings</span>
             </div>
         </a>
     </div>
@@ -74,7 +56,7 @@
             <div class="settings-name_div">Name</div>
             <input type="text" id="settings-name" name="name" placeholder="Name" readonly>
             <div class="settings-email_div">Email</div>
-            <input type="text" id="settings-email" name="email" placeholder="Email" readonly>
+            <input type="text" id="settings-email" name="email" placeholder="Email" readonly disabled>
             <div class="settings-phone-number_div">Phone number</div>
             <input type="text" id="settings-phone-number" name="phone-number" placeholder="Phone number" readonly>
         </div>
@@ -82,10 +64,11 @@
             <div class="settings-about-me_div" readonly>About me</div>
             <textarea type="text" id="settings-about-me" name="about-me" placeholder="About me" readonly></textarea>
         </div>
-        <button class="go-to-settings" onclick="window.location.href='./settings.html';">Do you want to change your settings? Click here</button>
+        <button id="save-button" class="go-to-settings">Save Profile</button>
     </div>
     <button id="signOut" class="back-to-login-button">Back to the Login</button>
     <script type="module" src="./src/general-logout.js"></script>
+    <script type="module" src="src/myProfile.js"></script>
 </body>
 
 </html>

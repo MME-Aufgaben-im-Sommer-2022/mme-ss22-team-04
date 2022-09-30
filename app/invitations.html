@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="./resources/css/menu.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
 </head>
 
-<body>
+<body id="invitations_body">
     <div id="userEmailAddress"></div>
     <div class="mobile-nav">
         <img src="./resources/images/menu-icon.png" alt="Menu icon" class="menu-icon">
@@ -25,19 +27,9 @@
                     <span>My Profile</span>
                 </div>
             </a>
-            <a href="./friends.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Friends</span>
-                </div>
-            </a>
             <a href="#">
                 <div class="mobile-nav_menu-elements mobile-nav_active">
                     <span>Invitations</span>
-                </div>
-            </a>
-            <a href="./settings.html">
-                <div class="mobile-nav_menu-elements">
-                    <span>Settings</span>
                 </div>
             </a>
         </div>
@@ -53,48 +45,51 @@
                 <span>My Profile</span>
             </div>
         </a>
-        <a href="./friends.html">
-            <div class="menu-elements">
-                <span>Friends</span>
-            </div>
-        </a>
         <a href="#">
             <div class="menu-elements active">
                 <span>Invitations</span>
             </div>
         </a>
-        <a href="./settings.html">
-            <div class="menu-elements">
-                <span>Settings</span>
-            </div>
-        </a>
     </div>
     <div class="menu">
 
-        
+        <!--
         <div class="filters">
             <p>Filter:</p>
             <input type="text" id = "filter-text">
 
-            <!---
+            
             <button class="filter-button vegetarian">Vegetarian</button>
             <button class="filter-button pork">Pork</button>
             <button class="filter-button chicken">Chicken</button>
             <button class="filter-button salad">Salad</button>
             <button class="filter-button dessert">Dessert</button>
-            -->
+            
         </div>
+        -->
 
         <div class="headlinebar">
             <p class="headlinebar-host" >Host</p>
             <p class="headlinebar-food">Food</p>
             <p class="headlinebar-date">Date</p>
+            <p class="headlinebar-location">Location</p>
         </div>
         
 
         <!-- TODO: add click listener on the buttons "yes" and "no" -->
         <div class="invitations-container" id="invitation-list">
 
+        </div>
+    </div>
+
+    <div class="popup-userinfo">
+        <div class="popup-userinfo-content">
+            <div class="popup-userinfo-header">User Information</div>
+            <div class="popup-userinfo-name">a</div>
+            <div class="popup-userinfo-email">ae</div>
+            <div class="popup-userinfo-phoneNumber">eae</div>
+            <div class="popup-userinfo-aboutMe">long text</div>
+            <button class="popup-userinfo-close">Close</button>
         </div>
     </div>
     <button id="signOut" class="back-to-login-button">Back to the Login</button>
@@ -106,6 +101,7 @@
             <span class="invitation_name">Name Vorname</span>
             <span class="food_name">Name des Essens</span>
             <span class="invitation_date">Date</span>
+            <span class="location">Standort</span>
             <button class="accept">Ja</button>
             <button class="decline">Nein</button>
         </div>

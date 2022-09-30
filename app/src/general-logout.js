@@ -1,12 +1,14 @@
-
+// settings for the my-profile.html
 import { getExample, signOut } from "./FirebaseLogin.js";
 
+// signOut function
 let signOutButton = document.querySelector("#signOut");
 signOutButton.addEventListener('click', signOut);
 
+// it shows the email address of the actual user
 document.querySelector('#userEmailAddress').innerHTML = "Signed in as " + getExample();
 
-// mobile-nav
+// mobile-nav div, on click listener so that the div is shown or not
 let menuIcon = document.querySelector('.menu-icon');
 menuIcon.addEventListener('click', function() {
     let mobileNav = document.querySelector('.mobile-nav_menu-elements-container');

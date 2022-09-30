@@ -1,3 +1,6 @@
+import Invitation from "./invitations/invitation.js";
+
+// General data and functions of the Firebase
 
 // Firebase configuration
 const firebaseConfig = {
@@ -6,24 +9,40 @@ const firebaseConfig = {
     projectId: "eatwithme-e7e95",
     storageBucket: "eatwithme-e7e95.appspot.com",
     messagingSenderId: "922257626910",
-    appId: "1:922257626910:web:7e9e3848e124e64e21db0f"
+    appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
+    databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/"
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }else {
+        firebase.app(); // if already initialized, use that one
+    }
   
+  const db = firebase.firestore();
   const auth = firebase.auth();
+  //const database = firebase.database();
+
   
+  // this functios stores in signIn the current user and returns it through this function
   export function getExample() {
     return localStorage.getItem("email");
   }
+
 
 // sign up function
 export function signUp() {
     let email = document.querySelector('.signup-email');
     let password = document.querySelector('.signup-password');
     const promise = auth.createUserWithEmailAndPassword(email.value, password.value)
-                      .then(() => {
+                      .then((cred) => {
+                        db.collection("profiles").doc(cred.user.uid).set({
+                          name: cred.user.displayName || cred.user.email,
+                          phoneNumber: cred.user.phoneNumber || "",
+                          email: cred.user.email,
+                          aboutMe: "",
+                        })
                         alert("Sign up successfully");
                       }).catch((error) => {
                         const errorMessage = error.message;
@@ -59,6 +78,8 @@ export function signUp() {
       });
       window.location.href = './index.html';
   }
+
+
 
   //active user to homepage
 await firebase.auth().onAuthStateChanged((user)=>{
