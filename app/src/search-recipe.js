@@ -1,12 +1,9 @@
-// TODO I: API-request for the recipes - Solved in RecipeSearch.js
-// TODO II: add functionality to "Send invitation" - Probably will be made by sending out a JSON object as an event or something
-
 import {returnCurrentRecipe} from "../resources/js/recipeBrowser/RecipeSearch.js"
 import { getExample, signOut } from "./FirebaseLogin.js";
 import { generateTags } from "./TagGenerator.js";
 import InvitationManager from "./invitations/invitationManager.js";
 
-// peopleGroup works as follows: 0 = public, 1 = friends, 2 = one person
+// peopleGroup works as follows: 1 = public, 3 = specific people
 var selectedRecipe, peopleGroup, personName, location, datetime, hostName, tags;
 
 document.querySelector('#userEmailAddress').innerHTML = "Signed in as " + getExample();
@@ -23,12 +20,14 @@ menuIcon.addEventListener('click', function() {
     mobileNav.style.display = (mobileNav.style.display == 'none') ? 'block' : 'none';
 });
 
+// shows popup
 let inviteBtn = document.querySelector('.invite-friends-button');
 inviteBtn.addEventListener('click', function() {
     document.querySelector('.popup').style.display = 'flex';
     selectedRecipe = returnCurrentRecipe();
 });
 
+// cancels request, closing the menu
 let cancelBtn = document.querySelector('.cancel-button');
 cancelBtn.addEventListener('click', function() {
     document.querySelector('.popup').style.display = 'none';
@@ -52,6 +51,7 @@ oneFriendBtn.addEventListener('click', function() {
     personTextbox.removeAttribute("disabled");
 });
 
+//generates the invitation as soon as this button is pressed, and returns errors if the input is incomplete
 sendBtn.addEventListener('click', function() {
     hostName = getExample();
     personName = personTextbox.value;
@@ -74,26 +74,10 @@ sendBtn.addEventListener('click', function() {
 
     tags = generateTags(selectedRecipe);
 
-    //does this need a rework?
-    /*let returnText =    '{ "peopleGroup" : '+ peopleGroup +', '+ 
-                        '"selectedRecipe" : '+ JSON.stringify(selectedRecipe) +', '+
-                        '"personName" : "'+ personName +'"}';
-    let returnJSON = JSON.parse(returnText);*/
-
-    //TODO: AAAAAAAAAAAAAAAAAAAAAAA
-
+    //send invitation to the InvitationManager
     let manager = new InvitationManager;
     manager.createNewInvitation(hostName, selectedRecipe.title, location, datetime, tags, peopleGroup, personName);
-
-    console.log(hostName)
-    console.log(selectedRecipe.title)
-    console.log(location)
-    console.log(datetime)
-    console.log(tags)
-    console.log(peopleGroup)
-    console.log(personName)
     
-
     document.querySelector('.popup').style.display = 'none';
 })
 

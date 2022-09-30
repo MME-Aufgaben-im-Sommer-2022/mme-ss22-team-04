@@ -3,6 +3,26 @@ import Invitation from "./invitation.js";
 import { acceptInvite, declineInvite } from "./invitationManager.js";
 
 
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
+    authDomain: "eatwithme-e7e95.firebaseapp.com",
+    projectId: "eatwithme-e7e95",
+    storageBucket: "eatwithme-e7e95.appspot.com",
+    messagingSenderId: "922257626910",
+    appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
+    databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/"
+  };
+  
+  // Initialize Firebase
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }else {
+        firebase.app(); // if already initialized, use that one
+    }
+  
+const db = firebase.firestore();
+
 const LIST_ELEMENT = document.getElementById('invitation-list');
 const INVITATION_ELEMENT = document.getElementById('invitation-element').content;
 const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
@@ -40,6 +60,29 @@ class InvitationView extends Observable{
         hostSpan.innerHTML = invitation.getHostName();
         hostSpan.classList.add('invitation_name');
         invitationDiv.appendChild(hostSpan);
+
+        hostSpan.addEventListener("click", async e => {
+            let userdata = "";
+            document.querySelector('.popup-userinfo').style.display = 'flex';
+            let baseSnapshot = await db.collection("profiles")
+            await baseSnapshot.where("email", "==", hostSpan.innerHTML).get().then(querySnapshot => {
+                querySnapshot.forEach(e => {
+                    if(userdata === "") userdata = e.data();
+                })
+                document.querySelector('.popup-userinfo-name').innerHTML = "Name: "+userdata.name;
+                document.querySelector('.popup-userinfo-email').innerHTML = "E-Mail: "+userdata.email;
+                document.querySelector('.popup-userinfo-phoneNumber').innerHTML = "Phone Number: "+userdata.phoneNumber;
+                document.querySelector('.popup-userinfo-aboutMe').innerHTML = "About me: "+userdata.aboutMe;
+                console.log(userdata.name)
+                console.log(userdata.email)
+                console.log(userdata.phoneNumber)
+                console.log(userdata.aboutMe)
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+                alert("There was an error trying to retrieve the name (check the console for more details)");
+            });
+        });
 
         const foodSpan = document.createElement("span");
         foodSpan.innerHTML = invitation.getFoodName();
@@ -137,5 +180,8 @@ class InvitationView extends Observable{
 
 }
 
+document.querySelector('.popup-userinfo-close').addEventListener("click", function(){
+    document.querySelector('.popup-userinfo').style.display = 'none';
+})
 
 export default InvitationView;
