@@ -46,7 +46,7 @@ class InvitationManager extends Observable{
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
 
-        i.inviteGuests(guests);
+        i.inviteGuests(guests.replace('.','x'));
 
 
         console.log(i.getGuestList);
@@ -78,6 +78,7 @@ class InvitationManager extends Observable{
     updateDatabase(){
         console.log("updating db");
         console.log(currentInvitationList);
+
     }
 }
 
