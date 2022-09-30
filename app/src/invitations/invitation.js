@@ -148,11 +148,14 @@ class Invitation {
     }
 
     getGuestList(){
-        if(this.invitationType !== 1){
+        
+        if(this.guestList !== undefined){
             return Object.fromEntries(this.guestList);
         } else {
             return null;
         }
+        
+        //return Object.fromEntries(this.guestList);
     }
 
     getAcceptedGuests(){
