@@ -160,10 +160,12 @@ class InvitationView extends Observable{
                 //ClickListener
                 btnYes.addEventListener("click", () => {
                     this.onYesButtonClicked(btnYesID);
+                    alert("You are going!");
                 });
 
                 btnNo.addEventListener("click", () => {
                     this.onNoButtonClicked(btnNoID);
+                    alert("You are not going!");
                 });
             }
         }
