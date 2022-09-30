@@ -14,6 +14,10 @@ const INVITATION_ELEMENT = document.getElementById('invitation-element').content
 //const INVITAION_TEMPLATE = INVITATION_ELEMENT.querySelector(".invitations-container_elements");
 const INVITAION_TEMPLATE = INVITATION_ELEMENT.getElementById("template");
 
+let yesBtns = [];
+
+let currentInvitationList = [];
+
 
 
 class InvitationView extends Observable{
@@ -21,7 +25,7 @@ class InvitationView extends Observable{
         super();
 
         this.filter = document.querySelector(".filters");
-        initListeners(this);
+        //initListeners(this);
 
     }
 
@@ -58,7 +62,10 @@ class InvitationView extends Observable{
             const yesBtn = document.createElement("button");
             yesBtn.innerHTML = "yes";
             yesBtn.classList.add('accept');
+            yesBtn.setAttribute("id", "by"+invitation.getID())
             invitationDiv.appendChild(yesBtn);
+
+            yesBtns.push(yesBtn);
 
             const noBtn = document.createElement("button");
             noBtn.innerHTML = "no";
@@ -83,24 +90,42 @@ class InvitationView extends Observable{
     
     renderInvitations(invitations){
 
+        currentInvitationList = invitations;
+        
         invitations.forEach((invitation) => {
             this.showInvitation(invitation);
         });
 
+        this.initListeners();
+
     }
+
+
+
+
+    initListeners() {
+
+        for(let i = 0; i < currentInvitationList.length; i++){
+            if(currentInvitationList[i].getHostName() !== localStorage.getItem("email")){
+                let btnID = "by"+currentInvitationList[i].getID();
+                
+                let btnYes = document.getElementById(btnID);
+                console.log(btnYes);
+                
+                
+    
+            }
+        }
+    
+    }
+
+    
+
 
 }
 
 
 // Private Methods
-function initListeners(view) {
-    /*
-    view.vegetarianBtn.addEventListener("click", () => {
-        const event = new Event("onVegetarianBtnClicked");
-        event.notifyAll();
-    });
-    */
-}
 
 
 
