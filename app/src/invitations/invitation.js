@@ -1,5 +1,4 @@
 let id, host, food, location, date, keywords;
-let acceptedCount;
 const invitationType = {
     open: 1,
     friends: 2,
@@ -70,7 +69,6 @@ class Invitation {
     isInvited(userMail){
 
         let userMailShort = userMail.replace('.','x');
-        console.log(this.guestList.size);
 
         if(this.invitationType == 1){
             return true;
@@ -132,17 +130,36 @@ class Invitation {
 
     getAcceptedGuests(){
 
+        let count = 0;
 
-        return acceptedCount;
+        let array = [];
+        this.guestList.forEach((value) => array.push(value));
+        
+        for(let i = 0; i<array.length; i++){
+            if(array[i] == "accepted"){
+                console.log("acception found");
+                count++;
+            }
+        }
+
+        console.log(count);
+
+        return count;
     }
 
     acceptInvite(email){
         this.guestList.set(email, 'accepted');
+
     }
 
     declineInvite(email){
         this.guestList.set(email, 'declined');
     }
+
+
+    getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+      }
 
 }
 
