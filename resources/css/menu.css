@@ -1,0 +1,1158 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/background-image.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+#invitations_body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/invitations_background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#invitations_body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+
+#my-profile_body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/my-profile_background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#my-profile_body::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+
+#userEmailAddress {
+    color: rgb(168, 168, 168);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.mobile-nav_menu-elements-container .menu-icon:hover{
+    display: block;
+}
+
+.mobile-nav_menu-elements-container {
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    right: 0;
+    top: 60px;
+    padding: 5px;
+    background-color: #FFF;
+    border-radius: 25px;
+}
+
+.mobile-nav_menu-elements-container a {
+    text-decoration: none;
+    color: #000;
+}
+
+.mobile-nav_menu-elements {
+    margin: 35px;
+    text-align: center;
+}
+
+.mobile-nav_active {
+    border: 1px solid #5a5a5a;
+    border-radius: 15px;
+}
+
+.menu-elements-container {
+    display: flex;
+    width: 70%;
+    height: 50px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-end;
+	align-content: center;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.menu-elements {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    padding: 15px;
+    border-radius: 50px;
+    border: 3px solid #5a5a5a;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #FFF;
+}
+
+.menu-elements span {
+    position: relative;
+    top: 5px;
+}
+
+.menu {
+    display: block;
+    width: 80%;
+    height: 620px;
+    border: 3px solid #5a5a5a;
+    background-color: #5a5a5a;
+    border-radius: 50px;
+    margin: auto;
+}
+
+.active {
+    border-radius: 25px 25px 0 0;
+    border-top: 3px solid #A4A4A4;
+    border-left: 3px solid #A4A4A4;
+    border-right: 3px solid #A4A4A4;
+    border-bottom: none;
+    background-color: #5a5a5a;
+}
+
+.active span {
+    position: relative;
+    top: 5px;
+}
+
+.search-recipe {
+    display: flex;
+    align-items: center;
+}
+
+.recipe-input {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 5%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+}
+
+.recipe-button {
+    display:inline ;
+    background-color: #00d3b7;
+    color: #000;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin-top: 50px;
+    margin-left: 2%;
+    cursor: pointer;
+    width: 15%;
+    height: 50px;
+    border-radius: 1000px;
+    border: none;
+}
+
+.recipe-button:disabled {
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+    border: 5px solid #00d3b7;
+}
+
+.recipe-prevRecipe {
+    display:inline;
+    background-color: #00c27b;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px 16px;
+    margin-top: 50px;
+    margin-left: 2%;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 1000px 0 0 1000px;
+    border: 5px solid #00c27b;
+    border-right: none;
+}
+
+.recipe-nextRecipe {
+    display:inline;
+    background-color: #00c27b;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px 16px;
+    margin-top: 50px;
+    margin-right: 5%;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 0 1000px 1000px 0;
+    border: 5px solid #00c27b;
+    border-left: none;
+}
+
+.recipe-button:hover {
+    opacity: 0.8;
+}
+
+.recipe-prevRecipe:hover {
+    opacity: 0.8;
+}
+
+.recipe-prevRecipe:disabled{
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+}
+
+.recipe-nextRecipe:disabled{
+    background-color: transparent;
+    color:#fff;
+    pointer-events: none;
+}
+
+.recipe-nextRecipe:hover {
+    opacity: 0.8;
+}
+
+.text-result {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 5%;
+    height: 360px;
+    padding: 5px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    background-color: rgb(202, 200, 200);
+    overflow-y: scroll;
+    white-space: pre-line;
+}
+
+.name-of-receipt {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+}
+
+.ingredients {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.steps {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.invite-friends-button {    
+    display:inline ;
+    background-color: #eb517f;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 75%;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    height: 50px;
+    border-radius: 0 0 25px 25px;
+}
+
+.invite-friends-button:hover {
+    opacity: 0.8;
+}
+
+.invite-friends-button:disabled {
+    background-color: transparent;
+    border: 5px solid #eb517f;
+    border-top: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(24, 173, 36); 
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:#00a03d; 
+}
+
+.popup {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    height: 470px;
+    width: 740px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.popup-description {
+    margin: 30px 0 20px 205px;
+    font-size: 1.5rem;
+}
+
+.popup-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selection-button {
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #00d3b7;
+}
+
+.public {
+    border-radius: 20px 0 0 20px;
+}
+
+.one-friend {
+    border-radius: 0 20px 20px 0;
+}
+
+#name-bar {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 15%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+#name-bar:disabled{
+    opacity: 0.6;
+}
+
+#location-bar {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 15%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+#date-bar {
+    display: block;
+    width: 70%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 15%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.other-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.send-invitation-button {
+    width: 200px;
+    height: 50px;
+    border-radius: 1000px;
+    background-color: #00c27b;
+}
+
+.send-invitation-button:disabled {
+    border: 2px solid #00c27b;
+    background-color: transparent;
+}
+
+.cancel-button {    
+    width: 200px;
+    height: 50px;
+    border-radius: 1000px;
+    background-color: #db0054;
+}
+
+.cancel-button:hover, .send-invitation-button:hover, .selection-button:hover {
+    opacity: 0.8;
+}
+
+.back-to-login-button {
+    width: 20%;
+    height: 30px;
+    background-color: #00c27b;
+    margin: 20px 40% 0 40%;
+    border-radius: 20px;
+    border: none;
+}
+
+.back-to-login-button:hover {
+    opacity: 0.8;
+}
+
+.friends-container {
+    height: 550px;
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.friends-container_elements {
+    width: 38%;
+    height: 100px;
+    margin: 20px 5%;
+    border: 2px solid #FFF;
+    border-radius: 25px;
+    color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.profile-picture, .person-name, .email-address {
+    margin: auto;
+    border: 2px solid #FFF;
+    border-radius: 25px;
+}
+
+.profile-picture {
+    width: 70px;
+}
+
+.person-name {
+    width: 150px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.person-name span {
+    display: inline-block;
+}
+
+.email-address {
+    width: 250px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.email-address span {
+    display: inline-block;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.filter-button {
+    width: 10%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background-color: #00d3b7;
+}
+
+.filter-button:hover {
+    opacity: 0.8;
+}
+
+.headlinebar{
+    height: 5px;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 50px;
+    margin-bottom: 0em;
+    margin-left: 150px;
+    display: flex;
+}
+
+.headlinebar-host, .headlinebar-food, .headlinebar-date, .headlinebar-location{
+    width: 20%;
+}
+
+.invitations-container {
+    width: 90%;
+    margin: 40px 5% 0 5%;
+    height: 450px;
+    border-radius: 50px;
+    padding: 10px;  
+    display: flex;
+    justify-content: space-around;
+    align-items: top;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.invitations-container_elements {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    background-color: #A4A4A4;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.invitations-container_elements span {
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+
+.invitation_name {
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.invitation_date {
+    width: 100px;
+    height: 100px;
+}
+
+.food_name {
+    width: 100px;
+    height: 100px;
+}
+
+.location {
+    height: 100px;
+    width: 100px;
+}
+
+.accept, .decline {
+    width: 100px;
+    height: 50px;
+    border: none;    
+}
+
+.accept {
+    margin-right: -50px;
+    margin-top: -25px;
+    border-radius: 40px 0 0 40px;
+    background-color: #00a03d;
+}
+
+.accept:hover{
+    background-color: #00a03d91;
+}
+
+.decline {
+    margin-left: -15px;
+    margin-top: -25px;
+    border-radius: 0 40px 40px 0;
+    background-color: #db0000;
+}
+
+.decline:hover{
+    background-color: #db00008a;
+}
+
+.participants {
+    width: 25%;
+    height: 100px;
+}
+
+.popup-userinfo {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-userinfo-content {
+    height: 400px;
+    width: 740px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.popup-userinfo-header {
+    margin-top: 40px;
+    font-size: 1.5rem;
+}
+
+.popup-userinfo-name {
+    margin: 30px;
+}
+.popup-userinfo-email {
+    margin: 30px;
+}
+.popup-userinfo-phoneNumber {
+    margin: 30px;
+}
+.popup-userinfo-aboutMe {
+    margin: 30px;
+}
+
+.popup-userinfo-close {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 50px;
+    border-radius: 1000px;
+    background-color: #00c27b;
+    border: none;
+}
+
+.popup-userinfo-close:hover {
+    opacity: 0.8;
+}
+
+.settings {
+    width: 90%;
+    padding: 50px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-partI {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-name_div, #settings-name, .settings-email_div, #settings-email, .settings-phone-number_div, #settings-phone-number {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#settings-name, #settings-email, #settings-phone-number, #settings-change-password {
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 50px;
+    border: none;
+    margin-top: 5px;
+}
+
+#settings-email:disabled {
+    opacity: 1.0;
+    background: #ddd;
+    color: #222;
+}
+
+.settings-name_div, .settings-email_div, .settings-phone-number_div, .settings-change-password_div, .settings-about-me_div {
+    margin-bottom: 0;
+    color: #FFF;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.settings-partII {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-change-password_div, #settings-change-password, .settings-about-me_div, #settings-about-me {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#settings-about-me {    
+    height: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+    margin-top: 5px;
+}
+
+.save-changes, .discard-changes {
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+}
+
+.save-changes:hover, .discard-changes:hover {
+    opacity: 0.8;
+}
+
+.save-changes {
+    background-color: #00a03d;
+}
+
+.discard-changes {
+    background-color: #db0054;
+}
+
+.go-to-settings {    
+    width: 40%;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    background-color: #00a03d;
+    margin-top: 0;
+}
+
+.go-to-settings:hover {
+    opacity: 0.8;
+}
+
+
+@media screen and (min-width: 1800px) {
+    body {
+      background-size: 100% 100%;
+    }
+
+    .accept, .decline {
+        border-radius: 40px;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    .accept, .decline {
+        border-radius: 40px;
+    }
+}
+
+@media screen and (max-width: 1630px) {
+    .friends-container_elements {
+        width: 80%;
+        height: 100px;
+    }
+
+    .person-name {
+        width: 250px;
+        text-align: center;
+    }
+
+    .email-address {
+        width: 350px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .menu-elements {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .invite-friends-button {
+        margin-left: 60%;
+        width: 150px;
+    }
+
+    .friends-container_elements {
+        width: 100%;
+        height: 100px;
+    }
+
+    .person-name {
+        width: 140px;
+        text-align: center;
+    }
+
+    .email-address {
+        width: 225px;
+        text-align: center;
+    }
+    
+    .accept {
+        margin-left: -25px;
+    }
+
+    .decline {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 1000px) {   
+    .accept {
+        margin-left: -25px;
+    }
+
+    .accept, .decline {
+        width: 80px;
+    }
+
+    .decline {
+        margin-left: 10px;
+    }
+
+    .invitation-name {
+        width: 50px;
+    }
+
+    .food_name {
+        width: 80px;
+    }
+
+    .invitation_date {
+        width: 80px;
+    }
+
+    .location {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .menu-elements {
+        width: 60px;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #recipe {
+        display: block;
+        width: 70%;
+        margin-left: 5%;
+    }
+    
+    .recipe-button {
+        margin-left: 0;
+        width: 20%;
+    }
+    
+    .back-to-login-button {
+        width: 40%;
+        margin: 20px 30% 0 30%;
+        border-radius: 20px;
+    }
+
+    .filter-button {
+        width: 100px;
+    }
+
+    .popup-content {
+        height: 500px;
+        width: 75%;
+        background: #fff;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .popup-description {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+    }
+    
+    .invitations-container {
+        height: 550px;
+        margin-top: 20px;
+    }
+
+    .invitations-container_elements {
+        height: 450px;
+        margin-top: 10px;
+    }
+
+    .invitations-container_elements span {
+        height: 30px;
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+    .invitation_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .food_name {
+        width: 90%;
+        height: 100px;
+    }
+    
+    .accept, .decline {
+        width: 45%;
+        height: 75px;
+        border: none;
+    }
+
+    .location, .invitation_date {
+        width: 45%;
+    }
+    
+    .accept {
+        width: 45%;
+        margin-left: 20px;
+        border-radius: 50px 0 0 50px;
+    }
+    
+    .decline {
+        width: 45%;
+        margin-left: 0;
+        border-radius: 0 50px 50px 0;
+    }
+
+    .headlinebar {
+        display: none;
+    }
+
+    .popup-userinfo-content {
+        height: 420px;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .menu-elements-container {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .active {        
+        border-radius: 25px 0 0 25px;
+        border-top: 3px solid #A4A4A4;
+        border-left: 3px solid #A4A4A4;
+        border-bottom: 3px solid #A4A4A4;
+        border-right: none;
+        background-color: #5a5a5a;
+    }
+
+    .menu {
+        margin-top: 50px;
+        height: 700px;
+    }
+
+    .search-recipe {
+        flex-wrap: wrap;
+    }
+
+    .recipe-input {
+        width: 80%;
+        margin-left: 10%;        
+        margin-right: 10%;
+    }
+
+    #recipe {
+        width: 85%;
+        margin-left: 5%;
+    }
+    
+    .recipe-button {
+        margin-left: 10%;
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .recipe-prevRecipe, .recipe-nextRecipe {        
+        margin-top: 10px;
+        width: 15%;
+    }
+
+    .text-result {
+        height: 420px;
+        margin-top: 20px;
+    }
+
+    .invite-friends-button {
+        margin-left: 20%;
+        width: 60%;
+    }
+    
+    .back-to-login-button {
+        width: 70%;
+        margin: 20px 15% 0 15%;
+        border-radius: 20px;
+    }
+
+    .friends-container_elements {
+        height: 200px;
+    }
+
+    .email-address {
+        width: 80%;
+        text-align: center;
+    }    
+
+    .email-address {
+        width: 90%;
+        text-align: center;
+        margin-top: 20px;
+    }    
+
+    .filter-button {
+        width: 45%;
+        margin-top: 10px;
+    }
+    
+    .invitations-container {
+        height: 640px;
+        margin-top: 10px;
+    }
+
+    .settings {
+        height: 730px;
+    }
+
+    .settings-partI, .settings-partII {
+        width: 90%;
+    }
+    
+    #settings-about-me {    
+        height: 130px;
+        margin-top: 0;
+    }
+
+    .save-changes, .discard-changes {
+        width: 80%;
+    }
+
+    .go-to-settings {    
+        width: 80%;
+    }
+
+    #userEmailAddress {
+        left: 20px;
+    }
+
+    .popup-userinfo-content {
+        height: 450px;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    .popup-content {
+        height: 530px;
+        width: 90%;
+    }
+
+    .popup-description {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .other-buttons {
+        flex-wrap: wrap;
+    }
+
+    .send-invitation-button, .cancel-button {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .cancel-button {
+        margin-top: 10px;
+    }
+
+    .location, .invitation_date {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {   
+
+    .popup-userinfo-content {
+        height: 550px;
+        width: 90%;
+    }
+}
+
+.go-to-settings.disabled {
+    background-color: #596957 !important;
+}
+
+.alert-textbox {
+    position: absolute;
+    z-index: 9999;
+    left: 10px;
+    top: 10px;
+    color: #ffffff;
+}
