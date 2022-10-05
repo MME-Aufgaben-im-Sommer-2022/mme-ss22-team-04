@@ -1,17 +1,14 @@
 import InvitationView from "./invitationView.js";
 import InvitationManager from "./invitationManager.js";
-import invitationType from "./invitation.js";
-import {Event, Observable} from "../Observable.js";
-
 
 //let invitationView, invitationManager;
 
 
 async function init() {
 
-    let invitationManager = new InvitationManager();
-    let invitationView = new InvitationView();
-
+    //creating new instances of view and manager
+    let invitationManager = new InvitationManager(),
+     invitationView = new InvitationView();
 
     const invitations = await invitationManager.getInvitations();
     invitationView.renderInvitations(invitations);
@@ -19,19 +16,10 @@ async function init() {
         invitationManager.updateDatabase();
     });
 
-    
-    //invitationManager.createNewInvitation("Christina", "Noodles", "Rudelzhausen", "Wochenende", "Nudeln, vegan", 3, "Tom, Christina");
-
-    //renderInvitations(invitationManager, invitationView);
-
-
-
 }
 
 export function renderInvitations(invitationList){
 
-        console.log(invitationList);
-        //renderInvitations(invitationList);    //@todo username
         let view = new InvitationView();
         view.renderInvitations(invitationList);
 

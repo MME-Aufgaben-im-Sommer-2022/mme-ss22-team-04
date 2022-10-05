@@ -6,9 +6,9 @@ var RECIPE_OUTPUT_NAME = document.getElementById("recipeOutputName"),
 function outputRecipes(jsonInput, page){
     getNewElements();
 
-    let ingredientString = "";
-    let recipeString = "";
-    let activeRecipe = jsonInput.results[page];
+    let ingredientString = "",
+     recipeString = "",
+     activeRecipe = jsonInput.results[page];
 
     // generates the ingredients for the return page
     activeRecipe.extendedIngredients.forEach(element => {
@@ -20,7 +20,7 @@ function outputRecipes(jsonInput, page){
         recipeString = recipeString + partOfRecipe.name + "\n";
         partOfRecipe.steps.forEach(instructionStep => {
             recipeString = recipeString + instructionStep.number + ": "+ instructionStep.step + "\n";
-        })
+        });
         recipeString = recipeString + "\n";
     });
 
@@ -36,4 +36,4 @@ function getNewElements(){
     RECIPE_OUTPUT_STEPS = document.getElementById("recipeOutputSteps");
 }
 
-export { outputRecipes }
+export { outputRecipes };

@@ -6044,7 +6044,7 @@ function getBackupJSON(){
         "offset": 0,
         "number": 10,
         "totalResults": 12345
-      }`
+      }`;
     return JSON.parse(file);
 }
 

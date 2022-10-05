@@ -1,14 +1,15 @@
-let saving = false;
+/* global firebase */
 
-const db = firebase.firestore();
-const auth = firebase.auth();
+let saving = false,
+    saveButton = document.getElementById("save-button");
 
-const nameField = document.getElementById("settings-name"),
+const db = firebase.firestore(),
+ auth = firebase.auth(),
+
+ nameField = document.getElementById("settings-name"),
     emailField = document.getElementById("settings-email"),
     numberField = document.getElementById("settings-phone-number"),
     aboutMeField = document.getElementById("settings-about-me");
-
-let saveButton = document.getElementById("save-button");
     
 function markReadOnly (active){
     nameField.readOnly = active;
@@ -18,16 +19,15 @@ function markReadOnly (active){
 }
 
 async function onAuthorized(user) {
-    console.log("on", user)
-    const snap = await db.collection("profiles").doc(user.uid).get() //try catch use if no data
-    const data = snap.data()
+    const snap = await db.collection("profiles").doc(user.uid).get(), //try catch use if no data
+     data = snap.data();
     nameField.value = data.name;
     emailField.value = data.email;
     numberField.value = data.phoneNumber;
     aboutMeField.value = data.aboutMe;
     markReadOnly(false);
-    saveButton.addEventListener('click', async () => {
-        if(saving) return;
+    saveButton.addEventListener("click", async () => {
+        if(saving) {return;}
         saving = true;
         markReadOnly(true);
         saveButton.innerHTML = "Saving...";
@@ -37,7 +37,7 @@ async function onAuthorized(user) {
             email: emailField.value,
             phoneNumber: numberField.value,
             aboutMe: aboutMeField.value,
-        })
+        });
         markReadOnly(false);
         saving = false;
         saveButton.innerHTML = "Save Profile";
@@ -45,16 +45,7 @@ async function onAuthorized(user) {
     });
 }
 
-function onUnAuthorized() {
-    
-}
-
 auth.onAuthStateChanged(user => {
-    if(user) onAuthorized(user);
-    else onUnAuthorized();
-}) 
-
-
-
-
+    if(user) {onAuthorized(user);}
+}); 
 

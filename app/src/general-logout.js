@@ -1,14 +1,17 @@
 
 import { getExample, signOut } from "./FirebaseLogin.js";
 
-let signOutButton = document.querySelector("#signOut");
-signOutButton.addEventListener('click', signOut);
+// signOut function
+let signOutButton = document.querySelector("#signOut"),
+    menuIcon = document.querySelector(".menu-icon");
 
-document.querySelector('#userEmailAddress').innerHTML = "Signed in as " + getExample();
+signOutButton.addEventListener("click", signOut);
 
-// mobile-nav
-let menuIcon = document.querySelector('.menu-icon');
-menuIcon.addEventListener('click', function() {
-    let mobileNav = document.querySelector('.mobile-nav_menu-elements-container');
-    mobileNav.style.display = (mobileNav.style.display == 'none') ? 'block' : 'none';
+// it shows the email address of the actual user
+document.querySelector("#userEmailAddress").innerHTML = "Signed in as " + getExample();
+
+// mobile-nav div, on click listener so that the div is shown or not
+menuIcon.addEventListener("click", function() {
+    let mobileNav = document.querySelector(".mobile-nav_menu-elements-container");
+    mobileNav.style.display = (mobileNav.style.display === "none") ? "block" : "none";
 });

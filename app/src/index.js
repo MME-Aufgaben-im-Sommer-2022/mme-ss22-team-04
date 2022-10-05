@@ -1,38 +1,27 @@
-import {signUp, signIn} from "./FirebaseLogin.js"
+import {signUp, signIn} from "./FirebaseLogin.js";
 
+let signUpButton = document.querySelector("#signUp"),
+    signInButton = document.querySelector("#signIn"),
+    cancelBtn = document.querySelector(".popup-cancelbtn"),
+    registerUser = document.querySelector("#signup-button"),
+    cancelBtnPassword = document.querySelector(".popup-cancelbtn-password");
 
-let signUpButton = document.querySelector("#signUp");
-signUpButton.addEventListener('click', function() {
+// opens the popup div on the Login Interface
+signUpButton.addEventListener("click", function() {
   document.querySelector(".popup").style.display = "flex";
 });
 
-let signInButton = document.querySelector("#signIn");
-signInButton.addEventListener('click', signIn);
+// signIn function for the Login Interface
+signInButton.addEventListener("click", signIn);
 
-let cancelBtn = document.querySelector(".popup-cancelbtn");
-cancelBtn.addEventListener('click', function() {
+// on click listener for the "Cancel" button in the popup div on the Login Interface (when signing up)
+cancelBtn.addEventListener("click", function() {
   document.querySelector(".popup").style.display = "none";
 });
 
-let registerUser = document.querySelector("#signup-button");
-registerUser.addEventListener('click', signUp);
+// signUp Function
+registerUser.addEventListener("click", signUp);
 
-let cancelBtnPassword = document.querySelector('.popup-cancelbtn-password');
-cancelBtnPassword.addEventListener('click', function() {
-  document.querySelector('.popup-password').style.display = 'none';
-})
-
-const resetPasswordFunction = () => {
-  const email = document.querySelector('.email-for-new-password').value;
-  auth.sendPasswordResetEmail(email)
-  .then(() => {
-    console.log('Password reset email sent successfully!');
-    document.querySelector('.popup-password').style.display = 'none';
-  })
-  .catch(error => {
-    console.error(error);
-  })
-}
-
-let sendNewPasswordBtn = document.querySelector('.send-password');
-sendNewPasswordBtn.addEventListener('click', resetPasswordFunction);
+cancelBtnPassword.addEventListener("click", function() {
+  document.querySelector(".popup-password").style.display = "none";
+});

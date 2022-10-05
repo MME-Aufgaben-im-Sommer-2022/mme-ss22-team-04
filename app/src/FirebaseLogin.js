@@ -1,66 +1,68 @@
-import Invitation from "./invitations/invitation.js";
+/* global firebase */
 
+// General data and functions of the Firebase
+
+// Initialize Firebase
+  if (!firebase.apps.length) {
+    firebase.initializeApp({
+        apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
+        authDomain: "eatwithme-e7e95.firebaseapp.com",
+        projectId: "eatwithme-e7e95",
+        storageBucket: "eatwithme-e7e95.appspot.com",
+        messagingSenderId: "922257626910",
+        appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
+        databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/",
+    });
+}else {
+    firebase.app(); // if already initialized, use that one
+}
 // Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyColpusaLC7uzOEr8R3XCGUTPB5bYOV2dQ",
-    authDomain: "eatwithme-e7e95.firebaseapp.com",
-    projectId: "eatwithme-e7e95",
-    storageBucket: "eatwithme-e7e95.appspot.com",
-    messagingSenderId: "922257626910",
-    appId: "1:922257626910:web:7e9e3848e124e64e21db0f",
-    databaseURL: "https://eatwithme-e7e95-default-rtdb.europe-west1.firebasedatabase.app/"
-  };
-  
-  // Initialize Firebase
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }else {
-        firebase.app(); // if already initialized, use that one
-    }
-  
-  const db = firebase.firestore();
-  const auth = firebase.auth();
-  //const database = firebase.database();
-
+const db = firebase.firestore(),
+      auth = firebase.auth(),
+      alertbox = document.getElementById("index-alertbox"),
+      ALERT_TIMER = 8000;
   
   
   export function getExample() {
     return localStorage.getItem("email");
   }
 
-
 // sign up function
 export function signUp() {
-    let email = document.querySelector('.signup-email');
-    let password = document.querySelector('.signup-password');
-    const promise = auth.createUserWithEmailAndPassword(email.value, password.value)
+    let email = document.querySelector(".signup-email"),
+     password = document.querySelector(".signup-password");
+    auth.createUserWithEmailAndPassword(email.value, password.value)
                       .then((cred) => {
                         db.collection("profiles").doc(cred.user.uid).set({
                           name: cred.user.displayName || cred.user.email,
                           phoneNumber: cred.user.phoneNumber || "",
                           email: cred.user.email,
                           aboutMe: "",
-                        })
-                        alert("Sign up successfully");
+                        });
+                        alertbox.innerHTML = "Signed up successfully";
+                        clearAlertbox();
                       }).catch((error) => {
                         const errorMessage = error.message;
-                        alert(errorMessage);
+                        alertbox.innerHTML = errorMessage;
+                        clearAlertbox();
                       });
     document.querySelector(".popup").style.display = "none";
 }
 
  //signIN function
  export function signIn(){
-    let email = document.getElementById("email");
-    let password  = document.getElementById("password");
-    const promise = auth.signInWithEmailAndPassword(email.value,password.value)
+    let email = document.getElementById("email"),
+     password = document.getElementById("password");
+    auth.signInWithEmailAndPassword(email.value,password.value)
                       .then((userCredential) => {
                         localStorage.setItem("email", userCredential.user.email);
-                        alert("Signed in as " + userCredential.user.email);
-                        window.location.href = './search-recipe.html';
+                        alertbox.innerHTML = `Signed in as ${userCredential.user.email}`;
+                        clearAlertbox();
+                        window.location.href = "./search-recipe.html";
                       }).catch((error) => {
                         const errorMessage = error.message;
-                        alert(errorMessage);
+                        alertbox.innerHTML = errorMessage;
+                        clearAlertbox();
                       });
     email.value = "";
     password.value = "";
@@ -72,16 +74,24 @@ export function signUp() {
         localStorage.removeItem("email");
       }).catch((error) => {
         const errorMessage = error.message;
-        alert(errorMessage);
+        alertbox.innerHTML = errorMessage;
+        clearAlertbox();
       });
-      window.location.href = './index.html';
+      window.location.href = "./index.html";
   }
 
-
-
   //active user to homepage
-await firebase.auth().onAuthStateChanged((user)=>{
+/*await firebase.auth().onAuthStateChanged((user)=>{
     if(user){
     } else {
     }
-  })
+  });*/
+
+let timeout;
+
+function clearAlertbox(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+      alertbox.innerHTML = "";
+  }, ALERT_TIMER);
+}
