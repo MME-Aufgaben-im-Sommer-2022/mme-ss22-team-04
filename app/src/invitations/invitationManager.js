@@ -1,11 +1,9 @@
-import { Event, Observable } from "../Observable.js";
+import { Observable } from "../Observable.js";
 import Invitation from "./invitation.js";
-import invitationType from "./invitation.js";
 import dbManger from "./dbManager.js";
 
-let currentInvitationList;
-let database;
-
+let currentInvitationList,
+ database;
 
 class InvitationManager extends Observable{
 
@@ -23,17 +21,15 @@ class InvitationManager extends Observable{
         });
     }
 
-
     //getting the invitations from the database manager
     async getInvitations() {
         
         let userMail = localStorage.getItem("email");
-        const invitations = await database.getInvitations();
-        const filteredInvitations = this.filterInvitations(invitations, userMail);
+        const invitations = await database.getInvitations(),
+         filteredInvitations = this.filterInvitations(invitations, userMail);
         //this.currentInvitationList = filteredInvitations;
         return filteredInvitations;
     }
-
 
     /*
         This function let's you create new invitations from other windows. Simply call this function with the following parameter:
@@ -51,22 +47,17 @@ class InvitationManager extends Observable{
 
         let i = new Invitation(Date.now(), host, food, location, date, keywords, invitationType);
 
-        i.inviteGuests(guests.replaceAll('.','x'));
-
-
-        console.log(i.getGuestList());
+        i.inviteGuests(guests.replaceAll(".","x"));
 
         this.uploadInvitation(i);
     }
-
-
 
     //filters user for all invited users or the host.
     filterInvitations(invitations, user){
 
         let filteredInvitations = [];
 
-        for (var x = 0; x < invitations.length; x ++){
+        for (let x = 0; x < invitations.length; x ++){
             if(invitations[x].isInvited(user)){
                 filteredInvitations.push(invitations[x]);
             }
@@ -88,25 +79,22 @@ class InvitationManager extends Observable{
     }
 }
 
-
 export function acceptInvite(inviteID, user){
 
     currentInvitationList.forEach((invitation) => {
-        if(invitation.getID() == inviteID){
+        if(invitation.getID() === inviteID){
             invitation.acceptInvite(user);
         }
-    })
-
+    });
     
 }
 
 export function declineInvite(inviteID, user){
     currentInvitationList.forEach((invitation) => {
-        if(invitation.getID() == inviteID){
+        if(invitation.getID() === inviteID){
             invitation.declineInvite(user);
         }
-    })
+    });
 }
-
 
 export default InvitationManager;

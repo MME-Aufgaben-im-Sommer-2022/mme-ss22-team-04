@@ -1,21 +1,8 @@
-let id, host, food, location, date, keywords;
-
-//freinds ist not used yet
-const invitationType = {
-    open: 1,
-    friends: 2,
-    specific: 3,
-}
-
-//Map and Array for managing the guests
-let guestList = new Map();
-const guests = [];
-
 class Invitation {
 
     constructor(id , host, food, location, date, keywords, invitationType){
         this.id = id;
-        this.host = host
+        this.host = host;
         this.food = food;
         this.location = location;
         this.date = date;
@@ -31,7 +18,6 @@ class Invitation {
 
         if(this.invitationType !== 1){
             this.guestList = this.createGuestList(this.guests);
-            console.log(this.guestList);
         }
     }
 
@@ -45,7 +31,7 @@ class Invitation {
         let map = new Map();
 
         for(let i = 0; i < guests.length; i++){
-            map.set(guests[i], 'wait');
+            map.set(guests[i], "wait");
         }
 
         return map;
@@ -54,39 +40,34 @@ class Invitation {
     //turning a string with the guests (comma separated) into an array
     resolveGuests(guests){
 
-        if(guests != null){
-            let guestString = guests.replace(/\s/g, '');
-            let guestArray = guestString.split(",");
-            console.log(guestArray);
+        if(guests !== ""){
+            let guestString = guests.replace(/\s/g, ""),
+             guestArray = guestString.split(",");
             return guestArray;
-        } else {
+        } 
             return null;
-        }
+        
     }
 
     //checks, if a specific user is invited.)
     isInvited(userMail){
 
-        let userMailShort = userMail.replace('.','x');
+        let userMailShort = userMail.replace(".","x");
 
-        if(this.invitationType == 1){
+        if(this.invitationType === 1){
             return true;
-        } else {
-        
-            if(this.host == userMail){
-                return true;
-            } else {
-                if(this.guestList.has(userMailShort)){
-                    return true;
-                }
-            }
-        
+        } else
+        if(this.host === userMail){
+            return true;
+        } else
+        if(this.guestList.has(userMailShort)){
+            return true;
         }
+        return false;
+        
     }
 
-
     //======Getter======
-
 
     getID(){
         return this.id;
@@ -120,40 +101,35 @@ class Invitation {
         
         if(this.guestList !== undefined){
             return Object.fromEntries(this.guestList);
-        } else {
+        } 
             return null;
-        }
         
     }
 
     getAcceptedGuests(){
 
-        let count = 0;
+        let count = 0,
 
-        let array = [];
+         array = [];
         this.guestList.forEach((value) => array.push(value));
         
         for(let i = 0; i<array.length; i++){
-            if(array[i] == "accepted"){
-                console.log("acception found");
+            if(array[i] === "accepted"){
                 count++;
             }
         }
-
-        console.log(count);
 
         return count;
     }
 
     acceptInvite(email){
-        this.guestList.set(email, 'accepted');
+        this.guestList.set(email, "accepted");
 
     }
 
     declineInvite(email){
-        this.guestList.set(email, 'declined');
+        this.guestList.set(email, "declined");
     }
-
 
     getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);

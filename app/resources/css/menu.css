@@ -1148,3 +1148,11 @@ body::after {
 .go-to-settings.disabled {
     background-color: #596957 !important;
 }
+
+.alert-textbox {
+    position: absolute;
+    z-index: 9999;
+    left: 10px;
+    top: 10px;
+    color: #ffffff;
+}

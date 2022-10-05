@@ -1,7 +1,7 @@
 import { searchRecipe } from "./RecipeSearchAPI.js";
 import { outputRecipes } from "./RecipeVisualOutput.js";
 
-const   RECIPE_SEARCH_BUTTON = document.getElementById("recipeSearchButton"),
+const RECIPE_SEARCH_BUTTON = document.getElementById("recipeSearchButton"),
         RECIPE_SEARCH_INPUT = document.getElementById("recipeSearchInput"),
         RECIPE_SEARCH_PREV = document.getElementById("recipeSearchPrev"),
         RECIPE_SEARCH_NEXT = document.getElementById("recipeSearchNext"),
@@ -16,13 +16,12 @@ function initRecipeSearch(){
         // main recipe search function
         startSERPPage();
 
-        let recipeSearch = RECIPE_SEARCH_INPUT.value;
+        let recipeSearch = RECIPE_SEARCH_INPUT.value,
 
         //continues in RecipeSearchAPI.js
-        let recipeReturn = await searchRecipe(recipeSearch);
+         recipeReturn = await searchRecipe(recipeSearch);
 
         if(recipeReturn.totalResults === 0){
-            console.log("no content");
             createSERPErrorNoRecipe();
             return;
         }
@@ -51,14 +50,14 @@ function initRecipeSearch(){
 
 //Shows result text
 function createSERPResult(){
-    RECIPE_OUTPUT.innerHTML = '<h1 class="name-of-receipt" id="recipeOutputName"></h1><h2 class="ingredients">Ingredients</h2><span id="recipeOutputIngredients"></span><h2 class="steps">Steps</h2><span id="recipeOutputSteps"></span>'
+    RECIPE_OUTPUT.innerHTML = "<h1 class=\"name-of-receipt\" id=\"recipeOutputName\"></h1><h2 class=\"ingredients\">Ingredients</h2><span id=\"recipeOutputIngredients\"></span><h2 class=\"steps\">Steps</h2><span id=\"recipeOutputSteps\"></span>";
     RECIPE_SEARCH_BUTTON.removeAttribute("disabled");
     RECIPE_INVITE.removeAttribute("disabled");
 }
 
 //Shows loading text
 function startSERPPage(){
-    RECIPE_OUTPUT.innerHTML = '<h1 class="name-of-receipt">Please wait for the API Response...</h1>'
+    RECIPE_OUTPUT.innerHTML = "<h1 class=\"name-of-receipt\">Please wait for the API Response...</h1>";
     RECIPE_SEARCH_BUTTON.setAttribute("disabled","");
     RECIPE_SEARCH_PREV.setAttribute("disabled","");
     RECIPE_SEARCH_NEXT.setAttribute("disabled","");
@@ -67,18 +66,18 @@ function startSERPPage(){
 
 //Shows error - no recipes text
 function createSERPErrorNoRecipe(){
-    RECIPE_OUTPUT.innerHTML = '<h1 class="name-of-receipt">Error: No recipes found.</h1>'
+    RECIPE_OUTPUT.innerHTML = "<h1 class=\"name-of-receipt\">Error: No recipes found.</h1>";
     RECIPE_SEARCH_BUTTON.removeAttribute("disabled");
 }
 
 function testForPageChange(){
     if(currentPage <= 0)
-        RECIPE_SEARCH_PREV.setAttribute("disabled","");
-    else RECIPE_SEARCH_PREV.removeAttribute("disabled");
+        {RECIPE_SEARCH_PREV.setAttribute("disabled","");}
+    else {RECIPE_SEARCH_PREV.removeAttribute("disabled");}
 
     if(currentPage >= Math.min(activeRecipe.totalResults-1, activeRecipe.number-1))
-        RECIPE_SEARCH_NEXT.setAttribute("disabled","");
-    else RECIPE_SEARCH_NEXT.removeAttribute("disabled");
+        {RECIPE_SEARCH_NEXT.setAttribute("disabled","");}
+    else {RECIPE_SEARCH_NEXT.removeAttribute("disabled");}
 }
 
 function returnCurrentRecipe (){
